@@ -1,0 +1,487 @@
+{
+  "name": "supper-admin",
+  "groupAPIAccesses": [],
+  "groupAPIDenines": [],
+  "groupDetails": [
+    {
+      "idGroupDetail": "62ff4f437e015b2f29323865",
+      "accessMethods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    {
+      "idGroupDetail": "62ff4f437e015b2f29323869",
+      "accessMethods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    {
+      "idGroupDetail": "62ff4f437e015b2f29323890",
+      "accessMethods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    {
+      "idGroupDetail": "62ff4f437e015b2f293238b8",
+      "accessMethods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    {
+      "idGroupDetail": "62ff4f437e015b2f293238c8",
+      "accessMethods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    {
+      "idGroupDetail": "62ff4f437e015b2f293238d4",
+      "accessMethods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    {
+      "idGroupDetail": "62ff4f437e015b2f293238d8",
+      "accessMethods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    {
+      "idGroupDetail": "62ff4f437e015b2f293238dc",
+      "accessMethods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    {
+      "idGroupDetail": "62ff4f437e015b2f293238ee",
+      "accessMethods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    {
+      "idGroupDetail": "62ff4f437e015b2f2932390d",
+      "accessMethods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    {
+      "idGroupDetail": "62ff4f437e015b2f29323916",
+      "accessMethods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    {
+      "idGroupDetail": "62ff4f437e015b2f29323931",
+      "accessMethods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    {
+      "idGroupDetail": "62ff4f437e015b2f29323946",
+      "accessMethods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    {
+      "idGroupDetail": "62ff4f437e015b2f2932395a",
+      "accessMethods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    {
+      "idGroupDetail": "62ff4f437e015b2f293237cd",
+      "accessMethods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    {
+      "idGroupDetail": "62ff4f437e015b2f293237ef",
+      "accessMethods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    {
+      "idGroupDetail": "62ff4f437e015b2f293237fd",
+      "accessMethods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    {
+      "idGroupDetail": "62ff4f437e015b2f29323810",
+      "accessMethods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    {
+      "idGroupDetail": "62ff4f437e015b2f29323823",
+      "accessMethods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    {
+      "idGroupDetail": "62ff4f437e015b2f29323830",
+      "accessMethods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    {
+      "idGroupDetail": "62ff4f437e015b2f29323846",
+      "accessMethods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    {
+      "idGroupDetail": "62ff4f437e015b2f29323849",
+      "accessMethods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    {
+      "idGroupDetail": "62ff4f437e015b2f29323876",
+      "accessMethods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    {
+      "idGroupDetail": "62ff4f437e015b2f293237c8",
+      "accessMethods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    }
+  ]
+}
+
+{
+  "name": "supper-admin",
+  "groupAPIAccesses": [],
+  "groupAPIDenines": [],
+  "groupDetails": [
+    // authuseraccesses
+    {
+      "idGroupDetail": "62f06fd10ba3bc88a26c3667",
+      ""accessMethods"": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    // authuserids
+    {
+      "idGroupDetail": "62f06fd10ba3bc88a26c3699",
+      ""accessMethods"": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    // districts
+    {
+      "idGroupDetail": "62f06fd10ba3bc88a26c375f",
+      ""accessMethods"": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    // freeapis
+    {
+      "idGroupDetail": "62f06fd10ba3bc88a26c364c",
+      ""accessMethods"": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    // groupapis
+    {
+      "idGroupDetail": "62f06fd10ba3bc88a26c3739",
+      ""accessMethods"": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    // groupdetails
+    {
+      "idGroupDetail": "62f06fd10ba3bc88a26c370d",
+      ""accessMethods"": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    }
+    // groups
+    {
+      "idGroupDetail": "62f06fd10ba3bc88a26c36c8",
+      ""accessMethods"": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    }
+    // provinces
+    {
+      "idGroupDetail": "62f06fd10ba3bc88a26c3780",
+      ""accessMethods"": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    // villages
+    {
+      "idGroupDetail": "62f06fd10ba3bc88a26c3789",
+      ""accessMethods"": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    // specializes
+    {
+      "idGroupDetail": "62f06fd10ba3bc88a26c3794",
+      ""accessMethods"": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    // subjects
+    {
+      "idGroupDetail": "62f06fd10ba3bc88a26c37bd",
+      ""accessMethods"": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    // subspecialize
+    {
+      "idGroupDetail": "62f06fd10ba3bc88a26c37a6",
+      ""accessMethods"": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    // users
+    {
+      "idGroupDetail": "62f06fd10ba3bc88a26c3700",
+      ""accessMethods"": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    }
+  ]
+}
+// ----------------------------
+// authuseraccesses
+// ----------------------------
+{
+  "url": "/v1/auth-user-accesses/seed",
+  ""accessMethods"": [
+    "POST"
+  ]
+},
+{
+  "url": "/v1/auth-user-accesses/:id",
+  ""accessMethods"": [
+    "PUT",
+    "DELETE",
+    "GET"
+  ]
+},
+{
+  "url": "/v1/auth-user-accesses",
+  ""accessMethods"": [
+    "GET",
+    "POST"
+  ]
+},
+{
+  "url": "/v1/auth-user-accesses/paginate",
+  ""accessMethods"": [
+    "GET"
+  ]
+}
+// ----------------------------
+// authuserids
+// ----------------------------
+{
+  "url": "/v1/auth-user-ids",
+  ""accessMethods"": [
+    "GET",
+    "POST"
+  ]
+},
+{
+  "url": "/v1/auth-user-ids/:id",
+  ""accessMethods"": [
+    "PUT",
+    "DELETE",
+    "GET"
+  ]
+},
+{
+  "url": "/v1/auth-user-ids/paginate",
+  ""accessMethods"": [
+    "GET"
+  ]
+}
+// ----------------------------
+// districts
+// ----------------------------
+{
+  "url": "/v1/districts",
+  ""accessMethods"": [
+    "POST"
+  ]
+},
+{
+  "url": "/v1/districts/:id",
+  ""accessMethods"": [
+    "PUT",
+    "DELETE"
+  ]
+},
+// ----------------------------
+// provinces
+// ----------------------------
+{
+  "url": "/v1/provinces",
+  ""accessMethods"": [
+    "POST"
+  ]
+},
+{
+  "url": "/v1/provinces/:id",
+  ""accessMethods"": [
+    "PUT",
+    "DELETE"
+  ]
+},
+// villages
+{
+  "url": "/v1/villages",
+  ""accessMethods"": [
+    "GET"
+  ]
+},
+{
+  "url": "/v1/villages/:id",
+  ""accessMethods"": [
+    "GET"
+  ]
+},
+{
+  "url": "/v1/villages/paginate",
+  ""accessMethods"": [
+    "GET"
+  ]
+}
+// admin
+{
+  ""accessMethods"": [
+    "DELETE"
+  ],
+  "url": "/v1/users/:id/hard"
+},
+{
+  ""accessMethods"": [
+    "POST"
+  ],
+  "url": "/v1/users"
+},
+{
+  ""accessMethods"": [
+    "PUT",
+    "DELETE",
+    "GET"
+  ],
+  "url": "/v1/users/:id"
+},

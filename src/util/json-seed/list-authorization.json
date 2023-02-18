@@ -1,0 +1,354 @@
+ [
+  [
+    "",
+    [
+      // freeapis
+      { "url": "/v1/auth/signup-local", "accessMethods": ["POST"] },
+      { "url": "/v1/auth/signin-local", "accessMethods": ["POST"] },
+      { "url": "/v1/auth/sign-out", "accessMethods": ["POST"] },
+      { "url": "/v1/auth/signin", "accessMethods": ["POST"] },
+      { "url": "/v1/auth/signin-with-social", "accessMethods": ["POST"] },
+      { "url": "/v1/auth/signup", "accessMethods": ["POST"] },
+      { "url": "/v1/auth/refresh-token", "accessMethods": ["PUT"] },
+
+      { "url": "/v1/uploads", "accessMethods": ["POST"] },
+      { "url": "/api", "accessMethods": ["GET"] },
+      { "url": "/api-json", "accessMethods": ["GET"] },
+
+
+      // authUserAccesses
+      { "url": "/v1/uploads/s3-tmp", "accessMethods": ["POST"] },
+      { "url": "/v1/uploads/local-tmp", "accessMethods": ["POST"] },
+      { "url": "/v1/uploads/s3", "accessMethods": ["POST"] },
+      { "url": "/all-routes", "accessMethods": ["GET"] },
+    ]
+  ],
+  [
+    "authuseraccesses",
+    [
+      // supperAdmin
+      { "url": "/v1/auth-user-accesses/seed", "accessMethods": ["POST"] },
+      {
+        "url": "/v1/auth-user-accesses/:id",
+        "accessMethods": ["PUT", "DELETE", "GET"]
+      },
+      { "url": "/v1/auth-user-accesses", "accessMethods": ["GET", "POST"] },
+      { "url": "/v1/auth-user-accesses/paginate", "accessMethods": ["GET"] }
+    ]
+  ],
+  [
+    "authuserids",
+    [
+      // supperAdmin
+      { "url": "/v1/auth-user-ids", "accessMethods": ["GET", "POST"] },
+      {
+        "url": "/v1/auth-user-ids/:id",
+        "accessMethods": ["PUT", "DELETE", "GET"]
+      },
+      { "url": "/v1/auth-user-ids/paginate", "accessMethods": ["GET"] }
+    ]
+  ],
+  [
+    "certificates",
+    [
+      // Free apis
+      {
+        "url": "/v1/certificates/:id",
+        "accessMethods": ["GET"]
+      },
+      { "url": "/v1/certificates", "accessMethods": ["GET"] },
+      { "url": "/v1/certificates/paginate", "accessMethods": ["GET"] }
+
+      // authUserAccesses
+      {
+        "url": "/v1/certificates/:id",
+        "accessMethods": ["PUT", "DELETE", "GET"]
+      },
+      { "url": "/v1/certificates", "accessMethods": ["GET", "POST"] }
+    ]
+  ],
+  [
+    "districts",
+    // freeApis
+    [{
+      { "url": "/v1/districts", "accessMethods": ["GET"] },
+      { "url": "/v1/districts/:id", "accessMethods": ["GET"] },
+      { "url": "/v1/districts/paginate", "accessMethods": ["GET"] }
+    }]
+
+    // supper-admin
+    [
+      { "url": "/v1/districts", "accessMethods": [ "POST"] },
+      { "url": "/v1/districts/:id", "accessMethods": ["PUT", "DELETE"] },
+    ]
+  ],
+  [
+    "filemanager",
+    [
+      // free apis
+      { "url": "/v1/file-manager", "accessMethods": ["GET"] },
+      { "url": "/v1/file-manager/paginate", "accessMethods": ["GET"] },
+      {"url": "/v1/file-manager/:id","accessMethods": ["GET"]},
+
+      // authuserids
+      { "url": "/v1/file-manager", "accessMethods": ["POST"] },
+      { "url": "/v1/file-manager/paginate", "accessMethods": ["PUT"] },
+      {
+        "url": "/v1/file-manager/:id",
+        "accessMethods": ["PUT", "DELETE"]
+      }
+    ]
+  ],
+  [
+    "freeapis",
+    [
+      // supperAdmin
+      { "url": "/v1/free-apis/:id", "accessMethods": ["PUT", "DELETE", "GET"] },
+      { "url": "/v1/free-apis", "accessMethods": ["GET", "POST"] },
+      { "url": "/v1/free-apis/paginate", "accessMethods": ["GET"] }
+    ]
+  ],
+  [
+    "groupapis",
+    [
+      // supperAdmin
+      { "url": "/v1/group-apis/seed", "accessMethods": ["POST"] },
+      {
+        "url": "/v1/group-apis/:id",
+        "accessMethods": ["PUT", "DELETE", "GET"]
+      },
+      { "url": "/v1/group-apis/paginate", "accessMethods": ["GET"] },
+      { "url": "/v1/group-apis", "accessMethods": ["GET", "POST"] }
+    ]
+  ],
+  [
+    "groupdetails",
+    [
+      // supperAdmin
+      { "url": "/v1/group-details", "accessMethods": ["GET", "POST"] },
+      { "url": "/v1/group-details/seed", "accessMethods": ["POST"] },
+      { "url": "/v1/group-details/paginate", "accessMethods": ["GET"] },
+      {
+        "url": "/v1/group-details/:id",
+        "accessMethods": ["PUT", "DELETE", "GET"]
+      }
+    ]
+  ],
+  [
+    "groups",
+    [
+      // supperAdmin
+      { "url": "/v1/groups", "accessMethods": ["GET", "POST"] },
+      { "url": "/v1/groups/:id", "accessMethods": ["PUT", "DELETE", "GET"] },
+      { "url": "/v1/groups/paginate", "accessMethods": ["GET"] }
+    ]
+  ],
+  [
+    "notifications",
+    // authUserAccess
+    [
+      { "url": "/v1/notifications/paginate", "accessMethods": ["GET"] },
+      {
+        "url": "/v1/notifications/:id",
+        "accessMethods": ["GET"]
+      },
+      { "url": "/v1/notifications/:id/markAsRead", "accessMethods": ["PUT"] },
+      { "url": "/v1/notifications", "accessMethods": ["GET"] }
+    ]
+  ],
+  [
+    "otps",
+    [
+      // freeApis
+      { "url": "/v1/otps", "accessMethods": ["GET"] },
+      { "url": "/v1/otps/send-otp-phone", "accessMethods": ["POST"] },
+      { "url": "/v1/otps/send-otp-email", "accessMethods": ["POST"] },
+      { "url": "/v1/otps/verify-otp-phone", "accessMethods": ["PUT"] },
+      { "url": "/v1/otps/verify-otp-email", "accessMethods": ["PUT"] },
+      { "url": "/v1/otps/:id", "accessMethods": ["DELETE", "GET"] }
+    ]
+  ],
+  [
+    "provinces",
+    [
+      // freeApi
+      { "url": "/v1/provinces", "accessMethods": ["GET"] },
+      { "url": "/v1/provinces/:id", "accessMethods": ["GET"] },
+      { "url": "/v1/provinces/paginate", "accessMethods": ["GET"] }
+    ]
+  ],
+  [
+    "questions",
+    [
+      // freeapis
+      { "url": "/v1/questions", "accessMethods": ["GET"] },
+      { "url": "/v1/questions/:id", "accessMethods": ["GET"] },
+      { "url": "/v1/questions/paginate", "accessMethods": ["GET"] },
+
+      // authUserAccesses
+      { "url": "/v1/questions", "accessMethods": ["POST"] },
+      { "url": "/v1/questions/:id/endCall", "accessMethods": ["PUT"] },
+      { "url": "/v1/questions/:id/answerList/:idAnswerer","accessMethods": ["PUT"] },
+      { "accessMethods": ["PUT"],"url": "/v1/questions/:id/startCall"},
+      { "accessMethods": ["PUT"], "url": "/v1/questions/:id/endCall"},
+      { "accessMethods": ["PUT"], "url": "/v1/questions/:id/answerList/:idAnswerer"},
+      { "accessMethods": ["PUT"], "url": "/v1/questions/:id/share-video" },
+      { "accessMethods": ["PUT"], "url": "/v1/questions/:id/add-answerer" },
+      { "accessMethods": ["PUT"], "url": "/v1/questions/:idQuestion/answerer/:idUser" },
+
+      // authUserIds
+      { "url": "/v1/questions/:id", "accessMethods": ["PUT", "DELETE"], ref: "idUser" }
+      {"accessMethods": ["PUT"],"url": "/v1/questions/:id/status-payment", ref: "idUser"},
+      {"accessMethods": ["PUT"],"url": "/v1/questions/:id/status-question", ref: "idUser"},
+      { "accessMethods": ["PUT"],"url": "/v1/questions/:id/cancel"},
+
+    ]
+  ],
+  [
+    "quizzes",
+    [
+      // freeapis
+      { "url": "/v1/quizzes", "accessMethods": ["GET"] },
+      { "url": "/v1/quizzes/:id", "accessMethods": ["GET"] },
+      { "url": "/v1/quizzes/paginate", "accessMethods": ["GET"] }
+
+      // authUserAccesses
+      { "url": "/v1/quizzes", "accessMethods": ["POST"] },
+      { "url": "/v1/quizzes/:id", "accessMethods": ["PUT", "DELETE"] },
+    ]
+  ],
+  [
+    "reviews",
+    [
+      // free apis
+      { "url": "/v1/reviews", "accessMethods": ["GET"] },
+      { "url": "/v1/reviews/:id", "accessMethods": ["GET"] },
+      { "url": "/v1/reviews/paginate", "accessMethods": ["GET"] }
+
+
+      // auth user access
+      { "url": "/v1/reviews", "accessMethods": ["POST"] },
+      { "accessMethods": ["PUT"], "url": "/v1/reviews/:id/confirm-complain"},
+
+      // authUserIds:
+      { "url": "/v1/reviews/:id", "accessMethods": ["PUT", "DELETE"] },
+
+    ]
+  ],
+  [
+    "specializes",
+    [
+      // freeapis
+      { "url": "/v1/specializes", "accessMethods": ["GET"] },
+      { "url": "/v1/specializes/paginate", "accessMethods": ["GET"] },
+      { "url": "/v1/specializes/:id", "accessMethods": ["GET"] }
+      { "accessMethods": ["GET"], "url": "/v1/specializes/user-specialize/:idUser/idUser"},
+
+      // auth user access
+      { "accessMethods": ["POST"], "url": "/v1/specializes" }
+
+      // aupperAdmin
+      { "accessMethods": ["PUT","DELETE"], "url": "/v1/specializes/:id"},
+
+    ]
+
+  ],
+  [
+    "subjects",
+    [
+      // free apis
+      { "url": "/v1/subjects", "accessMethods": ["GET"] },
+      { "url": "/v1/subjects/:id", "accessMethods": ["GET"] },
+      { "url": "/v1/subjects/paginate", "accessMethods": ["GET"] }
+
+      // authUseraccess
+      { "url": "/v1/subjects", "accessMethods": ["POST"] },
+
+      // supperadmin
+      { "url": "/v1/subjects/:id", "accessMethods": ["PUT", "DELETE"] },
+
+    ]
+  ],
+  [
+    "subspecializes",
+    [
+      // freeApis
+      { "url": "/v1/sub-specializes", "accessMethods": ["GET"] },
+      { "url": "/v1/sub-specializes/:id","accessMethods": ["GET"] },
+      { "url": "/v1/sub-specializes/paginate", "accessMethods": ["GET"] }
+
+      // authuseraccess
+      { "url": "/v1/sub-specializes", "accessMethods": ["POST"] },
+
+      // admin
+      { "accessMethods": ["PUT","DELETE","GET"], "url": "/v1/sub-specializes/:id" },
+
+    ]
+  ],
+  [
+    "transactions",
+    [
+    // authuseraccess
+    { "accessMethods": ["PUT"],"url": "/v1/transactions/recharge-money"},
+    { "accessMethods": ["PUT"],"url": "/v1/transactions/withdraw-money"},
+    { "accessMethods": ["PUT"],"url": "/v1/transactions/transfer-money"}
+
+      // authuserids
+    { "accessMethods": ["PUT","DELETE","GET"], "url": "/v1/transactions/:id" },
+    { "accessMethods": ["GET" ], "url": "/v1/transactions/paginate" },
+    { "accessMethods":["GET","POST"], "url": "/v1/transactions"},
+
+  ]
+  ],
+  [
+    "users",
+    [
+      // freeapis
+      {"accessMethods": ["GET"], "url": "/v1/users" },
+      {"accessMethods": ["PUT"],"url": "/v1/users/update-password/phone"},
+      {"accessMethods": ["PUT"],"url": "/v1/users/update-password/email"},
+      {"accessMethods": ["GET"],"url": "/v1/users/:id"},
+      {"accessMethods": ["GET"],"url": "/v1/users/paginate"}
+
+      // authuseraccess
+      { "accessMethods": ["PUT"],"url": "/v1/users/:id/add-deviceID"},
+      {"accessMethods": ["GET"],"url": "/v1/users/me"},
+      {"accessMethods": ["PUT"],"url": "/v1/users/:id/fcm-push"},
+      {"accessMethods": ["PUT"],"url": "/v1/users/:id/enable-fcm"},
+      {"accessMethods": ["PUT","DELETE","GET"],"url": "/v1/users/:id"},
+
+      // admin
+      {"accessMethods": ["DELETE"],"url": "/v1/users/:id/hard"},
+      {"accessMethods": ["POST"], "url": "/v1/users" },
+      {"accessMethods": ["PUT","DELETE","GET"],"url": "/v1/users/:id"},
+
+    ]
+  ],
+  [
+    "userspecializes",
+    [
+
+    // free apis
+    {"accessMethods": ["GET"],"url": "/v1/user-specializes"},
+    {"accessMethods": ["GET"],"url": "/v1/user-specializes/:id"},
+    {"accessMethods": ["GET"],"url": "/v1/user-specializes/paginate"}
+
+    // authuseraccess
+    {"accessMethods": ["POST"],"url": "/v1/user-specializes"},
+
+    // authuserids
+    {"accessMethods": ["PUT","DELETE"],"url": "/v1/user-specializes/:id"},
+    {"accessMethods": ["GET"],"url": "/v1/user-specializes/paginate"}
+
+    ]
+  ],
+  [
+    "villages",
+    [
+      // freeapis
+      { "url": "/v1/villages", "accessMethods": ["GET"] },
+      { "url": "/v1/villages/:id", "accessMethods": ["GET"] },
+      { "url": "/v1/villages/paginate", "accessMethods": ["GET"] }
+    ]
+  ]
+]

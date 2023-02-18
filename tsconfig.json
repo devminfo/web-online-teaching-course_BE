@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2017",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strictPropertyInitialization": false,
+    "paths": {
+      "@base-inherit/*": ["./src/base-inherit/*"],
+      "@constant/*": ["./src/util/constant/*"],
+      "@decorator/*": ["./src/util/decorator/*"],
+      "@dto/*": ["./src/util/dto/*"],
+      "@enum/*": ["./src/util/enum/*"],
+      "@exception/*": ["./src/util/exception/*"],
+      "@filter/*": ["./src/util/filter/*"],
+      "@guard/*": ["./src/util/guard/*"],
+      "@helper/*": ["./src/util/helper/*"],
+      "@interceptor/*": ["./src/util/interceptor/*"],
+      "@interface/*": ["./src/util/interface/*"],
+      "@loader/*": ["./src/util/loader/*"],
+      "@pipe/*": ["./src/util/pipe/*"],
+      "@response/*": ["./src/util/response/*"],
+      "@authorization/*": ["src/route/v1/authorization/*"],
+      "@common/*": ["src/route/v1/common/*"],
+      "@features/*": ["src/route/v1/features/*"],
+      "@lazy-module/*": ["./src/lazy-module/*"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["test", "tmp", "dist", "node_modules", "**/*spec.ts"]
+}

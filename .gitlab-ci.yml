@@ -1,0 +1,79 @@
+image: node:latest
+
+stages: 
+  - test 
+  - deploy-test
+  - deploy-dev
+  - deploy-production
+
+test: 
+  stage: test
+  environment:
+    name: testing
+  script:
+    - yarn install
+    - yarn lint --fix
+    # - yarn dev
+
+deploy-test:
+  stage: deploy-test 
+  environment:
+    name: deploying
+    url: https://izisoft.io  
+  only:
+    - test
+  before_script:
+    # Run ssh-agent in background:
+    - eval "$(ssh-agent -s)"
+    # Add SSH Key:
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null 
+    - ssh-add -l
+    # Install pm2:
+    - npm i -g pm2
+  script: 
+    - pm2 -v
+    # Run first time
+    # - pm2 deploy ecosystem-test.config.json develop setup
+    - pm2 deploy ecosystem-test.config.json develop
+
+deploy-dev:
+  stage: deploy-dev 
+  environment:
+    name: deploying
+    url: https://izisoft.io  
+  only:
+    - develop
+  before_script:
+    # Run ssh-agent in background:
+    - eval "$(ssh-agent -s)" 
+    # Add SSH Key:
+    - echo "$SSH_PRIVATE_KEY_DEVELOP" | tr -d '\r' | ssh-add - > /dev/null   
+    - ssh-add -l
+    # Install pm2:
+    - npm i -g pm2
+  script: 
+    - pm2 -v
+    # Run first time
+    - pm2 deploy ecosystem-dev.config.json develop setup  
+    # - pm2 deploy ecosystem-dev.config.json develop
+
+deploy-production:
+  stage: deploy-production 
+  environment:
+    name: deploying
+    url: https://izisoft.io  
+  only:
+    - master
+  before_script:
+    # Run ssh-agent in background:
+    - eval "$(ssh-agent -s)"
+    # Add SSH Key:
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null  
+    - ssh-add -l
+    # Install pm2:
+    - npm i -g pm2
+  script: 
+    - pm2 -v
+    # Run first time
+    # - pm2 deploy ecosystem.config.json production setup
+    - pm2 deploy ecosystem.config.json production

@@ -1,0 +1,73 @@
+
+// AUTHS
+{ "url": "/v1/auth/sign-out", "accessMethods": ["POST"] }
+
+
+// UPLOADS
+{ "url": "/v1/uploads/s3-tmp", "accessMethods": ["POST"] }
+{ "url": "/v1/uploads/local-tmp", "accessMethods": ["POST"] }
+{ "url": "/v1/uploads/s3", "accessMethods": ["POST"] }
+
+// ROUTES
+{ "url": "/all-routes", "accessMethods": ["GET"] }
+
+
+// certificates
+{ "url": "/v1/certificates/:id","accessMethods": ["PUT", "DELETE"] }
+{ "url": "/v1/certificates", "accessMethods": ["POST"] }
+
+// notifications
+[
+  { "url": "/v1/notifications/paginate", "accessMethods": ["GET"] }
+  { "url": "/v1/notifications/:id","accessMethods": ["GET"] }
+  { "url": "/v1/notifications/:id/markAsRead", "accessMethods": ["PUT"] }
+  { "url": "/v1/notifications", "accessMethods": ["GET"] }
+]
+
+// questions
+{ "url": "/v1/questions", "accessMethods": ["POST"] }
+{ "url": "/v1/questions/:id/answerList/:idAnswerer","accessMethods": ["PUT"] }
+{ "accessMethods": ["PUT"],"url": "/v1/questions/:id/startCall"}
+{ "accessMethods": ["PUT"], "url": "/v1/questions/:id/endCall"}
+{ "accessMethods": ["PUT"], "url": "/v1/questions/:id/answerList/:idAnswerer"}
+{ "accessMethods": ["PUT"], "url": "/v1/questions/:id/share-video" }
+{ "accessMethods": ["PUT"], "url": "/v1/questions/:id/add-answerer" }
+{ "accessMethods": ["PUT"], "url": "/v1/questions/:idQuestion/answerer/:idUser" }
+
+// quizzes
+{ "url": "/v1/quizzes", "accessMethods": ["POST"] }
+{ "url": "/v1/quizzes/:id", "accessMethods": ["PUT", "DELETE"] }
+
+// reviews
+{ "url": "/v1/reviews", "accessMethods": ["POST"] }
+{ "accessMethods": ["PUT"], "url": "/v1/reviews/:id/confirm-complain"}
+
+// specializes
+{ "accessMethods": ["POST"], "url": "/v1/specializes" }
+
+// sub-specializes
+{ "url": "/v1/sub-specializes", "accessMethods": ["POST"] }
+
+
+// transactions
+{ "accessMethods": ["PUT"],"url": "/v1/transactions/recharge-money"}
+{ "accessMethods": ["PUT"],"url": "/v1/transactions/withdraw-money"}
+{ "accessMethods": ["PUT"],"url": "/v1/transactions/transfer-money"}
+
+// users
+{ "accessMethods": ["PUT"],"url": "/v1/users/:id/add-deviceID"}
+{"accessMethods": ["GET"],"url": "/v1/users/me"}
+{"accessMethods": ["PUT"],"url": "/v1/users/update-me"}
+{"accessMethods": ["PUT"],"url": "/v1/users/:id/fcm-push"}
+{"accessMethods": ["PUT"],"url": "/v1/users/:id/enable-fcm"}
+{"accessMethods": ["PUT","DELETE","GET"],"url": "/v1/users/:id"}
+
+// user-specializes
+{"accessMethods": ["POST"],"url": "/v1/user-specializes"}
+
+
+{ "accessMethods": ["GET" ], "url": "/v1/transactions/paginate" }
+{ "accessMethods":["GET","POST"], "url": "/v1/transactions"}
+
+{ "url": "/v1/file-manager", "accessMethods": ["POST"]}
+{ "url": "/v1/file-manager/paginate", "accessMethods": ["PUT"]}

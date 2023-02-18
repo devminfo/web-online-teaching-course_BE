@@ -1,0 +1,18 @@
+// filemanager
+{ "url": "/v1/file-manager/:id", "accessMethods": ["PUT", "DELETE"], "referId":"owner" }
+
+// questions
+{ "url": "/v1/questions/:id", "accessMethods": ["PUT", "DELETE"], "referId": "idUser" }
+{"accessMethods": ["PUT"],"url": "/v1/questions/:id/status-payment", "referId": "idUser"}
+{"accessMethods": ["PUT"],"url": "/v1/questions/:id/status-question", "referId": "idUser"}
+{ "accessMethods": ["PUT"],"url": "/v1/questions/:id/cancel", "referId": "idUser"}
+
+// reviews
+{ "url": "/v1/reviews/:id", "accessMethods": ["PUT", "DELETE"], "referId": "idAuthor" }
+
+// transactions
+{ "accessMethods": ["PUT","DELETE","GET"], "url": "/v1/transactions/:id" }
+
+
+// user-specializes
+{"accessMethods": ["PUT","DELETE"],"url": "/v1/user-specializes/:id"}

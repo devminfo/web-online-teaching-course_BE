@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js"></script>
+
+    <script>
+      // the server of nodejs
+      // const server = "ws://s21haqua.izisoft.io";
+      const server = 'ws://localhost:6036';
+
+      // the server api of spring boot
+      const serverAPI =
+        'https://api.giadinhsunkun.com/p5sohadriving/P1Controller/C1Admin/SelectAllByWhat.php';
+
+      // sending message from client !
+      var socket = io(server, {
+        transports: ['websocket', 'polling', 'flashsocket'],
+      });
+
+      // send message chat room
+      function sendMessageChatRoom() {
+        // get message and information
+        var message = document.getElementById('message');
+        var IdEmployee = document.getElementById('IdEmployee');
+        var CreatedAt = document.getElementById('CreatedAt');
+
+        // create object
+        let object = {
+          what: '9301',
+          Message: message.value,
+          IdEmployee: IdEmployee.value,
+          CreatedAt: CreatedAt.value,
+        };
+
+        var http = new XMLHttpRequest();
+
+        var params = 'orem=ipsum&name=binny';
+        http.open('POST', serverAPI, true);
+
+        //Send the proper header information along with the request
+        http.setRequestHeader('Content-type', 'application/json');
+
+        http.onreadystatechange = function () {
+          //Call a function when the state changes.
+        };
+        http.send(JSON.stringify(object));
+
+        // sending message from client to socket
+        socket.emit('event', object);
+
+        // sending message from client to api
+
+        // this will prevent the form from submitting
+        return false;
+      }
+
+      // client will listen from server
+      socket.on('event', function (data) {
+        // display message
+        console.log('Server says', data);
+
+        // creates a new DOM element for li tag
+        var li = document.createElement('li');
+
+        // show message in li item
+        li.innerHTML = data;
+
+        // append the message at the end of list
+        var messages = document.getElementById('messages');
+        messages.appendChild(li);
+      });
+    </script>
+  </head>
+
+  <body>
+    <h6>Chat room</h6>
+    <form onsubmit="return sendMessageChatRoom();">
+      <input id="IdEmployee" placeholder="IdEmployee" />
+      <input id="message1" placeholder="Enter message" />
+      <input id="CreatedAt1" type="date" />
+
+      <input type="submit" value="Send" class="input" />
+    </form>
+
+    <h6>Chat private</h6>
+    <form onsubmit="return sendMessageChatPrivate();">
+      <input id="IdSent" placeholder="IdSent" />
+      <input id="IdReciver" placeholder="IdReciver" />
+      <input id="message" placeholder="Enter message" />
+      <input id="CreatedAt" type="date" />
+
+      <input type="submit" value="Send" class="input" />
+    </form>
+
+    <!-- list where all message will be displayed -->
+    <ul id="messages"></ul>
+
+    <script>
+      // sending message from client !
+      var socket = io(server, {
+        transports: ['websocket', 'polling', 'flashsocket'],
+      });
+
+      // sending message from client to socket
+      socket.emit('p03familycar_online', '248');
+
+      function sendMessageChatPrivate() {
+        // get message and information
+        var message = document.getElementById('message');
+        var IdSent = document.getElementById('IdSent');
+        var IdReciver = document.getElementById('IdReciver');
+        var CreatedAt = document.getElementById('CreatedAt');
+
+        // create object
+        let object = {
+          what: '9201',
+          Message: message.value,
+          IdSent: IdSent.value,
+          IdReciver: IdReciver.value,
+          CreatedAt: CreatedAt.value,
+        };
+
+        var http = new XMLHttpRequest();
+
+        var params = 'orem=ipsum&name=binny';
+        http.open('POST', serverAPI, true);
+
+        //Send the proper header information along with the request
+        http.setRequestHeader('Content-type', 'application/json');
+
+        http.onreadystatechange = function () {
+          //Call a function when the state changes.
+        };
+        http.send(JSON.stringify(object));
+
+        // sending message from client to socket
+        socket.emit('event', object);
+
+        // sending message from client to api
+
+        // this will prevent the form from submitting
+        return false;
+      }
+
+      // client will listen from server
+      socket.on('event', function (data) {
+        // display message
+        console.log('Server says', data);
+
+        // creates a new DOM element for li tag
+        var li = document.createElement('li');
+
+        console.log(data);
+
+        // show message in li item
+        li.innerHTML = data;
+
+        // append the message at the end of list
+        var messages = document.getElementById('messages');
+        messages.appendChild(li);
+      });
+    </script>
+  </body>
+</html>

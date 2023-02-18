@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  basenestjsnginx:
+    container_name: basenestjsnginx
+    image: izisoftwware/basenestjsnginx:local
+    build:
+      context: .
+      target: development
+      dockerfile: docker/local.Dockerfile
+    #environment:
+    #  MONGO_DB: mongodb+srv://admin:U2Y1MJO0laWJDjg5@samsam.n2dff.mongodb.net/samsam?retryWrites=true&w=majority
+    #  REDIS_URL: redis://:L6GoSPuMCkgNbHjUrY7Dvik4xAf8L3y1@redis-19942.c1.asia-northeast1-1.gce.cloud.redislabs.com:19942
+    volumes:
+      - .:/home/app
+      - ./public:/home/app/public
+      - /home/app/node_modules
+    ports:
+      - "0.0.0.0:3000:3000"

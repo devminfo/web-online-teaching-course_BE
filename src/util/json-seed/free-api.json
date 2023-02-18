@@ -1,0 +1,89 @@
+// AUTH
+{ "url": "/v1/auth/signup-local", "accessMethods": ["POST"] }
+{ "url": "/v1/auth/signin-local", "accessMethods": ["POST"] }
+{ "url": "/v1/auth/signin", "accessMethods": ["POST"] }
+{ "url": "/v1/auth/signin-with-social", "accessMethods": ["POST"] }
+{ "url": "/v1/auth/signup", "accessMethods": ["POST"] }
+{ "url": "/v1/auth/refresh-token", "accessMethods": ["PUT"] }
+
+
+// UPLOADS
+{ "url": "/v1/uploads", "accessMethods": ["POST"] }
+
+// API
+{ "url": "/api", "accessMethods": ["GET"] }
+{ "url": "/api-json", "accessMethods": ["GET"] }
+
+
+// certificates
+{ "url": "/v1/certificates/:id", "accessMethods": ["GET"] }
+{ "url": "/v1/certificates", "accessMethods": ["GET"] }
+{ "url": "/v1/certificates/paginate", "accessMethods": ["GET"] }
+
+// filemanager
+{ "url": "/v1/file-manager", "accessMethods": ["GET"] }
+{ "url": "/v1/file-manager/paginate", "accessMethods": ["GET"] }
+{ "url": "/v1/file-manager/:id","accessMethods": ["GET"]}
+
+
+// otps
+{ "url": "/v1/otps", "accessMethods": ["GET"] }
+{ "url": "/v1/otps/send-otp-phone", "accessMethods": ["POST"] }
+{ "url": "/v1/otps/send-otp-email", "accessMethods": ["POST"] }
+{ "url": "/v1/otps/verify-otp-phone", "accessMethods": ["PUT"] }
+{ "url": "/v1/otps/verify-otp-email", "accessMethods": ["PUT"] }
+{ "url": "/v1/otps/:id", "accessMethods": ["DELETE", "GET"] }
+
+// districts
+{ "url": "/v1/districts", "accessMethods": ["GET"] }
+{ "url": "/v1/districts/:id", "accessMethods": ["GET"] }
+{ "url": "/v1/districts/paginate", "accessMethods": ["GET"] }
+
+// provinces
+{ "url": "/v1/provinces", "accessMethods": ["GET"] }
+{ "url": "/v1/provinces/:id", "accessMethods": ["GET"] }
+{ "url": "/v1/provinces/paginate", "accessMethods": ["GET"] }
+
+// villages
+{ "url": "/v1/villages", "accessMethods": ["GET"] }
+{ "url": "/v1/villages/:id", "accessMethods": ["GET"] }
+{ "url": "/v1/villages/paginate", "accessMethods": ["GET"] }
+
+// questions
+{ "url": "/v1/questions", "accessMethods": ["GET"] }
+{ "url": "/v1/questions/:id", "accessMethods": ["GET"] }
+{ "url": "/v1/questions/paginate", "accessMethods": ["GET"] }
+
+
+// quizzes
+{ "url": "/v1/quizzes", "accessMethods": ["GET"] }
+{ "url": "/v1/quizzes/:id", "accessMethods": ["GET"] }
+{ "url": "/v1/quizzes/paginate", "accessMethods": ["GET"] }
+
+// reviews
+{ "url": "/v1/reviews", "accessMethods": ["GET"] }
+{ "url": "/v1/reviews/:id", "accessMethods": ["GET"] }
+{ "url": "/v1/reviews/paginate", "accessMethods": ["GET"] }
+
+// specializes
+{ "url": "/v1/specializes", "accessMethods": ["GET"] }
+{ "url": "/v1/specializes/paginate", "accessMethods": ["GET"] }
+{ "url": "/v1/specializes/:id", "accessMethods": ["GET"] }
+{ "accessMethods": ["GET"], "url": "/v1/specializes/user-specialize/:idUser/idUser"}
+
+// sub-specializes
+{ "url": "/v1/sub-specializes", "accessMethods": ["GET"] }
+{ "url": "/v1/sub-specializes/:id","accessMethods": ["GET"] }
+{ "url": "/v1/sub-specializes/paginate", "accessMethods": ["GET"] }
+
+// users
+{"accessMethods": ["GET"], "url": "/v1/users" }
+{"accessMethods": ["PUT"],"url": "/v1/users/update-password/phone"}
+{"accessMethods": ["PUT"],"url": "/v1/users/update-password/email"}
+{"accessMethods": ["GET"],"url": "/v1/users/:id"}
+{"accessMethods": ["GET"],"url": "/v1/users/paginate"}
+
+// user-specializes
+{"accessMethods": ["GET"],"url": "/v1/user-specializes"}
+{"accessMethods": ["GET"],"url": "/v1/user-specializes/:id"}
+{"accessMethods": ["GET"],"url": "/v1/user-specializes/paginate"}
