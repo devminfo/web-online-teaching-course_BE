@@ -13,28 +13,34 @@ import NotificationModule from '@common/c12-notification/notification.module';
 import SettingModule from '@common/c13-setting/setting.module';
 import OtpModule from '@common/c2-otp/otp.module';
 import HistoryModule from '@common/c9-history/history.module';
-
 import RolesGuard from '@guard/roles.guard';
 import { ShareFunction } from '@helper/static-function';
 import { Module } from '@nestjs/common';
 
-import ShopModule from '@features/f1-shop/shop.module';
-import OrderModule from '@features/f2-order/order.module';
-import UserBankModule from '@features/f3-user-bank/user-bank.module';
-import AddressHistoryModule from '@features/f4-address-history/address-history.module';
-import ReconciliationHistoryModule from '@features/f5-reconciliation-history/reconciliation-history.module';
-import RequestChatModule from '@features/f6-request-chat/request-chat.module';
-import ReviewModule from '@features/f7-review/review.module';
-import ShipperOrderModule from '@features/f8-shipper-order/shipper-order.module';
-import UserModule from './authorization/a1-user/user.module';
-import AuthModule from './common/c1-auth/auth.module';
-import UploadModule from './common/c3-upload/upload.module';
-import FileManagerModule from './common/c4-file-manager/file-manager.module';
-import StaticS3Module from './common/c5-static-s3/static-s3.module';
-import ProvinceModule from './common/c6-province/province.module';
-import DistrictModule from './common/c7-district/district.module';
+import BannerModule from '@features/f1-banners/banner.module';
+import CourseModule from '@features/f2-courses/course.module';
+import LectureGroupModule from '@features/f3-lecture-groups/lecture-group.module';
+import LearningPathModule from '@features/f5-learning-paths/learning-path.module';
+import CategoryModule from '@features/f6-categories/category.module';
+import PostModule from '@features/f7-posts/post.module';
+import CommentModule from '@features/f8-comments/comment.module';
+import ConversationModule from '@features/f9-conversations/conversation.module';
+import MessageModule from '@features/f10-messages/message.module';
+import QuizModule from '@features/f11-quizzes/quiz.module';
+import PlayQuizModule from '@features/f12-play-quizzes/play-quiz.module';
+import ClassRoomModule from '@features/f13-class-rooms/class-room.module';
+import QuestionModule from '@features/f14-questions/question.module';
+import TestQuestionModule from '@features/f15-test-questions/test-question.module';
+import UserTestModule from '@features/f16-user-tests/user-test.module';
 import VillageModule from './common/c8-village/village.module';
-import UserTestModule from '@features/f4-user-test/user-test.module';
+import DistrictModule from './common/c7-district/district.module';
+import ProvinceModule from './common/c6-province/province.module';
+import StaticS3Module from './common/c5-static-s3/static-s3.module';
+import FileManagerModule from './common/c4-file-manager/file-manager.module';
+import UploadModule from './common/c3-upload/upload.module';
+import AuthModule from './common/c1-auth/auth.module';
+import UserModule from './authorization/a1-user/user.module';
+
 // import { SeedModule } from '@common/c14-seed/seed.module';
 
 const routes: Routes = [
@@ -69,15 +75,70 @@ const routes: Routes = [
       { path: '/settings', module: SettingModule },
 
       // Features
-      { path: '/shops', module: ShopModule },
-      { path: '/orders', module: OrderModule },
-      { path: '/user-banks', module: UserBankModule },
-      { path: '/address-history', module: AddressHistoryModule },
-      { path: '/reconciliation-history', module: ReconciliationHistoryModule },
-      { path: '/request-chats', module: RequestChatModule },
-      { path: '/reviews', module: ReviewModule },
-      { path: '/shipper-orders', module: ShipperOrderModule },
-      { path: '/user-tests', module: UserTestModule },
+      {
+        path: 'banners',
+        module: BannerModule,
+      },
+      {
+        path: 'courses',
+        module: CourseModule,
+      },
+      {
+        path: 'lecture-groups',
+        module: LectureGroupModule,
+      },
+      {
+        path: 'lectures',
+        module: LectureGroupModule,
+      },
+      {
+        path: 'learning-paths',
+        module: LearningPathModule,
+      },
+      {
+        path: 'categories',
+        module: CategoryModule,
+      },
+      {
+        path: 'posts',
+        module: PostModule,
+      },
+      {
+        path: 'comments',
+        module: CommentModule,
+      },
+      {
+        path: 'conversations',
+        module: ConversationModule,
+      },
+      {
+        path: 'messages',
+        module: MessageModule,
+      },
+      {
+        path: 'quizzes',
+        module: QuizModule,
+      },
+      {
+        path: 'play-quizzes',
+        module: PlayQuizModule,
+      },
+      {
+        path: 'class-rooms',
+        module: ClassRoomModule,
+      },
+      {
+        path: 'questions',
+        module: QuestionModule,
+      },
+      {
+        path: 'test-questions',
+        module: TestQuestionModule,
+      },
+      {
+        path: 'user-tests',
+        module: UserTestModule,
+      },
     ],
   },
 ];
@@ -116,14 +177,21 @@ const imports = [
   DashboardModule,
 
   // features
-  ShopModule,
-  OrderModule,
-  UserBankModule,
-  AddressHistoryModule,
-  ReconciliationHistoryModule,
-  RequestChatModule,
-  ReviewModule,
-  ShipperOrderModule,
+  BannerModule,
+  CourseModule,
+  LectureGroupModule,
+  LectureGroupModule,
+  LearningPathModule,
+  CategoryModule,
+  PostModule,
+  CommentModule,
+  ConversationModule,
+  MessageModule,
+  QuizModule,
+  PlayQuizModule,
+  ClassRoomModule,
+  QuestionModule,
+  TestQuestionModule,
   UserTestModule,
 ];
 

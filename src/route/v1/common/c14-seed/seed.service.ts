@@ -1,10 +1,11 @@
+import { join } from 'path';
+
 import ProvinceService from '@common/c6-province/province.service';
 import DistrictService from '@common/c7-district/district.service';
 import VillageService from '@common/c8-village/village.service';
 import { fileHelper } from '@helper/file.helper';
 import CustomLoggerService from '@lazy-module/logger/logger.service';
 import { Injectable } from '@nestjs/common';
-import { join } from 'path';
 
 @Injectable()
 export class SeedService {

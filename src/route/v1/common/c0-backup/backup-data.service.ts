@@ -2,21 +2,14 @@
 import dayjs from 'dayjs';
 import fs, { existsSync } from 'fs';
 import {
-  LocalFileSystemDuplexConnector,
-  MongoDBDuplexConnector,
-  MongoTransferer,
+  LocalFileSystemDuplexConnector, MongoDBDuplexConnector, MongoTransferer,
 } from 'mongodb-snapshot';
 import { Types } from 'mongoose';
 import { getConnectionDb } from 'src/util/database/getConnectionDB';
 
 import BaseService from '@base-inherit/base.service';
 import CustomLoggerService from '@lazy-module/logger/logger.service';
-import {
-  BadRequestException,
-  ConsoleLogger,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { BadRequestException, ConsoleLogger, Injectable, NotFoundException } from '@nestjs/common';
 
 import { backupDataConstants } from './backup-data.constants';
 import BackupDataRepository from './backup-data.repository';

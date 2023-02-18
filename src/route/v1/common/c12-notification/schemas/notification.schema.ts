@@ -1,8 +1,8 @@
 import { ObjectId } from 'mongodb';
 import { Document, Types } from 'mongoose';
 
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { NotificationEntityTypeEnum } from '@enum/6.notification-entity-type.enum';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema({ timestamps: true, versionKey: false })
 export class Notification {

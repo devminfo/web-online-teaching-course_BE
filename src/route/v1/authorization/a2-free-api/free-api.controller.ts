@@ -6,15 +6,26 @@ import { sortAndUniqueMethods } from '@helper/sort-methods';
 import AqpDto from '@interceptor/aqp/aqp.dto';
 import WrapResponseInterceptor from '@interceptor/wrap-response.interceptor';
 import {
-  Body, Controller, Delete, Get, HttpCode, NotFoundException, Param, Post, Put, Query,
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  NotFoundException,
+  Param,
+  Post,
+  Put,
+  Query,
   UseInterceptors,
 } from '@nestjs/common';
 import ParseObjectIdPipe from '@pipe/parse-object-id.pipe';
 
+import { ApiTags } from '@nestjs/swagger';
 import CreateFreeApiDto from './dto/create-free-api.dto';
 import UpdateFreeApiDto from './dto/update-free-api.dto';
 import FreeApiService from './free-api.service';
 
+@ApiTags('Free-API')
 @UseInterceptors(WrapResponseInterceptor)
 @Controller()
 export default class FreeApiController {
