@@ -17,10 +17,7 @@ import S3Module from '@lazy-module/s3/s3.module';
 import StorageModule from '@lazy-module/storage/storage.module';
 import WebsocketCustomModule from '@lazy-module/websocket-custom/websocket-custom.module';
 import {
-  MiddlewareConsumer,
-  Module,
-  NestModule,
-  RequestMethod,
+  MiddlewareConsumer, Module, NestModule, RequestMethod
 } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtModule } from '@nestjs/jwt';

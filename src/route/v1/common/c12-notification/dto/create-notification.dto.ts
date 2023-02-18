@@ -1,13 +1,9 @@
-import { NotificationEntityTypeEnum } from '@enum/6.notification-entity-type.enum';
 import {
-  IsArray,
-  IsEnum,
-  IsMongoId,
-  IsNotEmpty,
-  IsOptional,
-  IsString,
+  IsArray, IsEnum, IsMongoId, IsNotEmpty, IsOptional, IsString
 } from 'class-validator';
 import { ObjectId } from 'mongodb';
+
+import { NotificationEntityTypeEnum } from '@enum/6.notification-entity-type.enum';
 
 export default class CreateNotificationDto {
   @IsNotEmpty()

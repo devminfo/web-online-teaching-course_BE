@@ -8,11 +8,7 @@ import BaseService from '@base-inherit/base.service';
 import OtpService from '@common/c2-otp/otp.service';
 import { adminConstants } from '@constant/admin.constants';
 import CustomLoggerService from '@lazy-module/logger/logger.service';
-import {
-  BadRequestException,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 
 import CreateUserDto from './dto/create-user.dto';
 import { UpdatePasswordByEmailDto } from './dto/update-password-by-email.dto';

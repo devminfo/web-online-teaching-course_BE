@@ -1,8 +1,8 @@
 import { Document, Types } from 'mongoose';
 
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { MethodRouteEnum } from '@enum/method-route.enum';
-import { GroupDetailType } from 'src/util/types';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { GroupDetailType } from 'src/util/types/group-detail.type';
 
 @Schema({ timestamps: true, versionKey: false })
 export class Group {

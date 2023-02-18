@@ -1,21 +1,12 @@
 import {
-  IsArray,
-  IsBoolean,
-  IsEmail,
-  IsEnum,
-  IsMongoId,
-  IsNotEmpty,
-  IsNumber,
-  IsOptional,
-  IsString,
-  Length,
-  ValidateIf,
+  IsArray, IsBoolean, IsEmail, IsEnum, IsMongoId, IsNotEmpty, IsNumber, IsOptional, IsString,
+  Length, ValidateIf,
 } from 'class-validator';
+import { ObjectId } from 'mongodb';
 
 import { GenderEnum } from '@enum/1.gender.enum';
-import { RoleUserEnum } from '@enum/role-user.enum';
-import { ObjectId } from 'mongodb';
 import { ReceivedNotificationTypeEnum } from '@enum/7.received-notification-type.enum ';
+import { RoleUserEnum } from '@enum/role-user.enum';
 
 export default class CreateUserDto {
   @ValidateIf((o) => o.role === RoleUserEnum.manager)

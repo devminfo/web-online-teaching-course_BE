@@ -3,11 +3,11 @@ import { ObjectId } from 'mongodb';
 import { Document, Types } from 'mongoose';
 
 import { GenderEnum } from '@enum/1.gender.enum';
+import { ReceivedNotificationTypeEnum } from '@enum/7.received-notification-type.enum ';
 import { MethodRouteEnum } from '@enum/method-route.enum';
 import { RoleUserEnum } from '@enum/role-user.enum';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { GroupDetailType } from 'src/util/types';
-import { ReceivedNotificationTypeEnum } from '@enum/7.received-notification-type.enum ';
+import { GroupDetailType } from 'src/util/types/group-detail.type';
 
 @Schema({ timestamps: true, versionKey: false })
 export class User {
@@ -55,7 +55,10 @@ export class User {
   readonly fullName: string;
 
   @Prop({
-    type: String, slug: 'fullName', index: true, unique: true
+    type: String,
+    slug: 'fullName',
+    index: true,
+    unique: true,
   })
   readonly slug: string;
 

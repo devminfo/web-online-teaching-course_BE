@@ -63,15 +63,15 @@ async function bootstrap() {
   }
 
   // check config redis for socket
-  if (
-    ShareFunction.isConfigRedis()
-    && ShareFunction.isConfigWebsocket()
-    && ShareFunction.isEnableWebsocket()
-  ) {
-    const redisIoAdapter = new RedisIoAdapter(app);
-    await redisIoAdapter.connectToRedis();
-    app.useWebSocketAdapter(redisIoAdapter);
-  }
+  // if (
+  //   ShareFunction.isConfigRedis()
+  //   && ShareFunction.isConfigWebsocket()
+  //   && ShareFunction.isEnableWebsocket()
+  // ) {
+  //   const redisIoAdapter = new RedisIoAdapter(app);
+  //   await redisIoAdapter.connectToRedis();
+  //   app.useWebSocketAdapter(redisIoAdapter);
+  // }
 
   // get port app running
   const port = process.env.SERVER_PORT || commonConstants.server.port;
@@ -92,8 +92,8 @@ async function bootstrap() {
   }
 
   // Protected routes with roles guard
-  const rolesGuard = app.get<RolesGuard>(RolesGuard);
-  app.useGlobalGuards(rolesGuard);
+  // const rolesGuard = app.get<RolesGuard>(RolesGuard);
+  // app.useGlobalGuards(rolesGuard);
 
   // run app
   await app.listen(port, async () => {
