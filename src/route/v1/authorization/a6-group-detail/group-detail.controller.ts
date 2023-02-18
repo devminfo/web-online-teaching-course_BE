@@ -29,7 +29,7 @@ import {
 import { ApiTags } from '@nestjs/swagger';
 import ParseObjectIdPipe from '@pipe/parse-object-id.pipe';
 
-import { GroupDetailType } from 'src/util/types';
+import { GroupDetailType } from 'src/util/types/group-detail.type';
 import CreateGroupDetailDto from './dto/create-group-detail.dto';
 import UpdateChildsDto from './dto/update-childs.dto';
 import UpdateGroupDetailDto from './dto/update-group-detail.dto';

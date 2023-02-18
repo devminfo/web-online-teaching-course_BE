@@ -9,7 +9,7 @@ import {
 
 import { RoleUserEnum } from '@enum/role-user.enum';
 
-import { GroupDetailType } from 'src/util/types';
+import { GroupDetailType } from 'src/util/types/group-detail.type';
 import { GroupDetailDto } from './group-detail.dto';
 
 export class updateRolesDto {
