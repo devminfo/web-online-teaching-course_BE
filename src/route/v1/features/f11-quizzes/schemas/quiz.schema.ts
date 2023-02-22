@@ -1,11 +1,11 @@
-import { ObjectId } from 'mongodb';
-import { Document, Types } from 'mongoose';
+import { Document } from 'mongoose';
 
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { QuizContentDto } from 'src/util/types/dto/quiz-content.dto';
 
 @Schema({ timestamps: true, versionKey: false })
 export class Quiz {
-  @Prop({ type: String, default: '' })
+  @Prop({ type: String, ref: 'User' })
   readonly createdBy: string;
 
   @Prop({ type: String, default: '' })
@@ -14,18 +14,28 @@ export class Quiz {
   @Prop({ type: String, default: '' })
   readonly desc: string;
 
-  @Prop({ type: String, default: '' })
-  content: {
-    questions: { text: string; image: string; file: string; audio: string };
-    answer: string;
-    position: string;
-    createdAt: string;
-  }[];
+  @Prop({
+    type: [
+      {
+        questions: {
+          text: String,
+          image: String,
+          file: String,
+          audio: String,
+        },
+        correctAnswer: String,
+        incorrectAnswers: [String],
+        position: Number,
+      },
+    ],
+    default: [],
+  })
+  content: QuizContentDto[];
 
-  @Prop({ type: String, default: '' })
+  @Prop({ type: Number, default: 0 })
   timeLimit: number;
 
-  @Prop({ type: String, default: '' })
+  @Prop({ type: [String], default: [] })
   tags: string[];
 }
 

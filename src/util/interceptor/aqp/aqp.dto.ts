@@ -1,5 +1,5 @@
 import {
-  IsArray, IsNumber, IsObject, Max
+  IsArray, IsNumber, IsObject, Max,
 } from 'class-validator';
 
 import { ApiPropertyOptional } from '@nestjs/swagger';

@@ -1,11 +1,11 @@
-import { ObjectId } from 'mongodb';
-import { Document, Types } from 'mongoose';
+import { Document } from 'mongoose';
 
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { AnswerDto } from 'src/util/types/dto/answer.dto';
 
 @Schema({ timestamps: true, versionKey: false })
 export class Question {
-  @Prop({ type: String, default: '' })
+  @Prop({ type: String, ref: 'User' })
   readonly author: string;
 
   @Prop({ type: String, default: '' })
@@ -18,16 +18,23 @@ export class Question {
   readonly desc: string;
 
   @Prop({ type: String, default: '' })
-  readonly images: string;
+  readonly images: string[];
 
-  @Prop({ type: String, default: '' })
-  readonly totalLikes: string;
+  @Prop({ type: Number, default: 0 })
+  readonly totalViews: number;
 
-  @Prop({ type: String, default: '' })
-  readonly totalViews: string;
+  @Prop({
+    type: {
+      author: { type: String, ref: 'User' },
+      content: String,
+      likes: { type: [{ type: String, ref: 'User' }], default: [] },
+    },
+    default: [],
+  })
+  readonly answers: AnswerDto[];
 
-  @Prop({ type: String, default: '' })
-  readonly answers: { author: string; content: string; likes: string[] }[];
+  @Prop({ type: [{ type: String, ref: 'User' }], default: [] })
+  readonly likes: string[];
 }
 
 export type QuestionDocument = Question & Document;

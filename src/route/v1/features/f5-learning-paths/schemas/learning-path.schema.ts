@@ -1,7 +1,7 @@
-import { ObjectId } from 'mongodb';
-import { Document, Types } from 'mongoose';
+import { Document } from 'mongoose';
 
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { LearningPathGroupDto } from 'src/util/types/dto/learning-path-group.dto';
 
 @Schema({ timestamps: true, versionKey: false })
 export class LearningPath {
@@ -14,12 +14,19 @@ export class LearningPath {
   @Prop({ type: String, default: '' })
   readonly thumbnail: string;
 
-  @Prop({ type: String, default: '' })
-  readonly learningPathGroups: {
-    title: string;
-    desc: string;
-    courses: { idCourse: string; isRelated: string }[];
-  }[];
+  @Prop({
+    type: {
+      title: String,
+      desc: String,
+      courses: [
+        {
+          idCourse: { type: String, ref: 'Course' },
+          isRelated: Boolean,
+        },
+      ],
+    },
+  })
+  readonly learningPathGroups: LearningPathGroupDto[];
 }
 
 export type LearningPathDocument = LearningPath & Document;

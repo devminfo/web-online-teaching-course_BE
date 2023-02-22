@@ -1,10 +1,5 @@
 import {
-  IsArray,
-  IsBoolean,
-  IsMongoId,
-  IsNotEmpty,
-  IsOptional,
-  IsString,
+  IsArray, IsBoolean, IsMongoId, IsNotEmpty, IsOptional, IsString,
 } from 'class-validator';
 import { ObjectId } from 'mongodb';
 

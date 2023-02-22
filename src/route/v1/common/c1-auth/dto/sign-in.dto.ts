@@ -1,5 +1,5 @@
 import {
-  IsEmail, IsNotEmpty, IsOptional, IsString, Length, MinLength
+  IsEmail, IsNotEmpty, IsOptional, IsString, Length, MinLength,
 } from 'class-validator';
 
 export default class SignInDto {

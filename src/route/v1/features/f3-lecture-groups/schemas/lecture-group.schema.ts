@@ -1,19 +1,18 @@
-import { ObjectId } from 'mongodb';
-import { Document, Types } from 'mongoose';
+import { Document } from 'mongoose';
 
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { Course } from '@features/f2-courses/schemas/course.schema';
 
 @Schema({ timestamps: true, versionKey: false })
 export class LectureGroup {
-  @Prop({ type: String, default: '' })
+  @Prop({ type: String, ref: 'Course' })
   readonly idCourse: string;
 
   @Prop({ type: String, default: '' })
   readonly title: string;
 
-  @Prop({ type: String, default: '' })
-  readonly position: string;
+  @Prop({ type: Number, default: '' })
+  readonly position: number;
 }
 
 export type LectureGroupDocument = LectureGroup & Document;

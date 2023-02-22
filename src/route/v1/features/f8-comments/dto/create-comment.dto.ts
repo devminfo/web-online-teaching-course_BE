@@ -1,5 +1,4 @@
 import {
-  IsArray,
   IsBoolean,
   IsMongoId,
   IsNotEmpty,

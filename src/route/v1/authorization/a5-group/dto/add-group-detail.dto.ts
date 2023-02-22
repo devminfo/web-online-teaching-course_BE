@@ -1,5 +1,5 @@
 import {
-  IsArray, IsEnum, IsMongoId, IsNotEmpty
+  IsArray, IsEnum, IsMongoId, IsNotEmpty,
 } from 'class-validator';
 
 import { MethodRouteEnum } from '@enum/method-route.enum';

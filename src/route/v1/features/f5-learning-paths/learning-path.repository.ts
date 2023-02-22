@@ -4,10 +4,7 @@ import BaseRepository from '@base-inherit/base.repository';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 
-import {
-  LearningPath,
-  LearningPathDocument,
-} from './schemas/learning-path.schema';
+import { LearningPath, LearningPathDocument } from './schemas/learning-path.schema';
 
 @Injectable()
 export default class LearningPathRepository extends BaseRepository<LearningPathDocument> {

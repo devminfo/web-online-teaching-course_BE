@@ -1,75 +1,88 @@
-import { ObjectId } from 'mongodb';
-import { Document, Types } from 'mongoose';
+import { Document } from 'mongoose';
 
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { DescItemDto } from 'src/util/types/dto/desc-item.dto';
+import { ClassRoom } from '@features/f13-class-rooms/schemas/class-room.schema';
+import { User } from '@authorization/a1-user/schemas/user.schema';
 
 @Schema({ timestamps: true, versionKey: false })
 export class Course {
-  @Prop({ type: String, default: '' })
-  readonly idCategories: String;
+  @Prop({ type: [{ type: String, ref: 'User' }], default: [] })
+  readonly idCategories: string[];
+
+  @Prop({ type: [{ type: String, ref: 'User' }], default: [] })
+  readonly instructors: string[];
 
   @Prop({ type: String, default: '' })
-  readonly instructors: {
-    position: number;
-    idUser: string;
-    fullName: string;
-  }[];
+  readonly title: string;
 
   @Prop({ type: String, default: '' })
-  readonly title: String;
+  readonly target: string;
+
+  @Prop({
+    type: [
+      {
+        position: Number,
+        text: String,
+        icon: String,
+      },
+    ],
+    default: [],
+  })
+  readonly targetDetails: DescItemDto[];
+
+  @Prop({ type: Number, default: 0 })
+  readonly totalChapter: number;
+
+  @Prop({ type: Number, default: 0 })
+  readonly totalLectures: number;
+
+  @Prop({ type: Number, default: 0 })
+  readonly totalTime: number;
+
+  @Prop({
+    type: [
+      {
+        position: Number,
+        text: String,
+        icon: String,
+      },
+    ],
+    default: [],
+  })
+  readonly requirements: DescItemDto[];
 
   @Prop({ type: String, default: '' })
-  readonly target: String;
+  readonly desc: string;
+
+  @Prop({ type: Number, default: 0 })
+  readonly price: number;
+
+  @Prop({ type: Number, default: 0 })
+  readonly promotionPrice: number;
 
   @Prop({ type: String, default: '' })
-  readonly targetDetails: { position: number; text: string; icon: string }[];
+  readonly thumbnail: string;
 
   @Prop({ type: String, default: '' })
-  readonly totalChapter: String;
+  readonly totalViews: number;
 
-  @Prop({ type: String, default: '' })
-  readonly totalLectures: String;
+  @Prop({ type: Number, default: 0 })
+  readonly totalLikes: string;
 
-  @Prop({ type: String, default: '' })
-  readonly totalTime: String;
+  @Prop({ type: Number, default: 0 })
+  readonly totalDislikes: number;
 
-  @Prop({ type: String, default: '' })
-  readonly requirements: { position: number; text: string; icon: string }[];
-
-  @Prop({ type: String, default: '' })
-  readonly desc: String;
-
-  @Prop({ type: String, default: '' })
-  readonly isFree: String;
-
-  @Prop({ type: String, default: '' })
-  readonly price: String;
-
-  @Prop({ type: String, default: '' })
-  readonly promotionPrice: String;
-
-  @Prop({ type: String, default: '' })
-  readonly thumbnail: String;
-
-  @Prop({ type: String, default: '' })
-  readonly totalViews: String;
-
-  @Prop({ type: String, default: '' })
-  readonly totalLikes: String;
-
-  @Prop({ type: String, default: '' })
-  readonly totalDislikes: String;
-
-  @Prop({ type: String, default: '' })
+  @Prop({ type: [String], default: [] })
   readonly tags: string[];
 
-  @Prop({ type: String, default: '' })
-  readonly isPrivate: string;
+  @Prop({ type: Boolean, default: false })
+  readonly isPrivate: boolean;
 
-  @Prop({ type: String, default: '' })
+  @Prop({ type: [{ type: String, ref: 'User' }], default: [] })
   readonly usersJoined: string[];
 
-  @Prop({ type: String, default: '' })
+  @Prop({ type: [{ type: String, ref: ClassRoom.name }], default: [] })
   readonly classesJoined: string[];
 }
 

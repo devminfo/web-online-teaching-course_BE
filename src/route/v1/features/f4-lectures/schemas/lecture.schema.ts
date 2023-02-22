@@ -1,24 +1,27 @@
-import { ObjectId } from 'mongodb';
-import { Document, Types } from 'mongoose';
+import { Document } from 'mongoose';
 
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { LectureTypeEnum } from '@enum/8.lecture-type.enum';
 
 @Schema({ timestamps: true, versionKey: false })
 export class Lecture {
-  @Prop({ type: String, default: '' })
-  type: 'VIDEO' | 'QUIZ' | 'FILE';
+  @Prop({ type: String, enum: LectureTypeEnum, default: LectureTypeEnum.VIDEO })
+  type: LectureTypeEnum;
 
   @Prop({ type: String, default: '' })
   title: string;
 
   @Prop({ type: String, default: '' })
-  url: 'URL_VIDEO' | 'ID_QUIZ' | 'URL' | 'FILE';
+  url: string;
 
-  @Prop({ type: String, default: '' })
-  position: string;
+  @Prop({ type: Number, default: 0 })
+  position: number;
 
-  @Prop({ type: String, default: '' })
-  totalTimes: string;
+  @Prop({ type: Number, default: 0 })
+  lesson: number;
+
+  @Prop({ type: Number, default: 0 })
+  totalTimes: number;
 }
 
 export type LectureDocument = Lecture & Document;

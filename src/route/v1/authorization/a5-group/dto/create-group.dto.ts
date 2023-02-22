@@ -1,6 +1,6 @@
 import { Type } from 'class-transformer';
 import {
-  IsArray, IsMongoId, IsOptional, IsString, ValidateNested
+  IsArray, IsMongoId, IsOptional, IsString, ValidateNested,
 } from 'class-validator';
 
 import { GroupDetailDto } from './group-details.dto';

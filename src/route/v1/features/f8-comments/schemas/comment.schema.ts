@@ -1,18 +1,19 @@
-import { ObjectId } from 'mongodb';
-import { Document, Types } from 'mongoose';
+import { Document } from 'mongoose';
 
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { ReplyDto } from 'src/util/types/dto/reply.dto';
+import { CommentTypeEnum } from '@enum/9.comment-type.enum';
 
 @Schema({ timestamps: true, versionKey: false })
 export class Comment {
-  @Prop({ type: String, default: '' })
+  @Prop({ type: String, ref: 'User' })
   readonly author: string;
 
-  @Prop({ type: String, default: '' })
+  @Prop({ type: String })
   readonly idEntity: string;
 
-  @Prop({ type: String, default: '' })
-  readonly type: string;
+  @Prop({ type: String, enum: CommentTypeEnum, default: '' })
+  readonly type: CommentTypeEnum;
 
   @Prop({ type: String, default: '' })
   readonly content: string;
@@ -20,16 +21,19 @@ export class Comment {
   @Prop({ type: String, default: '' })
   readonly image: string;
 
-  @Prop({ type: String, default: '' })
-  readonly replies: {
-    content: string;
-    image: string;
-    userTo: string;
-    userFrom: string;
-    likes: string;
-  }[];
+  @Prop({
+    type: {
+      content: String,
+      image: String,
+      userTo: { type: String, ref: 'User' },
+      userFrom: { type: String, ref: 'User' },
+      likes: [{ type: String, ref: 'User' }],
+    },
+    default: [],
+  })
+  readonly replies: ReplyDto[];
 
-  @Prop({ type: String, default: '' })
+  @Prop({ type: [{ type: String, ref: 'User' }], default: [] })
   readonly likes: string[];
 }
 

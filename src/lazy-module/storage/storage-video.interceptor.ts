@@ -2,7 +2,7 @@ import { ShareFunction } from '@helper/static-function';
 import CustomLoggerService from '@lazy-module/logger/logger.service';
 import S3Service from '@lazy-module/s3/s3.service';
 import {
-  Injectable, mixin, NestInterceptor, Type
+  Injectable, mixin, NestInterceptor, Type,
 } from '@nestjs/common';
 import { FilesInterceptor } from '@nestjs/platform-express';
 

@@ -1,5 +1,5 @@
 import {
-  Controller, Delete, Get, Param, Post, Put, Req
+  Controller, Delete, Get, Param, Post, Put, Req,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 

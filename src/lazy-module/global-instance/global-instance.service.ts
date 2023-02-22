@@ -153,7 +153,10 @@ export default class GlobalInstanceService {
     if (method === MethodRouteEnum.PUT) action = 'UPDATE';
 
     return this.historyService.create({
-      idUser: userId, method, url, action,
+      idUser: userId,
+      method,
+      url,
+      action,
     });
   }
 }

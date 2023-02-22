@@ -1,5 +1,5 @@
 import {
-  IsEnum, IsMongoId, IsNotEmpty, IsOptional, IsString
+  IsEnum, IsMongoId, IsNotEmpty, IsOptional, IsString,
 } from 'class-validator';
 
 import { MethodRouteEnum } from '@enum/method-route.enum';

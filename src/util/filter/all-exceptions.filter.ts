@@ -3,7 +3,7 @@ import { Error } from 'jsonapi-serializer';
 
 import { ExceptionResponse } from '@interface/exception-response.interface';
 import {
-  ArgumentsHost, Catch, ExceptionFilter, HttpStatus
+  ArgumentsHost, Catch, ExceptionFilter, HttpStatus,
 } from '@nestjs/common';
 import { HttpArgumentsHost } from '@nestjs/common/interfaces';
 

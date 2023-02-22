@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
-import { PlayQuiz, PlayQuizSchema } from './schemas/play-quiz.schema';
 import PlayQuizController from './play-quiz.controller';
 import PlayQuizRepository from './play-quiz.repository';
 import PlayQuizService from './play-quiz.service';
+import { PlayQuiz, PlayQuizSchema } from './schemas/play-quiz.schema';
 
 @Module({
   imports: [

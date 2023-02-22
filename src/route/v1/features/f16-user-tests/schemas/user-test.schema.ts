@@ -1,27 +1,29 @@
-import { ObjectId } from 'mongodb';
-import { Document, Types } from 'mongoose';
+import { Document } from 'mongoose';
 
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema({ timestamps: true, versionKey: false })
 export class UserTest {
-  @Prop({ type: String, default: '' })
-  idTestQuestion: string;
+  @Prop({ type: String, ref: 'TestQuestion' })
+  testQuestion: string;
 
-  @Prop({ type: String, default: '' })
+  @Prop({ type: String, ref: 'User' })
   idUser: string;
 
   @Prop({ type: String, default: '' })
   score: string;
 
-  @Prop({ type: String, default: '' })
-  totalCorrect: string;
+  @Prop({ type: [String], default: [] })
+  correctQuestions: string;
 
-  @Prop({ type: String, default: '' })
-  totalAnswers: string;
+  @Prop({ type: [String], default: [] })
+  incorrectQuestions: string[];
 
-  @Prop({ type: String, default: '' })
-  time: string;
+  @Prop({ type: Number, default: 0 })
+  starTime: number;
+
+  @Prop({ type: Number, default: 0 })
+  endTime: number;
 }
 
 export type UserTestDocument = UserTest & Document;

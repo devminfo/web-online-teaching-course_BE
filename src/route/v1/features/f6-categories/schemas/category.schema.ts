@@ -1,6 +1,4 @@
-import { ObjectId } from 'mongodb';
-import { Document, Types } from 'mongoose';
-
+import { Document } from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema({ timestamps: true, versionKey: false })
@@ -11,8 +9,8 @@ export class Category {
   @Prop({ type: String, default: '' })
   desc: string;
 
-  @Prop({ type: String, default: '' })
-  position: string;
+  @Prop({ type: Number, default: '' })
+  position: number;
 }
 
 export type CategoryDocument = Category & Document;

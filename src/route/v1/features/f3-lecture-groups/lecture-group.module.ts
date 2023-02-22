@@ -1,13 +1,10 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
-import {
-  LectureGroup,
-  LectureGroupSchema,
-} from './schemas/lecture-group.schema';
 import LectureGroupController from './lecture-group.controller';
 import LectureGroupRepository from './lecture-group.repository';
 import LectureGroupService from './lecture-group.service';
+import { LectureGroup, LectureGroupSchema } from './schemas/lecture-group.schema';
 
 @Module({
   imports: [

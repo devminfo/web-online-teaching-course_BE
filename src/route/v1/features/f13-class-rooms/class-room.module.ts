@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
-import { ClassRoom, ClassRoomSchema } from './schemas/class-room.schema';
 import ClassRoomController from './class-room.controller';
 import ClassRoomRepository from './class-room.repository';
 import ClassRoomService from './class-room.service';
+import { ClassRoom, ClassRoomSchema } from './schemas/class-room.schema';
 
 @Module({
   imports: [
