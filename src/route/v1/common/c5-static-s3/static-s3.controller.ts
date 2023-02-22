@@ -3,7 +3,7 @@ import { Request as ExpressRequest, Response as ExpressResponse } from 'express'
 import StaticS3Service from '@common/c5-static-s3/static-s3.service';
 import CustomLoggerService from '@lazy-module/logger/logger.service';
 import {
-  Controller, Get, Request, Res
+  Controller, Get, Request, Res,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 

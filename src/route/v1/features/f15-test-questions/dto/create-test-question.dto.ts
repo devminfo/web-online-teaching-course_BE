@@ -1,12 +1,4 @@
-import {
-  IsArray,
-  IsBoolean,
-  IsMongoId,
-  IsNotEmpty,
-  IsOptional,
-  IsString,
-} from 'class-validator';
-import { ObjectId } from 'mongodb';
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export default class CreateTestQuestionDto {
   @IsOptional()

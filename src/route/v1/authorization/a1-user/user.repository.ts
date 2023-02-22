@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 import {
-  PaginateModel, QueryOptions, Types, UpdateQuery
+  PaginateModel, QueryOptions, Types, UpdateQuery,
 } from 'mongoose';
 
 import { User, UserDocument } from '@authorization/a1-user/schemas/user.schema';

@@ -1,5 +1,5 @@
 import {
-  IsArray, IsEnum, IsNotEmpty, IsString
+  IsArray, IsEnum, IsNotEmpty, IsString,
 } from 'class-validator';
 
 export class AddUsersDto {

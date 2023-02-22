@@ -1,11 +1,4 @@
-import {
-  IsArray,
-  IsBoolean,
-  IsMongoId,
-  IsNotEmpty,
-  IsOptional,
-  IsString,
-} from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 import { ObjectId } from 'mongodb';
 
 export default class CreateLectureGroupDto {

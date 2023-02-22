@@ -1,17 +1,9 @@
-import {
-  IsArray,
-  IsBoolean,
-  IsMongoId,
-  IsNotEmpty,
-  IsOptional,
-  IsString,
-} from 'class-validator';
-import { ObjectId } from 'mongodb';
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export default class CreateCourseDto {
   @IsOptional()
   @IsNotEmpty()
-  @IsString()
+  @IsString({ each: true })
   readonly idCategories: String;
 
   @IsOptional()

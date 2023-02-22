@@ -1,19 +1,21 @@
 import { Request } from 'express';
 import { ObjectId } from 'mongodb';
 
-import { sharedApis } from '@constant/shared-api.constants';
 import { MethodRouteEnum } from '@enum/method-route.enum';
 import { routerHelper } from '@helper/router.helper';
 import GlobalInstanceService from '@lazy-module/global-instance/global-instance.service';
 import {
-  CanActivate, ExecutionContext, ForbiddenException, Injectable
+  CanActivate,
+  ExecutionContext,
+  ForbiddenException,
+  Injectable,
 } from '@nestjs/common';
 
 import { RoleUserEnum } from '../enum/role-user.enum';
 
 @Injectable()
 export default class RolesGuard implements CanActivate {
-  constructor(private globalInstanceService: GlobalInstanceService) { }
+  constructor(private globalInstanceService: GlobalInstanceService) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request: Request = context.switchToHttp().getRequest();
@@ -96,11 +98,13 @@ export default class RolesGuard implements CanActivate {
     method: MethodRouteEnum,
   ): Promise<boolean> {
     // check authUserAccess
-    const isAuthUserAccessExist = await this.globalInstanceService.checkAuthUserAccessExist(url, method);
+    const isAuthUserAccessExist =
+      await this.globalInstanceService.checkAuthUserAccessExist(url, method);
     if (isAuthUserAccessExist) return true;
 
     // check authUserId
-    const authUserIdExist = await this.globalInstanceService.getAuthUserIdDocument(url, method);
+    const authUserIdExist =
+      await this.globalInstanceService.getAuthUserIdDocument(url, method);
 
     // check authUserIdExist
     if (authUserIdExist) {
@@ -154,9 +158,10 @@ export default class RolesGuard implements CanActivate {
     url: string,
     method: MethodRouteEnum,
   ) {
-    return groupApis.some((groupApi) => {
-      return groupApi.url === url && groupApi.accessMethods.includes(method);
-    });
+    return groupApis.some(
+      (groupApi) =>
+        groupApi.url === url && groupApi.accessMethods.includes(method),
+    );
   }
 
   /**
@@ -180,19 +185,24 @@ export default class RolesGuard implements CanActivate {
       const isAccessMethodsExist = groupDetail.accessMethods.includes(method);
 
       const lenghtCollectionFromRouter = collectionName.slice(0, -2).length;
-      const lenghtCollectionFromDoc = groupDetail.idGroupDetail.collectionName.length;
+      const lenghtCollectionFromDoc =
+        groupDetail.idGroupDetail.collectionName.length;
 
       // check collectionName
-      const isValidCollectionNameLength = lenghtCollectionFromDoc - lenghtCollectionFromRouter < 3;
+      const isValidCollectionNameLength =
+        lenghtCollectionFromDoc - lenghtCollectionFromRouter < 3;
       const isGroupDetailExist = isValidCollectionNameLength
-        ? groupDetail.idGroupDetail.collectionName.startsWith(collectionName.slice(0, -2))
+        ? groupDetail.idGroupDetail.collectionName.startsWith(
+            collectionName.slice(0, -2),
+          )
         : false;
 
       // check refers
-      const isRefersExist = method === MethodRouteEnum.GET
-        && groupDetail.idGroupDetail.refers.some((refName: string) => {
-          return collectionName.startsWith(refName.toLowerCase());
-        });
+      const isRefersExist =
+        method === MethodRouteEnum.GET &&
+        groupDetail.idGroupDetail.refers.some((refName: string) =>
+          collectionName.startsWith(refName.toLowerCase()),
+        );
 
       return (isGroupDetailExist && isAccessMethodsExist) || isRefersExist;
     });

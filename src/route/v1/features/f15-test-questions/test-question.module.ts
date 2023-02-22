@@ -1,10 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
-import {
-  TestQuestion,
-  TestQuestionSchema,
-} from './schemas/test-question.schema';
+import { TestQuestion, TestQuestionSchema } from './schemas/test-question.schema';
 import TestQuestionController from './test-question.controller';
 import TestQuestionRepository from './test-question.repository';
 import TestQuestionService from './test-question.service';

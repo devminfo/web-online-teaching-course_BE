@@ -1,23 +1,35 @@
-import { ObjectId } from 'mongodb';
-import { Document, Types } from 'mongoose';
+import { Document } from 'mongoose';
 
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { RoleClassRoomEnum } from '@enum/12.role-class-room.type';
 
 @Schema({ timestamps: true, versionKey: false })
 export class ClassRoom {
-  @Prop({ type: String, default: '' })
+  @Prop({ type: [{ type: String, ref: 'User' }], default: [] })
   members: string[];
 
-  @Prop({ type: String, default: '' })
-  teachers: string;
+  @Prop({ type: [{ type: String, ref: 'User' }], default: [] })
+  teachers: string[];
 
   @Prop({ type: String, default: '' })
   name: string;
 
-  @Prop({ type: String, default: '' })
-  administrators: { idUser: string; role: string }[];
+  @Prop({
+    type: [
+      {
+        user: { type: String, ref: 'User' },
+        role: {
+          type: String,
+          enum: RoleClassRoomEnum,
+          default: RoleClassRoomEnum.USER,
+        },
+      },
+    ],
+    default: [],
+  })
+  administrators: { user: string; role: RoleClassRoomEnum }[];
 
-  @Prop({ type: String, default: '' })
+  @Prop({ type: [{ type: String, ref: 'Course' }], default: [] })
   courses: string[];
 }
 

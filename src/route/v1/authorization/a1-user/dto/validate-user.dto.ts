@@ -1,5 +1,5 @@
 import {
-  IsEmail, IsOptional, IsString, MaxLength, MinLength
+  IsEmail, IsOptional, IsString, MaxLength, MinLength,
 } from 'class-validator';
 
 export class ValidateUserDto {

@@ -19,9 +19,9 @@ import {
 import { ApiTags } from '@nestjs/swagger';
 import ParseObjectIdPipe from '@pipe/parse-object-id.pipe';
 
+import CommentService from './comment.service';
 import CreateCommentDto from './dto/create-comment.dto';
 import UpdateCommentDto from './dto/update-comment.dto';
-import CommentService from './comment.service';
 
 @ApiTags('Comments')
 @UseInterceptors(WrapResponseInterceptor)

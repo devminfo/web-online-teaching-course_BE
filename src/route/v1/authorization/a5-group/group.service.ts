@@ -86,12 +86,10 @@ export default class GroupService extends BaseService<GroupDocument> {
     const groupDetails = await this.groupDetailRepository.findManyBy({});
 
     // get groupDetails for fields in group
-    const listGroupDetailsForGroup = groupDetails.map((groupDetail: any) => {
-      return {
-        idGroupDetail: groupDetail._id,
-        accessMethods: ['GET', 'POST', 'PUT', 'DELETE'],
-      };
-    });
+    const listGroupDetailsForGroup = groupDetails.map((groupDetail: any) => ({
+      idGroupDetail: groupDetail._id,
+      accessMethods: ['GET', 'POST', 'PUT', 'DELETE'],
+    }));
 
     // Upser
     return this.groupRepository.create({

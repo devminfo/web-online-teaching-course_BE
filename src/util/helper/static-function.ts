@@ -106,9 +106,7 @@ export class ShareFunction {
 
     const domainParts = parts[1].split('.');
     if (
-      domainParts.some((part) => {
-        return part.length > 63;
-      })
+      domainParts.some((part) => part.length > 63)
     ) return false;
 
     return true;
@@ -321,15 +319,11 @@ export class ShareFunction {
   public static formatResourceName(resourceName: string): string {
     const _word1 = resourceName.split(' ');
     const word1 = _word1
-      .map((item) => {
-        return item[0].toUpperCase() + item.substring(1);
-      })
+      .map((item) => item[0].toUpperCase() + item.substring(1))
       .join('-');
     const _word2 = word1.split('_');
     const word2 = _word2
-      .map((item) => {
-        return item[0].toUpperCase() + item.substring(1);
-      })
+      .map((item) => item[0].toUpperCase() + item.substring(1))
       .join('-');
     return word2;
   }

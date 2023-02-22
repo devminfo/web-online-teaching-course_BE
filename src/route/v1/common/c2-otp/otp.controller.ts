@@ -10,7 +10,7 @@ import { ApiTags } from '@nestjs/swagger';
 import ParseObjectIdPipe from '@pipe/parse-object-id.pipe';
 
 import {
-  SendOtpByEmailDto, SendOtpByPhoneDto, VerifyOtpEmailDto, VerifyOtpPhoneDto
+  SendOtpByEmailDto, SendOtpByPhoneDto, VerifyOtpEmailDto, VerifyOtpPhoneDto,
 } from './dto';
 import OtpService from './otp.service';
 

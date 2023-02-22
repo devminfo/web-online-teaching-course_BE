@@ -4,24 +4,15 @@ import { ApiQueryParams } from '@decorator/api-query-params.decorator';
 import AqpDto from '@interceptor/aqp/aqp.dto';
 import WrapResponseInterceptor from '@interceptor/wrap-response.interceptor';
 import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  HttpCode,
-  NotFoundException,
-  Param,
-  Post,
-  Put,
-  Query,
+  Body, Controller, Delete, Get, HttpCode, NotFoundException, Param, Post, Put, Query,
   UseInterceptors,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import ParseObjectIdPipe from '@pipe/parse-object-id.pipe';
 
+import CategoryService from './category.service';
 import CreateCategoryDto from './dto/create-category.dto';
 import UpdateCategoryDto from './dto/update-category.dto';
-import CategoryService from './category.service';
 
 @ApiTags('Categorys')
 @UseInterceptors(WrapResponseInterceptor)

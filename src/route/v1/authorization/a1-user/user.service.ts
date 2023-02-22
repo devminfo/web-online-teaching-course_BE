@@ -38,7 +38,7 @@ export default class UserService extends BaseService<UserDocument> {
    */
   public async validateUser(data: ValidateUserDto) {
     const {
-      phone, tokenLogin, email, username
+      phone, tokenLogin, email, username,
     } = data;
     // Check phone exist
     if (phone) {
@@ -338,12 +338,10 @@ export default class UserService extends BaseService<UserDocument> {
     ]);
 
     // get groupDetails items
-    const groupDetails = groupDetailsDoc.map((groupDetail: any) => {
-      return {
-        idGroupDetail: groupDetail._id,
-        accessMethods: ['GET', 'POST', 'PUT', 'DELETE'],
-      };
-    });
+    const groupDetails = groupDetailsDoc.map((groupDetail: any) => ({
+      idGroupDetail: groupDetail._id,
+      accessMethods: ['GET', 'POST', 'PUT', 'DELETE'],
+    }));
 
     // If admin exist => update
     if (adminUser) {

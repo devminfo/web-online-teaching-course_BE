@@ -119,9 +119,7 @@ export default class UploadController {
     });
 
     // save list file
-    const filesWasUsedPromise = fileToConfirm.map((file) => {
-      return this.uploadLocalService.confirmFileWasUsed(userId, file);
-    });
+    const filesWasUsedPromise = fileToConfirm.map((file) => this.uploadLocalService.confirmFileWasUsed(userId, file));
 
     // run promise
     const result = await Promise.all(filesWasUsedPromise);
@@ -142,9 +140,7 @@ export default class UploadController {
     @Body('files') files: string[],
   ) {
     // save list file
-    const filesWasUsedPromise = files.map((file) => {
-      return this.uploadS3Service.confirmFileWasUsed(userId, file);
-    });
+    const filesWasUsedPromise = files.map((file) => this.uploadS3Service.confirmFileWasUsed(userId, file));
 
     // run promise
     const result = Promise.all(filesWasUsedPromise);

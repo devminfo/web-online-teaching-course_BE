@@ -1,5 +1,5 @@
 import {
-  IsArray, IsEnum, IsMongoId, IsNotEmpty, IsOptional, IsString
+  IsArray, IsEnum, IsMongoId, IsNotEmpty, IsOptional, IsString,
 } from 'class-validator';
 import { ObjectId } from 'mongodb';
 

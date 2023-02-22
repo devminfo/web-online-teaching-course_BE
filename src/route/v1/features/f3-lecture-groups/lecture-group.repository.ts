@@ -4,10 +4,7 @@ import BaseRepository from '@base-inherit/base.repository';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 
-import {
-  LectureGroup,
-  LectureGroupDocument,
-} from './schemas/lecture-group.schema';
+import { LectureGroup, LectureGroupDocument } from './schemas/lecture-group.schema';
 
 @Injectable()
 export default class LectureGroupRepository extends BaseRepository<LectureGroupDocument> {

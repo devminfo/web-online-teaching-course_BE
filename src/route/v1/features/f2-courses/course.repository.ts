@@ -8,7 +8,7 @@ import { Course, CourseDocument } from './schemas/course.schema';
 
 @Injectable()
 export default class CourseRepository extends BaseRepository<CourseDocument> {
-  constructor(@InjectModel(Course.name) model: PaginateModel<CourseDocument>) {
+  constructor(@InjectModel('Course') model: PaginateModel<CourseDocument>) {
     super(model);
   }
 }

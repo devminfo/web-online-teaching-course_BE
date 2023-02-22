@@ -4,7 +4,7 @@ import UserService from '@authorization/a1-user/user.service';
 import { GetCurrentUserId } from '@decorator/get-current-user-id.decorator';
 import CustomLoggerService from '@lazy-module/logger/logger.service';
 import {
-  Body, Controller, Post, Put
+  Body, Controller, Post, Put,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 

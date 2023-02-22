@@ -7,7 +7,7 @@ import MailerService from '@lazy-module/mailer/mailer.service';
 import { BadRequestException, Injectable } from '@nestjs/common';
 
 import {
-  SendOtpByEmailDto, SendOtpByPhoneDto, VerifyOtpEmailDto, VerifyOtpPhoneDto
+  SendOtpByEmailDto, SendOtpByPhoneDto, VerifyOtpEmailDto, VerifyOtpPhoneDto,
 } from './dto';
 import OtpRepository from './otp.repository';
 import { Otp, OtpDocument } from './schemas/otp.schema';

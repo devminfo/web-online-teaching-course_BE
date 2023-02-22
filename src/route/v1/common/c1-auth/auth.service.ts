@@ -72,7 +72,7 @@ export default class AuthService {
    */
   public async signinLocal(data: SigninLocalDto): Promise<AuthTokenPayload> {
     const {
-      phone, password, deviceID, idStore, storeCode
+      phone, password, deviceID, idStore, storeCode,
     } = data;
 
     // Get and check user exist by phone

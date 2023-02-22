@@ -1,5 +1,5 @@
 import {
-  Controller, Delete, HttpCode, Post
+  Controller, Delete, HttpCode, Post,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 

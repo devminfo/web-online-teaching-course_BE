@@ -1,30 +1,32 @@
-import { ObjectId } from 'mongodb';
-import { Document, Types } from 'mongoose';
+import { Document } from 'mongoose';
 
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema({ timestamps: true, versionKey: false })
 export class PlayQuiz {
-  @Prop({ type: String, default: '' })
-  readonly idQuiz: string;
+  @Prop({ type: String, ref: 'Quiz' })
+  readonly quiz: string;
 
-  @Prop({ type: String, default: '' })
-  readonly idUser: string;
+  @Prop({ type: String, ref: 'User' })
+  readonly user: string;
 
-  @Prop({ type: String, default: '' })
-  readonly score: string;
+  @Prop({ type: Number, default: 0 })
+  readonly score: number;
 
-  @Prop({ type: String, default: '' })
-  readonly rightAnswers: number[];
+  @Prop({ type: [String], default: [] })
+  readonly rightAnswers: string[];
 
-  @Prop({ type: String, default: '' })
-  readonly startTime: string;
+  @Prop({ type: Number, default: 0 })
+  readonly totalQuestions: number;
 
-  @Prop({ type: String, default: '' })
-  readonly endTime: string;
+  @Prop({ type: Number, default: 0 })
+  readonly startTime: number;
 
-  @Prop({ type: String, default: '' })
-  readonly timeLimit: string;
+  @Prop({ type: Number, default: 0 })
+  readonly endTime: number;
+
+  @Prop({ type: Number, default: 0 })
+  readonly timeLimit: number;
 }
 
 export type PlayQuizDocument = PlayQuiz & Document;

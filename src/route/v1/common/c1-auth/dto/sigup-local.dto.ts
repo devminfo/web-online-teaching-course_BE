@@ -1,5 +1,5 @@
 import {
-  IsNotEmpty, IsString, Length, MaxLength, MinLength
+  IsNotEmpty, IsString, Length, MaxLength, MinLength,
 } from 'class-validator';
 
 import CreateUserDto from '@authorization/a1-user/dto/create-user.dto';

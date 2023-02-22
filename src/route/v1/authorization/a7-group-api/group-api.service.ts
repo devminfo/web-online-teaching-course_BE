@@ -31,13 +31,11 @@ export default class GroupApiService extends BaseService<GroupApiDocument> {
     const groupApiItems = routerHelper.getResourceFromRouter(_router);
 
     // upsert group api items promise
-    const upsertGroupApisPromise = groupApiItems.map((groupApi) => {
-      return this.groupAPIRepository.upsertOneBy({
-        url: groupApi.url,
-        accessMethods: groupApi.methods,
-        collectionName: groupApi.collectionName,
-      });
-    });
+    const upsertGroupApisPromise = groupApiItems.map((groupApi) => this.groupAPIRepository.upsertOneBy({
+      url: groupApi.url,
+      accessMethods: groupApi.methods,
+      collectionName: groupApi.collectionName,
+    }));
 
     // run promise
     await Promise.all(upsertGroupApisPromise);

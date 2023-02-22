@@ -1,5 +1,5 @@
 import {
-  IsArray, IsEnum, IsNotEmpty, IsOptional, IsString
+  IsArray, IsEnum, IsNotEmpty, IsOptional, IsString,
 } from 'class-validator';
 
 import { MethodRouteEnum } from '@enum/method-route.enum';
