@@ -1,46 +1,39 @@
 import {
-  IsArray, IsBoolean, IsMongoId, IsNotEmpty, IsOptional, IsString,
+  IsArray, IsMongoId, IsNotEmpty, IsNumber, IsOptional, IsString
 } from 'class-validator';
-import { ObjectId } from 'mongodb';
 
 export default class CreatePostDto {
-  @IsOptional()
   @IsNotEmpty()
   @IsString()
   readonly author: string;
 
-  @IsOptional()
   @IsNotEmpty()
   @IsString()
   readonly title: string;
 
-  @IsOptional()
   @IsNotEmpty()
   @IsString()
   readonly content: string;
 
-  @IsOptional()
   @IsNotEmpty()
   @IsString()
   readonly thumbnail: string;
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly totalLikes: string;
+  @IsNumber()
+  readonly totalLikes: number;
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly totalViews: string;
+  @IsNumber()
+  readonly totalViews: number;
 
   @IsOptional()
-  @IsNotEmpty()
+  @IsArray()
   @IsString()
   readonly tags: string[];
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
+  @IsArray()
+  @IsMongoId({ each: true })
   readonly likes: string[];
 }

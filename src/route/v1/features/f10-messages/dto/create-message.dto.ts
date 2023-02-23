@@ -1,31 +1,28 @@
 import {
-  IsArray, IsBoolean, IsMongoId, IsNotEmpty, IsOptional, IsString,
+  IsArray, IsEnum, IsMongoId, IsNotEmpty, IsOptional, IsString
 } from 'class-validator';
-import { ObjectId } from 'mongodb';
+
+import { FileTypeEnum } from '@enum/11.file-type.enum';
 
 export default class CreateMessageDto {
-  @IsOptional()
   @IsNotEmpty()
   @IsString()
-  readonly idChat: string;
+  readonly idConversation: string;
 
-  @IsOptional()
   @IsNotEmpty()
-  @IsString()
+  @IsMongoId()
   readonly sender: string;
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
+  @IsArray()
+  @IsMongoId({ each: true })
   readonly readers: string[];
 
-  @IsOptional()
   @IsNotEmpty()
   @IsString()
   readonly content: string;
 
-  @IsOptional()
   @IsNotEmpty()
-  @IsString()
-  readonly fileType: 'IMAGE' | 'FILE' | 'TEXT';
+  @IsEnum(FileTypeEnum)
+  readonly fileType: FileTypeEnum;
 }

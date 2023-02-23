@@ -1,38 +1,31 @@
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import {
+  IsArray, IsMongoId, IsNotEmpty, IsOptional, IsString, ValidateNested,
+} from 'class-validator';
+import { AdministratorDto } from 'src/util/types/dto/administrator.dto';
 
 export default class CreateClassRoomDto {
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly idQuiz: string;
+  @IsArray()
+  @IsMongoId({ each: true })
+  members: string[];
 
   @IsOptional()
+  @IsArray()
+  @IsMongoId({ each: true })
+  teachers: string[];
+
   @IsNotEmpty()
   @IsString()
-  readonly idUser: string;
+  name: string;
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly score: string;
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => AdministratorDto)
+  administrators: AdministratorDto[];
 
-  @IsOptional()
   @IsNotEmpty()
-  @IsString()
-  readonly rightAnswers: number[];
-
-  @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly startTime: string;
-
-  @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly endTime: string;
-
-  @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly timeLimit: string;
+  @IsMongoId({ each: true })
+  courses: string[];
 }

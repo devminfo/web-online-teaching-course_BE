@@ -1,41 +1,37 @@
 import {
-  IsArray, IsBoolean, IsMongoId, IsNotEmpty, IsOptional, IsString,
+  IsArray, IsMongoId, IsNotEmpty, IsNumber, IsOptional, IsString
 } from 'class-validator';
-import { ObjectId } from 'mongodb';
 
 export default class CreatePlayQuizDto {
-  @IsOptional()
   @IsNotEmpty()
-  @IsString()
+  @IsMongoId()
   readonly idQuiz: string;
 
-  @IsOptional()
   @IsNotEmpty()
-  @IsString()
+  @IsMongoId()
   readonly idUser: string;
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly score: string;
+  @IsNumber()
+  readonly score: number;
+
+  @IsArray()
+  @IsString({ each: true })
+  readonly rightAnswers: string[];
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly rightAnswers: number[];
+  @IsNumber()
+  readonly totalQuestions: number;
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly startTime: string;
+  @IsNumber()
+  readonly startTime: number;
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly endTime: string;
+  @IsNumber()
+  readonly endTime: number;
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly timeLimit: string;
+  @IsNumber()
+  readonly timeLimit: number;
 }

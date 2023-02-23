@@ -1,30 +1,33 @@
 import { Document } from 'mongoose';
+import { QuizContentDto } from 'src/util/types/dto/quiz-content.dto';
 
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { QuizContentDto } from 'src/util/types/dto/quiz-content.dto';
 
 @Schema({ timestamps: true, versionKey: false })
 export class TestQuestion {
   @Prop({ type: Number, default: 0 })
-  position: number;
+  readonly position: number;
 
   @Prop({ type: Number, default: 0 })
-  total: number;
+  readonly total: number;
 
   @Prop({ type: String, default: '' })
-  title: string;
+  readonly title: string;
 
   @Prop({ type: String, default: '' })
-  desc: string;
+  readonly desc: string;
 
   @Prop({ type: [String], default: [] })
-  images: string[];
+  readonly images: string[];
 
   @Prop({
     type: [
       {
         questions: {
-          text: String, image: String, file: String, audio: String,
+          text: String,
+          image: String,
+          file: String,
+          audio: String,
         },
         correctAnswer: String,
         incorrectAnswers: [String],
@@ -33,16 +36,16 @@ export class TestQuestion {
     ],
     default: [],
   })
-  content: QuizContentDto[];
+  readonly content: QuizContentDto[];
 
   @Prop({ type: Number, default: 0 })
-  startTime: number;
+  readonly startTime: number;
 
   @Prop({ type: Number, default: 0 })
-  endTime: number;
+  readonly endTime: number;
 
   @Prop({ type: Number, default: 0 })
-  minTime: number;
+  readonly minTime: number;
 }
 
 export type TestQuestionDocument = TestQuestion & Document;

@@ -10,7 +10,7 @@ export class Banner {
   @Prop({ type: String, default: '' })
   readonly image: string;
 
-  @Prop({ type: Number, default: '' })
+  @Prop({ type: Number, default: 0 })
   readonly position: number;
 
   @Prop({ type: Boolean, default: true })

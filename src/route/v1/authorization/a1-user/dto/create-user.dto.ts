@@ -1,12 +1,24 @@
 import {
-  IsArray, IsBoolean, IsEmail, IsEnum, IsMongoId, IsNotEmpty, IsNumber, IsOptional, IsString,
-  Length, ValidateIf,
+  IsArray,
+  IsBoolean,
+  IsEmail,
+  IsEnum,
+  IsMongoId,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+  Length,
+  ValidateIf,
+  ValidateNested,
 } from 'class-validator';
 import { ObjectId } from 'mongodb';
 
 import { GenderEnum } from '@enum/1.gender.enum';
 import { ReceivedNotificationTypeEnum } from '@enum/7.received-notification-type.enum ';
 import { RoleUserEnum } from '@enum/role-user.enum';
+import { Type } from 'class-transformer';
+import { MyLearningCourseDto } from 'src/util/types/dto/my-learning-course.dto';
 
 export default class CreateUserDto {
   @ValidateIf((o) => o.role === RoleUserEnum.manager)
@@ -104,4 +116,20 @@ export default class CreateUserDto {
   @IsOptional()
   @IsArray()
   readonly receivedNotificationTypes: ReceivedNotificationTypeEnum[];
+
+  @IsOptional()
+  @IsArray()
+  @IsMongoId({ each: true })
+  readonly myCourses: string[];
+
+  @IsOptional()
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => MyLearningCourseDto)
+  readonly myLearningCourses: MyLearningCourseDto[];
+
+  @IsOptional()
+  @IsArray()
+  @IsMongoId({ each: true })
+  readonly favoriteCourses: string[];
 }

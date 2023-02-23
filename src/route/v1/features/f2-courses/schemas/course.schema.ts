@@ -1,9 +1,7 @@
 import { Document } from 'mongoose';
+import { DescItemDto } from 'src/util/types/dto/desc-item.dto';
 
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { DescItemDto } from 'src/util/types/dto/desc-item.dto';
-import { ClassRoom } from '@features/f13-class-rooms/schemas/class-room.schema';
-import { User } from '@authorization/a1-user/schemas/user.schema';
 
 @Schema({ timestamps: true, versionKey: false })
 export class Course {
@@ -64,7 +62,7 @@ export class Course {
   @Prop({ type: String, default: '' })
   readonly thumbnail: string;
 
-  @Prop({ type: String, default: '' })
+  @Prop({ type: Number, default: 0 })
   readonly totalViews: number;
 
   @Prop({ type: Number, default: 0 })
@@ -82,7 +80,7 @@ export class Course {
   @Prop({ type: [{ type: String, ref: 'User' }], default: [] })
   readonly usersJoined: string[];
 
-  @Prop({ type: [{ type: String, ref: ClassRoom.name }], default: [] })
+  @Prop({ type: [{ type: String, ref: 'ClassRoom' }], default: [] })
   readonly classesJoined: string[];
 }
 

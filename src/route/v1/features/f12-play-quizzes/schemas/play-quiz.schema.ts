@@ -5,10 +5,10 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 @Schema({ timestamps: true, versionKey: false })
 export class PlayQuiz {
   @Prop({ type: String, ref: 'Quiz' })
-  readonly quiz: string;
+  readonly idQuiz: string;
 
   @Prop({ type: String, ref: 'User' })
-  readonly user: string;
+  readonly idUser: string;
 
   @Prop({ type: Number, default: 0 })
   readonly score: number;

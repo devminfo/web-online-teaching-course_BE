@@ -1,27 +1,25 @@
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import {
+  IsArray, IsNotEmpty, IsString, ValidateNested
+} from 'class-validator';
+import { LearningPathGroupDto } from 'src/util/types/dto/learning-path-group.dto';
 
 export default class CreateLearningPathDto {
-  @IsOptional()
   @IsNotEmpty()
   @IsString()
   readonly title: string;
 
-  @IsOptional()
   @IsNotEmpty()
   @IsString()
   readonly desc: string;
 
-  @IsOptional()
   @IsNotEmpty()
   @IsString()
   readonly thumbnail: string;
 
-  @IsOptional()
   @IsNotEmpty()
-  @IsString()
-  readonly learningPathGroups: {
-    title: string;
-    desc: string;
-    courses: { idCourse: string; isRelated: string }[];
-  }[];
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => LearningPathGroupDto)
+  readonly learningPathGroups: LearningPathGroupDto[];
 }

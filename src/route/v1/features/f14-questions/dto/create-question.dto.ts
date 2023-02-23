@@ -1,44 +1,42 @@
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
-import { ObjectId } from 'mongodb';
+import { Type } from 'class-transformer';
+import {
+  IsArray, IsMongoId, IsNotEmpty, IsNumber, IsOptional, IsString, ValidateNested,
+} from 'class-validator';
+import { AnswerDto } from 'src/util/types/dto/answer.dto';
 
 export default class CreateQuestionDto {
-  @IsOptional()
   @IsNotEmpty()
-  @IsString()
+  @IsMongoId()
   readonly author: string;
 
-  @IsOptional()
   @IsNotEmpty()
   @IsString()
   readonly type: string;
 
-  @IsOptional()
   @IsNotEmpty()
   @IsString()
   readonly title: string;
 
-  @IsOptional()
   @IsNotEmpty()
   @IsString()
   readonly desc: string;
 
-  @IsOptional()
   @IsNotEmpty()
   @IsString()
-  readonly images: string;
+  readonly images: string[];
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly totalLikes: string;
+  @IsNumber()
+  readonly totalViews: number;
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly totalViews: string;
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => AnswerDto)
+  readonly answers: AnswerDto[];
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly answers: { author: string; content: string; likes: string[] }[];
+  @IsArray()
+  @IsMongoId({ each: true })
+  readonly likes: string[];
 }

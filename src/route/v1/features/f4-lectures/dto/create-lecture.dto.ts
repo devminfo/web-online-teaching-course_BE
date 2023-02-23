@@ -1,31 +1,32 @@
 import {
-  IsArray, IsBoolean, IsMongoId, IsNotEmpty, IsOptional, IsString,
+  IsArray, IsBoolean, IsEnum, IsMongoId, IsNotEmpty, IsNumber, IsOptional, IsString,
 } from 'class-validator';
 import { ObjectId } from 'mongodb';
 
-export default class CreateLectureDto {
-  @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  type: 'VIDEO' | 'QUIZ' | 'FILE';
+import { LectureTypeEnum } from '@enum/8.lecture-type.enum';
 
-  @IsOptional()
+export default class CreateLectureDto {
+  @IsNotEmpty()
+  @IsEnum(LectureTypeEnum)
+  type: LectureTypeEnum;
+
   @IsNotEmpty()
   @IsString()
   title: string;
 
-  @IsOptional()
   @IsNotEmpty()
   @IsString()
-  url: 'URL_VIDEO' | 'ID_QUIZ' | 'URL' | 'FILE';
+  url: string;
 
-  @IsOptional()
   @IsNotEmpty()
-  @IsString()
-  position: string;
+  @IsNumber()
+  position: number;
 
-  @IsOptional()
   @IsNotEmpty()
-  @IsString()
-  totalTimes: string;
+  @IsNumber()
+  lesson: number;
+
+  @IsNotEmpty()
+  @IsNumber()
+  totalTimes: number;
 }

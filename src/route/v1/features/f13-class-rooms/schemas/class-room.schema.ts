@@ -1,7 +1,8 @@
 import { Document } from 'mongoose';
+import { AdministratorDto } from 'src/util/types/dto/administrator.dto';
 
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { RoleClassRoomEnum } from '@enum/12.role-class-room.type';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema({ timestamps: true, versionKey: false })
 export class ClassRoom {
@@ -17,7 +18,7 @@ export class ClassRoom {
   @Prop({
     type: [
       {
-        user: { type: String, ref: 'User' },
+        idUser: { type: String, ref: 'User' },
         role: {
           type: String,
           enum: RoleClassRoomEnum,
@@ -27,7 +28,7 @@ export class ClassRoom {
     ],
     default: [],
   })
-  administrators: { user: string; role: RoleClassRoomEnum }[];
+  administrators: AdministratorDto[];
 
   @Prop({ type: [{ type: String, ref: 'Course' }], default: [] })
   courses: string[];

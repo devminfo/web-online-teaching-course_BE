@@ -1,112 +1,96 @@
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import {
+  IsArray, IsBoolean, IsMongoId, IsNotEmpty, IsNumber, IsOptional, IsString, ValidateNested,
+} from 'class-validator';
+import { DescItemDto } from 'src/util/types/dto/desc-item.dto';
 
 export default class CreateCourseDto {
-  @IsOptional()
   @IsNotEmpty()
+  @IsArray()
+  @IsMongoId({ each: true })
+  readonly idCategories: string[];
+
+  @IsNotEmpty()
+  @IsArray()
+  @IsMongoId({ each: true })
+  readonly instructors: string[];
+
+  @IsNotEmpty()
+  @IsString()
+  readonly title: string;
+
+  @IsOptional()
+  @IsString()
+  readonly target: string;
+
+  @IsOptional()
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => DescItemDto)
+  readonly targetDetails: DescItemDto[];
+
+  @IsOptional()
+  @IsNumber()
+  readonly totalChapter: number;
+
+  @IsOptional()
+  @IsNumber()
+  readonly totalLectures: number;
+
+  @IsOptional()
+  @IsNumber()
+  readonly totalTime: number;
+
+  @IsOptional()
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => DescItemDto)
+  readonly requirements: DescItemDto[];
+
+  @IsOptional()
+  @IsString()
+  readonly desc: string;
+
+  @IsOptional()
+  @IsNumber()
+  readonly price: number;
+
+  @IsOptional()
+  @IsNumber()
+  readonly promotionPrice: number;
+
+  @IsOptional()
+  @IsString()
+  readonly thumbnail: string;
+
+  @IsOptional()
+  @IsString()
+  readonly totalViews: number;
+
+  @IsOptional()
+  @IsNumber()
+  readonly totalLikes: string;
+
+  @IsOptional()
+  @IsNumber()
+  readonly totalDislikes: number;
+
+  @IsOptional()
+  @IsArray({})
   @IsString({ each: true })
-  readonly idCategories: String;
-
-  @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly instructors: {
-    position: number;
-    idUser: string;
-    fullName: string;
-  }[];
-
-  @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly title: String;
-
-  @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly target: String;
-
-  @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly targetDetails: { position: number; text: string; icon: string }[];
-
-  @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly totalChapter: String;
-
-  @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly totalLectures: String;
-
-  @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly totalTime: String;
-
-  @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly requirements: { position: number; text: string; icon: string }[];
-
-  @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly desc: String;
-
-  @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly isFree: String;
-
-  @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly price: String;
-
-  @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly promotionPrice: String;
-
-  @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly thumbnail: String;
-
-  @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly totalViews: String;
-
-  @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly totalLikes: String;
-
-  @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly totalDislikes: String;
-
-  @IsOptional()
-  @IsNotEmpty()
-  @IsString()
   readonly tags: string[];
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly isPrivate: string;
+  @IsBoolean()
+  readonly isPrivate: boolean;
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
+  @IsArray()
+  @IsMongoId({ each: true })
   readonly usersJoined: string[];
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
+  @IsArray()
+  @IsMongoId({ each: true })
   readonly classesJoined: string[];
 }

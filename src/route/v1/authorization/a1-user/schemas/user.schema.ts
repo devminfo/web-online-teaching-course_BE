@@ -8,6 +8,7 @@ import { MethodRouteEnum } from '@enum/method-route.enum';
 import { RoleUserEnum } from '@enum/role-user.enum';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { GroupDetailType } from 'src/util/types/group-detail.type';
+import { MyLearningCourseDto } from 'src/util/types/dto/my-learning-course.dto';
 
 @Schema({ timestamps: true, versionKey: false })
 export class User {
@@ -103,6 +104,24 @@ export class User {
     default: [],
   })
   readonly receivedNotificationTypes: ReceivedNotificationTypeEnum[];
+
+  @Prop({
+    type: [{ type: String, ref: 'Course' }],
+    default: [],
+  })
+  readonly myCourses: string[];
+
+  @Prop({
+    type: [{ course: { type: String, ref: 'Course' }, currentLesson: Number }],
+    default: [],
+  })
+  readonly myLearningCourses: MyLearningCourseDto[];
+
+  @Prop({
+    type: [{ type: String, ref: 'Course' }],
+    default: [],
+  })
+  readonly favoriteCourses: string[];
 
   comparePassword: (candidatePassword: string) => boolean;
 }
