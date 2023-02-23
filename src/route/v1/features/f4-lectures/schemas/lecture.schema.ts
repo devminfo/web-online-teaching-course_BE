@@ -1,7 +1,7 @@
 import { Document } from 'mongoose';
 
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { LectureTypeEnum } from '@enum/8.lecture-type.enum';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema({ timestamps: true, versionKey: false })
 export class Lecture {

@@ -1,7 +1,7 @@
 import { Document } from 'mongoose';
 
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { User } from '@authorization/a1-user/schemas/user.schema';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema({ timestamps: true, versionKey: false })
 export class Post {

@@ -1,38 +1,34 @@
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import {
+  IsArray, IsMongoId, IsNotEmpty, IsNumber, IsOptional, IsString, ValidateNested,
+} from 'class-validator';
+import { QuizContentDto } from 'src/util/types/dto/quiz-content.dto';
 
 export default class CreateQuizDto {
-  @IsOptional()
   @IsNotEmpty()
-  @IsString()
+  @IsMongoId()
   readonly createdBy: string;
 
-  @IsOptional()
   @IsNotEmpty()
   @IsString()
   readonly title: string;
 
   @IsOptional()
-  @IsNotEmpty()
   @IsString()
   readonly desc: string;
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  content: {
-    questions: { text: string; image: string; file: string; audio: string };
-    answer: string;
-    position: string;
-    createdAt: string;
-  }[];
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => QuizContentDto)
+  readonly content: QuizContentDto[];
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  timeLimit: number;
+  @IsNumber()
+  readonly timeLimit: number;
 
   @IsOptional()
-  @IsNotEmpty()
+  @IsArray()
   @IsString()
-  tags: string[];
+  readonly tags: string[];
 }

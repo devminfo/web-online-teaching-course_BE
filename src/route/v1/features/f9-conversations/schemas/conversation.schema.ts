@@ -1,11 +1,11 @@
 import { ObjectId } from 'mongodb';
 import { Document, Types } from 'mongoose';
-
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { User } from '@authorization/a1-user/schemas/user.schema';
-import { UserInfoDto } from 'src/util/types/dto/user-info.dto';
 import { LastMessageDto } from 'src/util/types/dto/last-message.dto';
+import { UserInfoDto } from 'src/util/types/dto/user-info.dto';
+
+import { User } from '@authorization/a1-user/schemas/user.schema';
 import { RoleConversationEnum } from '@enum/10.role-conversation.dto';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema({ timestamps: true, versionKey: false })
 export class Conversation {

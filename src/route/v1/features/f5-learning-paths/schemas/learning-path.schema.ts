@@ -1,7 +1,7 @@
 import { Document } from 'mongoose';
+import { LearningPathGroupDto } from 'src/util/types/dto/learning-path-group.dto';
 
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { LearningPathGroupDto } from 'src/util/types/dto/learning-path-group.dto';
 
 @Schema({ timestamps: true, versionKey: false })
 export class LearningPath {
@@ -25,6 +25,7 @@ export class LearningPath {
         },
       ],
     },
+    default: [],
   })
   readonly learningPathGroups: LearningPathGroupDto[];
 }

@@ -5,25 +5,25 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 @Schema({ timestamps: true, versionKey: false })
 export class UserTest {
   @Prop({ type: String, ref: 'TestQuestion' })
-  testQuestion: string;
+  readonly testQuestion: string;
 
   @Prop({ type: String, ref: 'User' })
-  idUser: string;
-
-  @Prop({ type: String, default: '' })
-  score: string;
-
-  @Prop({ type: [String], default: [] })
-  correctQuestions: string;
-
-  @Prop({ type: [String], default: [] })
-  incorrectQuestions: string[];
+  readonly idUser: string;
 
   @Prop({ type: Number, default: 0 })
-  starTime: number;
+  readonly score: number;
+
+  @Prop({ type: [String], default: [] })
+  readonly correctQuestions: string;
+
+  @Prop({ type: [String], default: [] })
+  readonly incorrectQuestions: string[];
 
   @Prop({ type: Number, default: 0 })
-  endTime: number;
+  readonly starTime: number;
+
+  @Prop({ type: Number, default: 0 })
+  readonly endTime: number;
 }
 
 export type UserTestDocument = UserTest & Document;

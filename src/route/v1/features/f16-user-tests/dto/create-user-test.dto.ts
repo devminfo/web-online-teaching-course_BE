@@ -1,36 +1,35 @@
 import {
-  IsArray, IsBoolean, IsMongoId, IsNotEmpty, IsOptional, IsString,
+  IsArray, IsMongoId, IsNotEmpty, IsNumber, IsOptional, IsString
 } from 'class-validator';
-import { ObjectId } from 'mongodb';
 
 export default class CreateUserTestDto {
-  @IsOptional()
   @IsNotEmpty()
-  @IsString()
-  idTestQuestion: string;
+  @IsMongoId()
+  readonly testQuestion: string;
+
+  @IsNotEmpty()
+  @IsMongoId()
+  readonly idUser: string;
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  idUser: string;
+  @IsNumber()
+  readonly score: number;
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  score: string;
+  @IsArray()
+  @IsString({ each: true })
+  readonly correctQuestions: string;
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  totalCorrect: string;
+  @IsArray()
+  @IsString({ each: true })
+  readonly incorrectQuestions: string[];
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  totalAnswers: string;
+  @IsNumber()
+  readonly starTime: number;
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  time: string;
+  @IsNumber()
+  readonly endTime: number;
 }

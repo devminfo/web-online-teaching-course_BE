@@ -1,4 +1,5 @@
 import { Document } from 'mongoose';
+
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema({ timestamps: true, versionKey: false })
@@ -9,7 +10,10 @@ export class Category {
   @Prop({ type: String, default: '' })
   desc: string;
 
-  @Prop({ type: Number, default: '' })
+  @Prop({ type: String, default: '' })
+  thumbnail: string;
+
+  @Prop({ type: Number, default: 0 })
   position: number;
 }
 

@@ -1,7 +1,7 @@
 import { Document } from 'mongoose';
+import { AnswerDto } from 'src/util/types/dto/answer.dto';
 
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { AnswerDto } from 'src/util/types/dto/answer.dto';
 
 @Schema({ timestamps: true, versionKey: false })
 export class Question {

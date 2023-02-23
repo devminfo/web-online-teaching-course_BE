@@ -1,38 +1,40 @@
+import { Type } from 'class-transformer';
 import {
-  IsBoolean,
-  IsMongoId,
-  IsNotEmpty,
-  IsOptional,
-  IsString,
+  IsArray, IsEnum, IsMongoId, IsNotEmpty, IsOptional, IsString, ValidateNested,
 } from 'class-validator';
-import { ObjectId } from 'mongodb';
+import { ReplyDto } from 'src/util/types/dto/reply.dto';
+
+import { CommentTypeEnum } from '@enum/9.comment-type.enum';
 
 export default class CreateCommentDto {
-  @IsMongoId()
   @IsNotEmpty()
-  readonly idUser: ObjectId;
+  @IsMongoId()
+  readonly author: string;
 
-  @IsOptional()
+  @IsNotEmpty()
+  @IsMongoId()
+  readonly idEntity: string;
+
+  @IsNotEmpty()
+  @IsEnum(CommentTypeEnum)
+  readonly type: CommentTypeEnum;
+
+  @IsNotEmpty()
   @IsString()
-  readonly nickName: string;
+  readonly content: string;
 
-  @IsOptional()
+  @IsNotEmpty()
   @IsString()
-  readonly accountNumber: string;
+  readonly image: string;
 
   @IsOptional()
-  @IsString()
-  readonly bankName: string;
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => ReplyDto)
+  readonly replies: ReplyDto[];
 
   @IsOptional()
-  @IsString()
-  readonly bankBranch: string;
-
-  @IsOptional()
-  @IsString()
-  readonly accountName: string;
-
-  @IsOptional()
-  @IsBoolean()
-  readonly isDefault: boolean;
+  @IsArray()
+  @IsMongoId({ each: true })
+  readonly likes: string[];
 }

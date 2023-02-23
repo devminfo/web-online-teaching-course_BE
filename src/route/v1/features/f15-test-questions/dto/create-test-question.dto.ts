@@ -1,48 +1,46 @@
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import {
+  IsArray, IsNotEmpty, IsNumber, IsOptional, IsString, ValidateNested,
+} from 'class-validator';
+import { QuizContentDto } from 'src/util/types/dto/quiz-content.dto';
 
 export default class CreateTestQuestionDto {
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  position: string;
+  @IsNumber()
+  readonly position: number;
 
   @IsOptional()
+  @IsNumber()
+  readonly total: number;
+
   @IsNotEmpty()
   @IsString()
-  total: string;
+  readonly title: string;
 
   @IsOptional()
-  @IsNotEmpty()
   @IsString()
-  title: string;
+  readonly desc: string;
 
   @IsOptional()
+  @IsArray()
+  @IsString({ each: true })
+  readonly images: string[];
+
   @IsNotEmpty()
-  @IsString()
-  desc: string;
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => QuizContentDto)
+  readonly content: QuizContentDto[];
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  images: string;
+  @IsNumber()
+  readonly startTime: number;
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  answers: { content: string; isCorrect: boolean }[];
+  @IsNumber()
+  readonly endTime: number;
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  startTime: string;
-
-  @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  endTime: string;
-
-  @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  minTime: string;
+  @IsNumber()
+  readonly minTime: number;
 }

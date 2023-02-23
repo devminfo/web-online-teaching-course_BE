@@ -1,19 +1,17 @@
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
-import { ObjectId } from 'mongodb';
+import {
+  IsMongoId, IsNotEmpty, IsNumber, IsString
+} from 'class-validator';
 
 export default class CreateLectureGroupDto {
-  @IsOptional()
   @IsNotEmpty()
-  @IsString()
+  @IsMongoId()
   readonly idCourse: string;
 
-  @IsOptional()
   @IsNotEmpty()
   @IsString()
   readonly title: string;
 
-  @IsOptional()
   @IsNotEmpty()
-  @IsString()
-  readonly position: string;
+  @IsNumber()
+  readonly position: number;
 }

@@ -1,36 +1,35 @@
+import { Type } from 'class-transformer';
 import {
-  IsArray, IsBoolean, IsMongoId, IsNotEmpty, IsOptional, IsString,
+  IsArray, IsBoolean, IsEnum, IsMongoId, IsNotEmpty, IsOptional, IsString, ValidateNested,
 } from 'class-validator';
-import { ObjectId } from 'mongodb';
+import { LastMessageDto } from 'src/util/types/dto/last-message.dto';
+
+import { RoleConversationEnum } from '@enum/10.role-conversation.dto';
 
 export default class CreateConversationDto {
-  @IsOptional()
   @IsNotEmpty()
-  @IsString()
+  @IsArray()
+  @IsMongoId({ each: true })
   readonly users: string[];
 
-  @IsOptional()
   @IsNotEmpty()
   @IsString()
   readonly chatName: string;
 
-  @IsOptional()
   @IsNotEmpty()
-  @IsString()
-  readonly isGroup: string;
+  @IsBoolean()
+  readonly isGroup: boolean;
 
   @IsOptional()
-  @IsNotEmpty()
   @IsString()
   readonly avatar: string;
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly latestMessage: { idUser: string; text: string };
+  @ValidateNested()
+  @Type(() => LastMessageDto)
+  readonly latestMessage: LastMessageDto;
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly admin: string;
+  @IsEnum(RoleConversationEnum)
+  readonly role: RoleConversationEnum;
 }

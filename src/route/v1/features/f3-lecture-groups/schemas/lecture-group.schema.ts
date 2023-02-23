@@ -1,7 +1,6 @@
 import { Document } from 'mongoose';
 
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Course } from '@features/f2-courses/schemas/course.schema';
 
 @Schema({ timestamps: true, versionKey: false })
 export class LectureGroup {
@@ -11,7 +10,7 @@ export class LectureGroup {
   @Prop({ type: String, default: '' })
   readonly title: string;
 
-  @Prop({ type: Number, default: '' })
+  @Prop({ type: Number, default: 0 })
   readonly position: number;
 }
 

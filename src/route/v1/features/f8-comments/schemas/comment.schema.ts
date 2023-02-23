@@ -1,8 +1,8 @@
 import { Document } from 'mongoose';
-
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ReplyDto } from 'src/util/types/dto/reply.dto';
+
 import { CommentTypeEnum } from '@enum/9.comment-type.enum';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema({ timestamps: true, versionKey: false })
 export class Comment {

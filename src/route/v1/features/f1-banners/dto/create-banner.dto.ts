@@ -1,23 +1,25 @@
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import {
+  IsBoolean, IsNotEmpty, IsNumber, IsOptional, IsString
+} from 'class-validator';
 
 export default class CreateBannerDto {
-  @IsOptional()
+  @IsNotEmpty()
+  @IsString()
+  readonly text: string;
+
   @IsNotEmpty()
   @IsString()
   readonly image: string;
 
-  @IsOptional()
   @IsNotEmpty()
-  @IsString()
-  readonly position: string;
+  @IsNumber()
+  readonly position: number;
 
   @IsOptional()
-  @IsNotEmpty()
-  @IsString()
-  readonly isShow: string;
+  @IsBoolean()
+  readonly isShow: boolean;
 
   @IsOptional()
-  @IsNotEmpty()
   @IsString()
   readonly link: string;
 }

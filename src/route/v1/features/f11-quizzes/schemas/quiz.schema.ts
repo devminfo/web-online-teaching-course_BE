@@ -1,7 +1,7 @@
 import { Document } from 'mongoose';
+import { QuizContentDto } from 'src/util/types/dto/quiz-content.dto';
 
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { QuizContentDto } from 'src/util/types/dto/quiz-content.dto';
 
 @Schema({ timestamps: true, versionKey: false })
 export class Quiz {

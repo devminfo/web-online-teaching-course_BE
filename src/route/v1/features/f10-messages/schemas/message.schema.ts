@@ -1,14 +1,12 @@
 import { Document } from 'mongoose';
 
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Conversation } from '@features/f9-conversations/schemas/conversation.schema';
-import { User } from '@authorization/a1-user/schemas/user.schema';
 import { FileTypeEnum } from '@enum/11.file-type.enum';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema({ timestamps: true, versionKey: false })
 export class Message {
   @Prop({ type: String, ref: 'Conversation' })
-  readonly conversation: string;
+  readonly idConversation: string;
 
   @Prop({ type: String, ref: 'User' })
   readonly sender: string;

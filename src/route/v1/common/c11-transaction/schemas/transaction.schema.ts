@@ -59,7 +59,7 @@ export class Transaction {
   @Prop({ type: String, default: '' })
   readonly content: string;
 
-  @Prop({ type: Number, default: '' })
+  @Prop({ type: Number, default: 0 })
   readonly totalMoney: number;
 
   @Prop({ type: String, default: '' })
