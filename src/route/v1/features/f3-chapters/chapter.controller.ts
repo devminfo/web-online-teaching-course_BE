@@ -4,21 +4,30 @@ import { ApiQueryParams } from '@decorator/api-query-params.decorator';
 import AqpDto from '@interceptor/aqp/aqp.dto';
 import WrapResponseInterceptor from '@interceptor/wrap-response.interceptor';
 import {
-  Body, Controller, Delete, Get, HttpCode, NotFoundException, Param, Post, Put, Query,
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  NotFoundException,
+  Param,
+  Post,
+  Put,
+  Query,
   UseInterceptors,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import ParseObjectIdPipe from '@pipe/parse-object-id.pipe';
 
-import CreateLectureGroupDto from './dto/create-lecture-group.dto';
-import UpdateLectureGroupDto from './dto/update-lecture-group.dto';
-import LectureGroupService from './lecture-group.service';
+import CreateChapterDto from './dto/create-chapter.dto';
+import UpdateChapterDto from './dto/update-chapter.dto';
+import ChapterService from './chapter.service';
 
-@ApiTags('LectureGroups')
+@ApiTags('Chapters')
 @UseInterceptors(WrapResponseInterceptor)
 @Controller()
-export default class LectureGroupController {
-  constructor(private readonly lectureGroupService: LectureGroupService) {}
+export default class ChapterController {
+  constructor(private readonly chapterService: ChapterService) {}
 
   /**
    * Find all
@@ -29,7 +38,7 @@ export default class LectureGroupController {
   @Get('')
   @HttpCode(200)
   async findAll(@Query() query: any): Promise<any> {
-    const result = await this.lectureGroupService.findManyBy(query);
+    const result = await this.chapterService.findManyBy(query);
     return result;
   }
 
@@ -41,8 +50,8 @@ export default class LectureGroupController {
    */
   @Post('')
   @HttpCode(201)
-  async create(@Body() body: CreateLectureGroupDto): Promise<any> {
-    const result = await this.lectureGroupService.create(body);
+  async create(@Body() body: CreateChapterDto): Promise<any> {
+    const result = await this.chapterService.create(body);
 
     return result;
   }
@@ -58,9 +67,9 @@ export default class LectureGroupController {
   @HttpCode(200)
   async update(
     @Param('id', ParseObjectIdPipe) id: Types.ObjectId,
-    @Body() body: UpdateLectureGroupDto,
+    @Body() body: UpdateChapterDto,
   ): Promise<any> {
-    const result = await this.lectureGroupService.updateOneById(id, body);
+    const result = await this.chapterService.updateOneById(id, body);
 
     return result;
   }
@@ -74,7 +83,7 @@ export default class LectureGroupController {
   @Delete(':ids/ids')
   // @HttpCode(204)
   async deleteManyByIds(@Param('ids') ids: string): Promise<any> {
-    const result = await this.lectureGroupService.deleteManyHardByIds(
+    const result = await this.chapterService.deleteManyHardByIds(
       ids.split(','),
     );
     return result;
@@ -91,7 +100,7 @@ export default class LectureGroupController {
   async delete(
     @Param('id', ParseObjectIdPipe) id: Types.ObjectId,
   ): Promise<any> {
-    const result = await this.lectureGroupService.deleteOneHardById(id);
+    const result = await this.chapterService.deleteOneHardById(id);
 
     return result;
   }
@@ -105,7 +114,7 @@ export default class LectureGroupController {
   @Get('paginate')
   @HttpCode(200)
   async paginate(@ApiQueryParams() query: AqpDto): Promise<any> {
-    return this.lectureGroupService.paginate(query);
+    return this.chapterService.paginate(query);
   }
 
   /**
@@ -120,7 +129,7 @@ export default class LectureGroupController {
     @Param('id', ParseObjectIdPipe) id: Types.ObjectId,
     @ApiQueryParams('population') populate: AqpDto,
   ): Promise<any> {
-    const result = await this.lectureGroupService.findOneById(id, { populate });
+    const result = await this.chapterService.findOneById(id, { populate });
 
     if (!result) throw new NotFoundException('The item does not exist');
 

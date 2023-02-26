@@ -19,7 +19,7 @@ import { Module } from '@nestjs/common';
 
 import BannerModule from '@features/f1-banners/banner.module';
 import CourseModule from '@features/f2-courses/course.module';
-import LectureGroupModule from '@features/f3-lecture-groups/lecture-group.module';
+import ChapterModule from '@features/f3-chapters/chapter.module';
 import LearningPathModule from '@features/f5-learning-paths/learning-path.module';
 import CategoryModule from '@features/f6-categories/category.module';
 import PostModule from '@features/f7-posts/post.module';
@@ -32,6 +32,7 @@ import ClassRoomModule from '@features/f13-class-rooms/class-room.module';
 import QuestionModule from '@features/f14-questions/question.module';
 import TestQuestionModule from '@features/f15-test-questions/test-question.module';
 import UserTestModule from '@features/f16-user-tests/user-test.module';
+import LectureModule from '@features/f4-lectures/lecture.module';
 import VillageModule from './common/c8-village/village.module';
 import DistrictModule from './common/c7-district/district.module';
 import ProvinceModule from './common/c6-province/province.module';
@@ -84,12 +85,12 @@ const routes: Routes = [
         module: CourseModule,
       },
       {
-        path: 'lecture-groups',
-        module: LectureGroupModule,
+        path: 'chapters',
+        module: ChapterModule,
       },
       {
         path: 'lectures',
-        module: LectureGroupModule,
+        module: LectureModule,
       },
       {
         path: 'learning-paths',
@@ -179,8 +180,8 @@ const imports = [
   // features
   BannerModule,
   CourseModule,
-  LectureGroupModule,
-  LectureGroupModule,
+  ChapterModule,
+  LectureModule,
   LearningPathModule,
   CategoryModule,
   PostModule,
