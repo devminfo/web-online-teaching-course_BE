@@ -1,0 +1,8794 @@
+{
+	"info": {
+		"_postman_id": "7d2fe6d2-f004-4147-949d-95b0b68d71a9",
+		"name": "online-teaching-project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23725402"
+	},
+	"item": [
+		{
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "a1-User",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/users/63ec60813e06c6761d22c8e2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"63ec60813e06c6761d22c8e2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"password\":\"user123123\",\n    \"fullName\":\"user\",\n    \"phone\":\"012345123\",\n    \"role\": \"customer\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"subjectsAnswered\": []\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/users/63f431e57da65b5b559f3751",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"63f431e57da65b5b559f3751"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/users/63f864b34868f02cfebbaaa5/hard",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"63f864b34868f02cfebbaaa5",
+										"hard"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone\": \"0123123123\",\n    \"password\": \"123123\",\n    \"typeRegister\": \"haqua\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/users/paginate?",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"paginate"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/users/63f431e57da65b5b559f3751",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"63f431e57da65b5b559f3751"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "me",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/users/me?populate=groups&fields=groups.name",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"me"
+									],
+									"query": [
+										{
+											"key": "populate",
+											"value": "groups"
+										},
+										{
+											"key": "fields",
+											"value": "groups.name"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update me",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"role\": \"manager\",\n    \"groups\": [\"633e576b82590b1c1378847c\"],\n    \"groupAPIDenines\": []\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/users/update-me",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"update-me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "push",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"notificationTitle abc\",\n    \"body\": \"notificationTitle abc\",\n    \"data\": {}\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/users/xxxxxxxxxxxx/fcm-push",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"xxxxxxxxxxxx",
+										"fcm-push"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "verify",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/user/verify?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjQzZTc0YWY4YTZmZmRiMmM3MThmYzMiLCJvdHBDb2RlIjoiNDI4MCIsImlhdCI6MTY0ODYxNzI5MCwiZXhwIjoxNjU3MTcwODkwfQ.YNSMMR9tEtoLc0DOChGf7GRCfYQEPUJP-U08bW7pEDI",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"user",
+										"verify"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjQzZTc0YWY4YTZmZmRiMmM3MThmYzMiLCJvdHBDb2RlIjoiNDI4MCIsImlhdCI6MTY0ODYxNzI5MCwiZXhwIjoxNjU3MTcwODkwfQ.YNSMMR9tEtoLc0DOChGf7GRCfYQEPUJP-U08bW7pEDI"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add deviceID",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"deviceID\":\"d3RypsI0SZGr5RZ4JkXfe4:APA91bF6QTtdiGnn_Qeyk5MFd4Tx92UwXCFKF4I0is4-oGT_1y33ECOmrNiQy2x_C7cdKIlOQ75YQrM9DGyn-sLvwbdDZ_G5YRooLoFuS-YooTEbMVSeMVDZGNHi0hWGG-WQ80UzdZTD\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/users/62e739a979a8ce72a76f3828/add-deviceID",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"62e739a979a8ce72a76f3828",
+										"add-deviceID"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "fcm",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"Hello boy:)))\",\n    \"body\":\"hahah\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/users/62e739a979a8ce72a76f3828/fcm-push",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"62e739a979a8ce72a76f3828",
+										"fcm-push"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "enable fcm",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"enableFCM\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/users/62e7343279a8ce72a76f3778/enable-fcm",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"62e7343279a8ce72a76f3778",
+										"enable-fcm"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update password by phone",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone\":\"387776243\",\n    \"password\":\"minh123123\",\n    \"otpCode\":\"4900\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/users/update-password/phone",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"update-password",
+										"phone"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update password",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"newPassword\":\"userroot123123\",\n    \"password\":\"387776243\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/users/update-password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"update-password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update password by email",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"enableFCM\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/users/62e7343279a8ce72a76f3778/enable-fcm",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"62e7343279a8ce72a76f3778",
+										"enable-fcm"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update roles",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"role\": \"manager\",\n    \"groups\": [\"634e6958d5ac5f1aa5d12eed\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/users/635ba90b1fc01348cb9c25d5/roles",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"635ba90b1fc01348cb9c25d5",
+										"roles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reset authorization",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/users/reset-authorization",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"reset-authorization"
+									]
+								},
+								"description": "Dùng để xóa hết dữ liệu menu và authen"
+							},
+							"response": []
+						},
+						{
+							"name": "call status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"callStatus\": {\n    \"idQuestionAsker\": \"62f088b819815e736e05573e\",\n    \"idRespondent\": \"62f088b819815e736e05573e\",\n    \"idQuestion\": \"6336726cee48bce158d5a7a0\",\n    \"caller\": \"62f088b819815e736e05573e\",\n    \"idRoom\": \"62f088b819815e736e05573e\",\n    \"expiryTime\": 1664523763406\n   }\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/users/633e576b82590b1c13788499/call-status",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"633e576b82590b1c13788499",
+										"call-status"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "a2-FreeAPI",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/free-apis",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"free-apis"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"accessMethods\": [\n        \"POST\"\n    ],\n    \"url\": \"/v1/auth/signin\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/free-apis/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"free-apis",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"accessMethods\": [\n        \"POST\"\n    ],\n    \"url\": \"/v1/auth/signup-local\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/free-apis/62eceedc606d5a859e490d93",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"free-apis",
+										"62eceedc606d5a859e490d93"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/free-apis/63e4bdcde1d8eb350f98bd31",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"free-apis",
+										"63e4bdcde1d8eb350f98bd31"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/free-apis/paginate?limit=55",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"free-apis",
+										"paginate"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "55"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url2}}/v1/free-apis/62d7b8847e82df1b9c11504a",
+									"host": [
+										"{{url2}}"
+									],
+									"path": [
+										"v1",
+										"free-apis",
+										"62d7b8847e82df1b9c11504a"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "a3-Auth-user-access",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/auth-user-accesses",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"auth-user-accesses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"accessMethods\": [\n        \"POST\"\n    ],\n    \"url\": \"/v1/uploads/local-tmp\",\n    \"collectionName\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/auth-user-accesses",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"auth-user-accesses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"accessMethods\": [\n        \"GET\",\n        \"POST\",\n        \"DELETE\"\n    ],\n    \"url\": \"/v1/users/update-password\",\n    \"collectionName\": \"users\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/auth-user-accesses/62ee3291515f352c1f897524",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"auth-user-accesses",
+										"62ee3291515f352c1f897524"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/auth-user-accesses/62d654e2b285c4a380992f67",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"auth-user-accesses",
+										"62d654e2b285c4a380992f67"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/auth-user-accesses/paginate?fields=accessMethods,url&limit=50",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"auth-user-accesses",
+										"paginate"
+									],
+									"query": [
+										{
+											"key": "fields",
+											"value": "accessMethods,url"
+										},
+										{
+											"key": "limit",
+											"value": "50"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/auth-user-accesses/62d654e2b285c4a380992f67",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"auth-user-accesses",
+										"62d654e2b285c4a380992f67"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "a4-Auth-user-id",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/auth-user-ids",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"auth-user-ids"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \"accessMethods\": [\"PUT\",\"DELETE\",\"GET\"], \"url\": \"/v1/transactions/:id\" }\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/auth-user-ids",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"auth-user-ids"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"referId\": \"owner\",\n        \"accessMethods\": [\n            \"PUT\",\n            \"DELETE\"\n        ],\n        \"url\": \"/v1/file-manager/:id\",\n        \"collectionName\": \"filemanager\"\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/auth-user-ids/62f065e6252f2b19f968cf5c",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"auth-user-ids",
+										"62f065e6252f2b19f968cf5c"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/auth-user-ids/62f065e2252f2b19f968cf59",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"auth-user-ids",
+										"62f065e2252f2b19f968cf59"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/auth-user-ids/paginate",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"auth-user-ids",
+										"paginate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/auth-user-ids/62d657e47e3e64a72b964bda",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"auth-user-ids",
+										"62d657e47e3e64a72b964bda"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "a5-Group",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/groups",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"groups"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "62d7cd37ea085285bbcee9e9, 62d7d7e6fc68833eb42fb6df",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"supper-admin\",\n  \"groupAPIAccesses\": [],\n  \"groupAPIDenines\": [\"62ecd6f128b189589f12ca18\"],\n  \"groupDetails\": [\n    {\n      \"idGroupDetail\": \"62ecd6ee28b189589f12c154\",\n      \"accessMethods\": [\"GET\", \"POST\", \"PUT\", \"DELETE\"]\n    },\n    {\n      \"idGroupDetail\": \"62ecd6ee28b189589f12c165\",\n      \"accessMethods\": [\"GET\", \"POST\", \"PUT\", \"DELETE\"]\n    },\n    {\n      \"idGroupDetail\": \"62ecd6ef28b189589f12c1d2\",\n      \"accessMethods\": [\"GET\", \"POST\", \"PUT\", \"DELETE\"]\n    },\n    {\n      \"idGroupDetail\": \"62ecd6ee28b189589f12c151\",\n      \"accessMethods\": [\"GET\", \"POST\", \"PUT\", \"DELETE\"]\n    },\n    {\n      \"idGroupDetail\": \"62ecd6ee28b189589f12c16b\",\n      \"accessMethods\": [\"GET\", \"POST\", \"PUT\", \"DELETE\"]\n    },\n    {\n      \"idGroupDetail\": \"62ecd6ef28b189589f12c184\",\n      \"accessMethods\": [\"GET\", \"POST\", \"PUT\", \"DELETE\"]\n    },\n    {\n      \"idGroupDetail\": \"62ecd6ee28b189589f12c16b\",\n      \"accessMethods\": [\"GET\", \"POST\", \"PUT\", \"DELETE\"]\n    },\n    {\n      \"idGroupDetail\": \"62ecd6ef28b189589f12c1c0\",\n      \"accessMethods\": [\"GET\", \"POST\", \"PUT\", \"DELETE\"]\n    },\n    {\n      \"idGroupDetail\": \"62ecd6ef28b189589f12c202\",\n      \"accessMethods\": [\"GET\", \"POST\", \"PUT\", \"DELETE\"]\n    },\n    {\n      \"idGroupDetail\": \"62ecd6ef28b189589f12c21b\",\n      \"accessMethods\": [\"GET\", \"POST\", \"PUT\", \"DELETE\"]\n    },\n\n    {\n      \"idGroupDetail\": \"62ecd6ef28b189589f12c23f\",\n      \"accessMethods\": [\"GET\", \"POST\", \"PUT\", \"DELETE\"]\n    },\n    {\n      \"idGroupDetail\": \"62ecd6ef28b189589f12c210\",\n      \"accessMethods\": [\"GET\", \"POST\", \"PUT\", \"DELETE\"]\n    },\n    {\n      \"idGroupDetail\": \"62ecd6ee28b189589f12c132\",\n      \"accessMethods\": [\"GET\", \"POST\", \"PUT\", \"DELETE\"]\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/groups",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"groups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": " {\n        \"groupAPIDenines\": [],\n        \"groupAPIAccesses\": [],\n        \"name\": \"Quản Lý Giáo Viên\",\n        \"groupDetails\": [\"6358d9068f9c327b17dc75a0\"]\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/groups/634e6958d5ac5f1aa5d12eed",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"groups",
+										"634e6958d5ac5f1aa5d12eed"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/groups/62d4da83f2ec9a5a2de787bd",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"groups",
+										"62d4da83f2ec9a5a2de787bd"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/groups/paginate",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"groups",
+										"paginate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/groups/634e6958d5ac5f1aa5d12eed",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"groups",
+										"634e6958d5ac5f1aa5d12eed"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add groupDetail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"idGroupDetail\": \"6358eb9f55ee4e590868193d\",\n    \"accessMethods\": [\"PUT\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/groups/635ba90b1fc01348cb9c25d5/add-group-detail",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"groups",
+										"635ba90b1fc01348cb9c25d5",
+										"add-group-detail"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "remove groupDetail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"idGroupDetail\": \"62f36fe537cea4052645e81c\",\n    \"accessMethods\": [\"GET\", \"PUT\",\"DELETE\", \"POST\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/groups/62f06698252f2b19f968cf6a/remove-group-detail",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"groups",
+										"62f06698252f2b19f968cf6a",
+										"remove-group-detail"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get users in group",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"idGroupDetail\": \"62f36fe537cea4052645e81c\",\n    \"accessMethods\": [\"GET\", \"PUT\",\"DELETE\", \"POST\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/users/paginate?groups=633e576b82590b1c1378847c",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"paginate"
+									],
+									"query": [
+										{
+											"key": "groups",
+											"value": "633e576b82590b1c1378847c"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add or remove users in group",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"options\": \"add\",\n    \"users\": [\"6358d9068f9c327b17dc75a0\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/groups/634e6958d5ac5f1aa5d12eed/update-users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"groups",
+										"634e6958d5ac5f1aa5d12eed",
+										"update-users"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "a6-Group-detail",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/group-details",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"group-details"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": " { \n    \"collectionName\": \"test2\",\n    \"icon\": \"./assets/media/icons/duotune/general/gen019.svg\",\n    \"isGroup\": true,\n    \"name\": \"Test2\",\n    \"position\": 0,\n    \"refers\": [],\n    \"link\": \"\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/group-details",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"group-details"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"refers\": [],\n    \"icon\": \"./assets/media/icons/duotune/general/gen019.svg\",\n    \"name\": \"Test\",\n    \"isGroup\": true,\n    \"collectionName\": \"test\",\n    \"position\": 0\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/group-details/633e764ac8903d203945f4d3",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"group-details",
+										"633e764ac8903d203945f4d3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/group-details/637f2262770a69b427ba3e76",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"group-details",
+										"637f2262770a69b427ba3e76"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete many",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/group-details/633d64faaaa28f9ec8a1bf53/ids",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"group-details",
+										"633d64faaaa28f9ec8a1bf53",
+										"ids"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/group-details/paginate?isChild=false",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"group-details",
+										"paginate"
+									],
+									"query": [
+										{
+											"key": "isChild",
+											"value": "false"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination my parent",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/group-details/paginate?isChild=false&isGroup=true&_id!=634ead10d5ac5f1aa5d147bd",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"group-details",
+										"paginate"
+									],
+									"query": [
+										{
+											"key": "isChild",
+											"value": "false"
+										},
+										{
+											"key": "isGroup",
+											"value": "true"
+										},
+										{
+											"key": "_id!",
+											"value": "634ead10d5ac5f1aa5d147bd"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination parent id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/group-details/paginate?childs=633e5768aaa28f9ec82d4d6b,633e779bc8903d203945f67c",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"group-details",
+										"paginate"
+									],
+									"query": [
+										{
+											"key": "childs",
+											"value": "633e5768aaa28f9ec82d4d6b,633e779bc8903d203945f67c"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/group-details/6350a9162032f2364779c466",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"group-details",
+										"6350a9162032f2364779c466"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add childs",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"childs\": [\"633e779bc8903d203945f67c\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/group-details/633e77a6c8903d203945f687/add-childs",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"group-details",
+										"633e77a6c8903d203945f687",
+										"add-childs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "remove childs",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"childs\": [\"633d4ab3aea777c0b9f8c31b\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/group-details/62ff2c907e015b2f29e3901f/remove-childs",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"group-details",
+										"62ff2c907e015b2f29e3901f",
+										"remove-childs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "seed",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/group-details/seed",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"group-details",
+										"seed"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "collection key",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/group-details/collection-key?collectionName=backupdatas",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"group-details",
+										"collection-key"
+									],
+									"query": [
+										{
+											"key": "collectionName",
+											"value": "backupdatas"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "group details(menu) of user",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"callStatus\": {\n    \"idQuestionAsker\": \"62f088b819815e736e05573e\",\n    \"idRespondent\": \"62f088b819815e736e05573e\",\n    \"idQuestion\": \"6336726cee48bce158d5a7a0\",\n    \"caller\": \"62f088b819815e736e05573e\",\n    \"idRoom\": \"62f088b819815e736e05573e\",\n    \"expiryTime\": 1664523763406\n   }\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/group-details/get-menu-by-user-login?isChild=false&sort=position&populate=childs",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"group-details",
+										"get-menu-by-user-login"
+									],
+									"query": [
+										{
+											"key": "isChild",
+											"value": "false"
+										},
+										{
+											"key": "sort",
+											"value": "position"
+										},
+										{
+											"key": "populate",
+											"value": "childs"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "regenerate group detail",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"callStatus\": {\n    \"idQuestionAsker\": \"62f088b819815e736e05573e\",\n    \"idRespondent\": \"62f088b819815e736e05573e\",\n    \"idQuestion\": \"6336726cee48bce158d5a7a0\",\n    \"caller\": \"62f088b819815e736e05573e\",\n    \"idRoom\": \"62f088b819815e736e05573e\",\n    \"expiryTime\": 1664523763406\n   }\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/group-details/regenerate",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"group-details",
+										"regenerate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get accessMethods by collectonName and userId",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"callStatus\": {\n    \"idQuestionAsker\": \"62f088b819815e736e05573e\",\n    \"idRespondent\": \"62f088b819815e736e05573e\",\n    \"idQuestion\": \"6336726cee48bce158d5a7a0\",\n    \"caller\": \"62f088b819815e736e05573e\",\n    \"idRoom\": \"62f088b819815e736e05573e\",\n    \"expiryTime\": 1664523763406\n   }\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/group-details/access-methods-user?link=/features/users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"group-details",
+										"access-methods-user"
+									],
+									"query": [
+										{
+											"key": "link",
+											"value": "/features/users"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "a7-Group-api",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/group-apis",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"group-apis"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"accessMethods\": [\n       \"GET\"\n    ],\n    \"collectionName\": \"backupdatas\",\n    \"url\": \"/v1/backup-datas/:id\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/group-apis",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"group-apis"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": " {\n        \"accessMethods\": [\n            \"GET\"\n        ],\n        \"collectionName\": \"1\",\n        \"url\": \"/api-json\"\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/group-apis/62ff4f3e7e015b2f29322b02",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"group-apis",
+										"62ff4f3e7e015b2f29322b02"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/group-apis",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"group-apis"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/group-apis/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"group-apis",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/group-apis/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"group-apis",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "seed",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/group-apis/seed",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"group-apis",
+										"seed"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Common",
+			"item": [
+				{
+					"name": "c0-Backup",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/backup-datas",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"backup-datas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "backup",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/v1/backup-datas",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"backup-datas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "restore",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 6\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/backup-datas/6376f5434f531482522348a0/restore",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"backup-datas",
+										"6376f5434f531482522348a0",
+										"restore"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "restore master",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 6\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/backup-datas/restore/master",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"backup-datas",
+										"restore",
+										"master"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "hard restore",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"path\": \"public/backup/2022-11-18T16:26:23-p21haqua.tar\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/backup-datas/hard-restore",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"backup-datas",
+										"hard-restore"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/backup-datas/62f0db20cbf08d2ad0d3f85a",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"backup-datas",
+										"62f0db20cbf08d2ad0d3f85a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/backup-datas/paginate",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"backup-datas",
+										"paginate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/backup-datas/62f0d47600f6e308b2a4d522",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"backup-datas",
+										"62f0d47600f6e308b2a4d522"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "c1-Auth",
+					"item": [
+						{
+							"name": "signin-with-social",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const res = pm.response.json(); ",
+											"pm.environment.set(\"jwtToken\", res['accessToken']);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"tokenLogin\": \"Acount google 2\",\n    \"typeRegister\": \"google\",\n    \"deviceID\":\"E.v8XE63v1OIkcnRoiWs\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/auth/signin-with-social",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"auth",
+										"signin-with-social"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "signin-local",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const res = pm.response.json(); ",
+											"pm.environment.set(\"jwtToken\", res['accessToken']);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"password\":\"user123123\",\n    \"phone\":\"0123123123\",\n    \"idStore\": \"639bf7c57e3aad82df6b3061\",\n    \"storeCode\": \"code\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/auth/signin-local",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"auth",
+										"signin-local"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "signup-local",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const res = pm.response.json(); ",
+											"pm.environment.set(\"jwtToken\", ['accessToken']);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone\": \"0123123123\",\n    \"password\": \"user123123*\",\n    \"fullName\":\"minh chiu 1\",\n    \"typeRegister\": \"haqua\",\n    \"deviceID\": \"flMCZ8KbBkHrmkMbZ5fu1O:APA91bHX1hBggnZttjD6lQIndWZXLoGS9t3mKGNm0S_ytMDkatkvehZ1ipr3lrKQ9WaicMJgoYbhMzHQhDEtVh_hceHWUOxb-gHGGIdu-DGUQAqYnEzf589ctL6iXDbYimQ5XxkfPh8s\",\n    \"otpCode\":\"1525\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/auth/signup-local",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"auth",
+										"signup-local"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "signin",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const res = pm.response.json(); ",
+											"pm.environment.set(\"jwtToken\", res['accessToken']);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"userroot@gmail.com\",\n    \"password\":\"userroot123123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/auth/signin",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"auth",
+										"signin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "signin admin",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const res = pm.response.json(); ",
+											"pm.environment.set(\"jwtToken\", res['accessToken']);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"admin@gmail.com\",\n    \"password\":\"admin123123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/auth/signin",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"auth",
+										"signin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "signup",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const res = pm.response.json(); ",
+											"pm.environment.set(\"jwtToken\", ['accessToken']);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"0387776243\",\n    \"password\":\"user123123\",\n    \"otpCode\": \"4409\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/auth/signup",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "sign-out",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"deviceID\": \"console.log('checkRoleRBAC', `${role}_${method}_${url}`, roles.get(`${role}_${method}_${url}`));\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/auth/sign-out",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"auth",
+										"sign-out"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "refresh-token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"const res = pm.response.json(); ",
+											"pm.environment.set(\"jwtToken\", ['accessToken']);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"refreshToken\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVjY2E3ZjgxNTM2OTM5NjQyMWE5OTQiLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2NTk2ODY2NzQsImV4cCI6MTY1OTY4NjczNH0.0O30BbBZzadPVmOsDw980E9_y1_GtRqqjeNonIPJkxw\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/auth/refresh-token",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"auth",
+										"refresh-token"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "c2-Otp",
+					"item": [
+						{
+							"name": "phone",
+							"item": [
+								{
+									"name": "send otp",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"phone\":\"387776242\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v1/otps/send-otp-phone",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v1",
+												"otps",
+												"send-otp-phone"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "verify otp",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{jwtToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"phone\": \"387776243\",\n    \"otpCode\":\"1493\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v1/otps/verify-otp-phone",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v1",
+												"otps",
+												"verify-otp-phone"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "email",
+							"item": [
+								{
+									"name": "send otp",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{jwtToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\":\"user1@gmail.com\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v1/otps/send-otp-email",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v1",
+												"otps",
+												"send-otp-email"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "verify otp",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{jwtToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\":\"user@gmail.com\",\n    \"otpCode\":\"23123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v1/otps/verify-otp-email",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v1",
+												"otps",
+												"verify-otp-email"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "find all",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/otps",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"otps"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/otps/62bf9eb0afb8330ee9bab19c",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"otps",
+										"62bf9eb0afb8330ee9bab19c"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "paginate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone\": \"0123123123\",\n    \"password\": \"123123\",\n    \"typeRegister\": \"haqua\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/otps",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"otps"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/otps",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"otps"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "c3-Upload",
+					"item": [
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "files",
+											"type": "file",
+											"src": "/home/minhchiu/Pictures/Screenshot_2023-02-20_09-08-34.png"
+										},
+										{
+											"key": "files",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "files",
+											"type": "file",
+											"src": []
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/v1/uploads/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"uploads",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create videos",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "videos",
+											"type": "file",
+											"src": "/home/himinh/Videos/Udemy - Vue JS 3 Composition API (with Pinia & Vite)/19 - Bonus Lectures/001 Bonus Lecture.mp4"
+										},
+										{
+											"key": "videos",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "videos",
+											"type": "file",
+											"src": []
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/v1/uploads/videos",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"uploads",
+										"videos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "confirm many files",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"files\": [\n        \"https://p30nail.izisoft.io/static/upload/tmp/1677205883188_6f168cd412335ea5db231cf9_76f5ce0a66d78931.jpg\"\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/uploads/local-tmp",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"uploads",
+										"local-tmp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}.",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    [\n        \"https://p21haqua.izisoft.io/static/upload/image/1659682659374_d5ec8541fc341269b1e564a4_3852a72ef1097814d.jpg\",\n        \"https://p21haqua.izisoft.io/static/upload/image/xl_1659682659374_d5ec8541fc341269b1e564a4_3852a72ef1097814d.jpg\",\n        \"https://p21haqua.izisoft.io/static/upload/image/lg_1659682659374_d5ec8541fc341269b1e564a4_3852a72ef1097814d.jpg\",\n        \"https://p21haqua.izisoft.io/static/upload/image/md_1659682659374_d5ec8541fc341269b1e564a4_3852a72ef1097814d.jpg\",\n        \"https://p21haqua.izisoft.io/static/upload/image/sm_1659682659374_d5ec8541fc341269b1e564a4_3852a72ef1097814d.jpg\",\n        \"https://p21haqua.izisoft.io/static/upload/image/xs_1659682659374_d5ec8541fc341269b1e564a4_3852a72ef1097814d.jpg\"\n    ]\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/static/upload/image/1659682808748_fd20c67e5efa69711b11b7105_9f058a44406160fe.jpg",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"static",
+										"upload",
+										"image",
+										"1659682808748_fd20c67e5efa69711b11b7105_9f058a44406160fe.jpg"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "c4-FileManager",
+					"item": [
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/file-manager/62c500fa7d7f7b8ab898a13e",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"file-manager",
+										"62c500fa7d7f7b8ab898a13e"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/file-manager/paginate",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"file-manager",
+										"paginate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/file-manager/62c500e87d7f7b8ab898a13c",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"file-manager",
+										"62c500e87d7f7b8ab898a13c"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "authorization-schema-files",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/file-manager/authorization-schema-files",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"file-manager",
+										"authorization-schema-files"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "c5-Static-s3",
+					"item": [
+						{
+							"name": "detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/static/upload/image/1657078001183_f45749152b4a48297c8923c7_a53d10a2d5a2d73710.jpeg",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"static",
+										"upload",
+										"image",
+										"1657078001183_f45749152b4a48297c8923c7_a53d10a2d5a2d73710.jpeg"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "c6-Province",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/provinces",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"provinces"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/provinces",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"provinces"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 6\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/provinces",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"provinces"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/provinces/62dc9b20ce5dbc497bd75ff7",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"provinces",
+										"62dc9b20ce5dbc497bd75ff7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/provinces/paginate",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"provinces",
+										"paginate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/provinces/62cbea4d1903c461cb6de331",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"provinces",
+										"62cbea4d1903c461cb6de331"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "c7-District",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/districts",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"districts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/districts",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"districts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 6\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/districts",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"districts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/districts",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"districts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/districts/paginate",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"districts",
+										"paginate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/districts",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"districts"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "c8-Village",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/villages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"villages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/villages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"villages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 6\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/villages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"villages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/villages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"villages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/villages/paginate",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"villages",
+										"paginate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/villages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"villages"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "c9-History",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/histories",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"histories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/villages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"villages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 6\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/villages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"villages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/villages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"villages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/histories/paginate?populate=idUser&fields=idUser.fullName,idUser.email",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"histories",
+										"paginate"
+									],
+									"query": [
+										{
+											"key": "populate",
+											"value": "idUser"
+										},
+										{
+											"key": "fields",
+											"value": "idUser.fullName,idUser.email"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/villages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"villages"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "c10-Dashboard",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/dashboards",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"dashboards"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/dashboards",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"dashboards"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 6\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/dashboards",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"dashboards"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/dashboards",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"dashboards"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/dashboards",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"dashboards"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/dashboards",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"dashboards"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "c11-transactions",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/transactions",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"transactions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/transactions",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"transactions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 6\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/transactions",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"transactions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/transactions",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"transactions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/transactions",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"transactions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/transactions",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"transactions"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "c12-notifications",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/notifications",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"notifications"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/notifications",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"notifications"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 6\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/notifications",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"notifications"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/notifications",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"notifications"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/notifications",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"notifications"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/notifications",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"notifications"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "c13-settings",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/settings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"settings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/settings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"settings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test 6\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/settings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"settings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/settings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"settings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/settings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"settings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/settings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"settings"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Features",
+			"item": [
+				{
+					"name": "f1-banners",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/banners",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"banners"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"title\",\n    \"image\": \"image\",\n    \"description\":\"description\",\n    \"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/banners",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"banners"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"title\":\"title\",\n\"image\": \"image\",\n\"description\":\"description\",\n\"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/banners",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"banners"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/banners",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"banners"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/banners",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"banners"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/banners",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"banners"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "f2-courses",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/courses",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"courses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"title\",\n    \"image\": \"image\",\n    \"description\":\"description\",\n    \"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/courses",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"courses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"title\":\"title\",\n\"image\": \"image\",\n\"description\":\"description\",\n\"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/courses",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"courses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/courses",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"courses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/courses",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"courses"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/courses",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"courses"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "f3-chapters",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/chapters",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"chapters"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"title\",\n    \"image\": \"image\",\n    \"description\":\"description\",\n    \"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/chapters",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"chapters"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"title\":\"title\",\n\"image\": \"image\",\n\"description\":\"description\",\n\"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/chapters",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"chapters"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/chapters",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"chapters"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/chapters",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"chapters"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/chapters",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"chapters"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "f4-lectures",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/lectures",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"lectures"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"title\",\n    \"image\": \"image\",\n    \"description\":\"description\",\n    \"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/lectures",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"lectures"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"title\":\"title\",\n\"image\": \"image\",\n\"description\":\"description\",\n\"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/lectures",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"lectures"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/lectures",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"lectures"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/lectures",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"lectures"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/lectures",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"lectures"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "f5-learning-paths",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/learning-paths",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"learning-paths"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"title\",\n    \"image\": \"image\",\n    \"description\":\"description\",\n    \"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/learning-paths",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"learning-paths"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"title\":\"title\",\n\"image\": \"image\",\n\"description\":\"description\",\n\"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/learning-paths",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"learning-paths"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/learning-paths",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"learning-paths"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/learning-paths",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"learning-paths"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/learning-paths",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"learning-paths"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "f6-categories",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/categories",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"title\",\n    \"image\": \"image\",\n    \"description\":\"description\",\n    \"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/categories",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"title\":\"title\",\n\"image\": \"image\",\n\"description\":\"description\",\n\"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/categories",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/categories",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/categories",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"categories"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/categories",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"categories"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "f7-posts",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/posts",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"title\",\n    \"image\": \"image\",\n    \"description\":\"description\",\n    \"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/posts",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"title\":\"title\",\n\"image\": \"image\",\n\"description\":\"description\",\n\"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/posts",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/posts",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/posts",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"posts"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/posts",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"posts"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "f8-comments",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/comments",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"comments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"title\",\n    \"image\": \"image\",\n    \"description\":\"description\",\n    \"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/comments",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"comments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"title\":\"title\",\n\"image\": \"image\",\n\"description\":\"description\",\n\"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/comments",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"comments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/comments",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"comments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/comments",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"comments"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/comments",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"comments"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "f9-conversations",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/conversations",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"conversations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"title\",\n    \"image\": \"image\",\n    \"description\":\"description\",\n    \"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/conversations",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"conversations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"title\":\"title\",\n\"image\": \"image\",\n\"description\":\"description\",\n\"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/conversations",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"conversations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/conversations",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"conversations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/conversations",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"conversations"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/conversations",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"conversations"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "f10-messages",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/messages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"title\",\n    \"image\": \"image\",\n    \"description\":\"description\",\n    \"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/messages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"title\":\"title\",\n\"image\": \"image\",\n\"description\":\"description\",\n\"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/messages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/messages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/messages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"messages"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/messages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "f11-quizzes",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/quizzes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"quizzes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"title\",\n    \"image\": \"image\",\n    \"description\":\"description\",\n    \"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/quizzes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"quizzes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"title\":\"title\",\n\"image\": \"image\",\n\"description\":\"description\",\n\"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/quizzes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"quizzes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/quizzes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"quizzes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/quizzes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"quizzes"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/quizzes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"quizzes"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "f12-play-quizzes",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/play-quizzes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"play-quizzes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"title\",\n    \"image\": \"image\",\n    \"description\":\"description\",\n    \"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/play-quizzes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"play-quizzes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"title\":\"title\",\n\"image\": \"image\",\n\"description\":\"description\",\n\"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/play-quizzes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"play-quizzes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/play-quizzes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"play-quizzes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/play-quizzes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"play-quizzes"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/play-quizzes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"play-quizzes"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "f13-class-rooms",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/class-rooms",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"class-rooms"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"title\",\n    \"image\": \"image\",\n    \"description\":\"description\",\n    \"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/class-rooms",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"class-rooms"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"title\":\"title\",\n\"image\": \"image\",\n\"description\":\"description\",\n\"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/class-rooms",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"class-rooms"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/class-rooms",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"class-rooms"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/class-rooms",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"class-rooms"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/class-rooms",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"class-rooms"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "f14-questions",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/questions",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"questions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"title\",\n    \"image\": \"image\",\n    \"description\":\"description\",\n    \"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/questions",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"questions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"title\":\"title\",\n\"image\": \"image\",\n\"description\":\"description\",\n\"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/questions",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"questions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/questions",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"questions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/questions",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"questions"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/questions",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"questions"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "f15-test-questions",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/test-questions",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"test-questions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"title\",\n    \"image\": \"image\",\n    \"description\":\"description\",\n    \"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/test-questions",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"test-questions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"title\":\"title\",\n\"image\": \"image\",\n\"description\":\"description\",\n\"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/test-questions",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"test-questions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/test-questions",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"test-questions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/test-questions",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"test-questions"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/test-questions",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"test-questions"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "f16-user-tests",
+					"item": [
+						{
+							"name": "find all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/user-tests",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"user-tests"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"title\",\n    \"image\": \"image\",\n    \"description\":\"description\",\n    \"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/user-tests",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"user-tests"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"title\":\"title\",\n\"image\": \"image\",\n\"description\":\"description\",\n\"minScore\": \"minScore\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v1/user-tests",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"user-tests"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/user-tests",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"user-tests"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/user-tests",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"user-tests"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/user-tests",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"user-tests"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Other",
+			"item": [
+				{
+					"name": "ExportFiles",
+					"item": [
+						{
+							"name": "Export-pdf",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v1/seeds/seeds/provinces_districts_wards",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v1",
+										"seeds",
+										"seeds",
+										"provinces_districts_wards"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
