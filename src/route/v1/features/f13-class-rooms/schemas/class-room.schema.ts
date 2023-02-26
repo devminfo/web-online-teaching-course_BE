@@ -7,13 +7,13 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 @Schema({ timestamps: true, versionKey: false })
 export class ClassRoom {
   @Prop({ type: [{ type: String, ref: 'User' }], default: [] })
-  members: string[];
+  readonly members: string[];
 
   @Prop({ type: [{ type: String, ref: 'User' }], default: [] })
-  teachers: string[];
+  readonly teachers: string[];
 
   @Prop({ type: String, default: '' })
-  name: string;
+  readonly name: string;
 
   @Prop({
     type: [
@@ -28,10 +28,10 @@ export class ClassRoom {
     ],
     default: [],
   })
-  administrators: AdministratorDto[];
+  readonly administrators: AdministratorDto[];
 
   @Prop({ type: [{ type: String, ref: 'Course' }], default: [] })
-  courses: string[];
+  readonly courses: string[];
 }
 
 export type ClassRoomDocument = ClassRoom & Document;

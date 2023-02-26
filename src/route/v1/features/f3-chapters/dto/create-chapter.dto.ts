@@ -1,8 +1,12 @@
 import {
-  IsMongoId, IsNotEmpty, IsNumber, IsString
+  IsArray,
+  IsMongoId,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
 } from 'class-validator';
 
-export default class CreateLectureGroupDto {
+export default class CreateChapterDto {
   @IsNotEmpty()
   @IsMongoId()
   readonly idCourse: string;
@@ -14,4 +18,9 @@ export default class CreateLectureGroupDto {
   @IsNotEmpty()
   @IsNumber()
   readonly position: number;
+
+  @IsNotEmpty()
+  @IsArray()
+  @IsString({ each: true })
+  readonly lectures: string[];
 }
