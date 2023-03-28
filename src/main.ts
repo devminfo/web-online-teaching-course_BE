@@ -32,7 +32,8 @@ async function bootstrap() {
     new ValidationPipe({
       whitelist: true,
       forbidNonWhitelisted: true,
-      exceptionFactory: (errors: ValidationError[]) => new ValidationExceptions(errors),
+      exceptionFactory: (errors: ValidationError[]) =>
+        new ValidationExceptions(errors),
     }),
   );
 
@@ -64,9 +65,9 @@ async function bootstrap() {
 
   // check config redis for socket
   if (
-    ShareFunction.isConfigRedis()
-    && ShareFunction.isConfigWebsocket()
-    && ShareFunction.isEnableWebsocket()
+    ShareFunction.isConfigRedis() &&
+    ShareFunction.isConfigWebsocket() &&
+    ShareFunction.isEnableWebsocket()
   ) {
     const redisIoAdapter = new RedisIoAdapter(app);
     await redisIoAdapter.connectToRedis();
@@ -92,8 +93,8 @@ async function bootstrap() {
   }
 
   // Protected routes with roles guard
-  const rolesGuard = app.get<RolesGuard>(RolesGuard);
-  app.useGlobalGuards(rolesGuard);
+  // const rolesGuard = app.get<RolesGuard>(RolesGuard);
+  // app.useGlobalGuards(rolesGuard);
 
   // run app
   await app.listen(port, async () => {
