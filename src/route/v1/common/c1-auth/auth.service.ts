@@ -2,7 +2,11 @@ import { UserDocument } from '@authorization/a1-user/schemas/user.schema';
 import UserRepository from '@authorization/a1-user/user.repository';
 import UserService from '@authorization/a1-user/user.service';
 import OtpService from '@common/c2-otp/otp.service';
-import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 
 import { RefreshTokenDto } from './dto/refresh-token.dto';
 import SignInDto from './dto/sign-in.dto';
@@ -72,7 +76,7 @@ export default class AuthService {
    */
   public async signinLocal(data: SigninLocalDto): Promise<AuthTokenPayload> {
     const {
-      phone, password, deviceID, idStore, storeCode,
+      phone, password, deviceID, idStore, storeCode
     } = data;
 
     // Get and check user exist by phone

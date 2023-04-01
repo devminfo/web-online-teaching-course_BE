@@ -16,7 +16,7 @@ import { ObjectId } from 'mongodb';
 
 import { GenderEnum } from '@enum/1.gender.enum';
 import { ReceivedNotificationTypeEnum } from '@enum/7.received-notification-type.enum ';
-import { RoleUserEnum } from '@enum/role-user.enum';
+import { RoleUserEnum, TypeUserEnum } from '@enum/role-user.enum';
 import { Type } from 'class-transformer';
 import { MyLearningCourseDto } from 'src/util/types/dto/my-learning-course.dto';
 
@@ -87,6 +87,10 @@ export default class CreateUserDto {
   @IsOptional()
   @IsEnum(GenderEnum)
   readonly gender: GenderEnum;
+
+  @IsOptional()
+  @IsEnum(TypeUserEnum)
+  readonly typeUser: TypeUserEnum;
 
   @IsOptional()
   @IsString()

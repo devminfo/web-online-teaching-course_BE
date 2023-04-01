@@ -70,7 +70,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"password\":\"user123123\",\n    \"fullName\":\"user\",\n    \"phone\":\"012345123\",\n    \"role\": \"customer\"\n}",
+									"raw": "{\n    \"password\":\"minh123123\",\n    \"fullName\":\"Chìu Cắm Minh\",\n    \"phone\":\"0387776243\",\n    \"role\": \"admin\",\n    \"typeUser\": \"TEACHER\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2890,7 +2890,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"tokenLogin\": \"Acount google 2\",\n    \"typeRegister\": \"google\",\n    \"deviceID\":\"E.v8XE63v1OIkcnRoiWs\"\n}",
+									"raw": "{\n    \"tokenLogin\": \"Acount google 2\",\n    \"typeRegister\": \"google\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3518,7 +3518,7 @@
 										{
 											"key": "files",
 											"type": "file",
-											"src": "/home/minhchiu/Pictures/Screenshot_2023-02-20_09-08-34.png"
+											"src": "/home/minhchiu/Pictures/1.png"
 										},
 										{
 											"key": "files",
@@ -3612,7 +3612,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"files\": [\n        \"https://p30nail.izisoft.io/static/upload/tmp/1677205883188_6f168cd412335ea5db231cf9_76f5ce0a66d78931.jpg\"\n    ]\n}",
+									"raw": "{\n    \"files\": [\n        \"https://webonlinelearning.izisoft.io/static/upload/tmp/1678891137259_ff9d51b8b7ab6d3fc46c7f2d_106a258e1b6256cdf.png\"\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -5448,7 +5448,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"title\":\"title\",\n    \"image\": \"image\",\n    \"description\":\"description\",\n    \"minScore\": \"minScore\"\n}\n",
+									"raw": "{\n    \"text\": \"Học ReactJS Miễn Phí!\",\n    \"image\": \"https://files.fullstack.edu.vn/f8-prod/banners/Banner_web_ReactJS.png\",\n    \"desc\": \"Khóa học ReactJS từ cơ bản tới nâng cao. Kết quả của khóa học này là bạn có thể làm hầu hết các dự án thường gặp với ReactJS.\",\n    \"position\": 1,\n    \"isShow\": true,\n    \"link\": \"https://fullstack.edu.vn/blog/tong-hop-cac-san-pham-cua-hoc-vien-tai-f8.html\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -5658,7 +5658,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"title\":\"title\",\n    \"image\": \"image\",\n    \"description\":\"description\",\n    \"minScore\": \"minScore\"\n}\n",
+									"raw": "\n{\n    \"idCategories\": string[],\n    \"instructors\": string[],\n    \"title\": \"string\",\n    \"target\": \"string\",\n    \"targetDetails\": [{\n        \"position\": 1,\n        \"text\": \"string\",\n        \"icon\": \"\"\n\n    }],\n    \"totalChapter\": 4,\n    \"totalLectures\": 10,\n    \"totalTime\": 14,\n    \"requirements\":  [{\n        \"position\": 1,\n        \"text\": \"string\",\n        \"icon\": \"\"\n\n    }],\n    \"desc\": \"string\",\n    \"price\": 150000,\n    \"promotionPrice\": 1,\n    \"thumbnail\": \"string\",\n    \"totalViews\": 12,\n    \"totalLikes\": 12,\n    \"totalDislikes\": 0,\n    \"tags\": [],\n    \"isPrivate\": true,\n    \"usersJoined\": string[]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -5868,7 +5868,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"title\":\"title\",\n    \"image\": \"image\",\n    \"description\":\"description\",\n    \"minScore\": \"minScore\"\n}\n",
+									"raw": "{\n    idCourse: string,\n    title: string,\n    position: number,\n    lectures: string[],\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -6078,7 +6078,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"title\":\"title\",\n    \"image\": \"image\",\n    \"description\":\"description\",\n    \"minScore\": \"minScore\"\n}\n",
+									"raw": "{\n    \"type\": \"VIDEO\",\n    \"title\": \"Giới thiệu khóa học\",\n    \"url\": \"https://cdn.videvo.net/videvo_files/video/premium/video0394/large_watermarked/902-1_902-0405-PD2_preview.mp4\",\n    \"position\": 1,\n    \"lesson\": 1,\n    \"totalTimes\": 12\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -6288,7 +6288,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"title\":\"title\",\n    \"image\": \"image\",\n    \"description\":\"description\",\n    \"minScore\": \"minScore\"\n}\n",
+									"raw": "{\n    \"title\": \"Lộ trình học\",\n    \"desc\": \"Để bắt đầu một cách thuận lợi, bạn nên tập trung vào một lộ trình học. Ví dụ: Để đi làm với vị trí 'Lập trình viên Front-endbạn nên tập trung vào lộ trình 'Front-end'\",\n    \"thumbnail\": \"https://files.fullstack.edu.vn/f8-prod/banners/31/6421141abacbe.png\",\n    \"learningPathGroups\": [{\n        \"title\": \"\",\n        \"desc\": \"\",\n        \"courses\": [{\n            \"idCourse\": \"\",\n            \"isRelated\": true\n        }]\n    }]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -6498,7 +6498,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"title\":\"title\",\n    \"image\": \"image\",\n    \"description\":\"description\",\n    \"minScore\": \"minScore\"\n}\n",
+									"raw": "{\n    \"title\":\"Khóa học Pro\",\n    \"desc\": \"Coursera là một nền tảng giáo dục trực tuyến cung cấp các khóa học online miễn phí. Tham gia Coursera, bạn sẽ được giảng dạy bởi những giảng viên hàng đầu đến từ các trường đại học, các tổ chức giáo dục danh tiếng trên thế giới. Mỗi khóa bao gồm những video bài giảng thu sẵn, hệ thống lên điểm tự động và phần bài tập có review, cũng như diễn đàn nơi mọi người cùng thảo luận về bài học.\",\n    \"thumbnail\":\"https://files.fullstack.edu.vn/f8-prod/banners/Banner_web_ReactJS.png\",\n    \"position\": 1,\n    \"isNew\": true\n}\n",
 									"options": {
 										"raw": {
 											"language": "json"

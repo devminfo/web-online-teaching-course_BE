@@ -1,5 +1,9 @@
 import {
-  IsBoolean, IsNotEmpty, IsNumber, IsOptional, IsString
+  IsBoolean,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
 } from 'class-validator';
 
 export default class CreateBannerDto {
@@ -22,4 +26,8 @@ export default class CreateBannerDto {
   @IsOptional()
   @IsString()
   readonly link: string;
+
+  @IsOptional()
+  @IsString()
+  readonly desc: string;
 }

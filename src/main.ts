@@ -32,8 +32,7 @@ async function bootstrap() {
     new ValidationPipe({
       whitelist: true,
       forbidNonWhitelisted: true,
-      exceptionFactory: (errors: ValidationError[]) =>
-        new ValidationExceptions(errors),
+      exceptionFactory: (errors: ValidationError[]) => new ValidationExceptions(errors),
     }),
   );
 
@@ -64,15 +63,15 @@ async function bootstrap() {
   }
 
   // check config redis for socket
-  if (
-    ShareFunction.isConfigRedis() &&
-    ShareFunction.isConfigWebsocket() &&
-    ShareFunction.isEnableWebsocket()
-  ) {
-    const redisIoAdapter = new RedisIoAdapter(app);
-    await redisIoAdapter.connectToRedis();
-    app.useWebSocketAdapter(redisIoAdapter);
-  }
+  // if (
+  //   ShareFunction.isConfigRedis() &&
+  //   ShareFunction.isConfigWebsocket() &&
+  //   ShareFunction.isEnableWebsocket()
+  // ) {
+  //   const redisIoAdapter = new RedisIoAdapter(app);
+  //   await redisIoAdapter.connectToRedis();
+  //   app.useWebSocketAdapter(redisIoAdapter);
+  // }
 
   // get port app running
   const port = process.env.SERVER_PORT || commonConstants.server.port;

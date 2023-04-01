@@ -1,6 +1,5 @@
 import { SetMetadata } from '@nestjs/common';
 
-// eslint-disable-next-line no-shadow
 export enum RoleUserEnum {
   root = 'root',
   admin = 'admin',
@@ -11,4 +10,8 @@ export enum RoleUserEnum {
   customer = 'customer',
 }
 
-export const RoleUser = (...roleUser: RoleUserEnum[]) => SetMetadata('roleUser', roleUser);
+export enum TypeUserEnum {
+  admin = 'ADMIN',
+  student = 'STUDENT',
+  teacher = 'TEACHER',
+}
