@@ -15,6 +15,9 @@ export class Category {
 
   @Prop({ type: Number, default: 0 })
   readonly position: number;
+
+  @Prop({ type: Boolean, default: false })
+  readonly isNewCategory: boolean;
 }
 
 export type CategoryDocument = Category & Document;

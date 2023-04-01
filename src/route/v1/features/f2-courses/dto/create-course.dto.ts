@@ -1,6 +1,13 @@
 import { Type } from 'class-transformer';
 import {
-  IsArray, IsBoolean, IsMongoId, IsNotEmpty, IsNumber, IsOptional, IsString, ValidateNested,
+  IsArray,
+  IsBoolean,
+  IsMongoId,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+  ValidateNested,
 } from 'class-validator';
 import { DescItemDto } from 'src/util/types/dto/desc-item.dto';
 
@@ -64,7 +71,7 @@ export default class CreateCourseDto {
   readonly thumbnail: string;
 
   @IsOptional()
-  @IsString()
+  @IsNumber()
   readonly totalViews: number;
 
   @IsOptional()

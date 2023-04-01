@@ -7,5 +7,5 @@ export class LearningPathGroupCourseDto {
 
   @IsOptional()
   @IsBoolean()
-  isRelated: string;
+  isRelated: boolean;
 }

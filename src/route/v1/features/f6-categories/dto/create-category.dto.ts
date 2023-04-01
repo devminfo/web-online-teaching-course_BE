@@ -1,5 +1,9 @@
 import {
-  IsNotEmpty, IsNumber, IsOptional, IsString
+  IsBoolean,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
 } from 'class-validator';
 
 export default class CreateCategoryDto {
@@ -18,4 +22,8 @@ export default class CreateCategoryDto {
   @IsNotEmpty()
   @IsNumber()
   position: number;
+
+  @IsOptional()
+  @IsBoolean()
+  readonly isNewCategory: boolean;
 }

@@ -5,7 +5,7 @@ import { Document, Types } from 'mongoose';
 import { GenderEnum } from '@enum/1.gender.enum';
 import { ReceivedNotificationTypeEnum } from '@enum/7.received-notification-type.enum ';
 import { MethodRouteEnum } from '@enum/method-route.enum';
-import { RoleUserEnum } from '@enum/role-user.enum';
+import { RoleUserEnum, TypeUserEnum } from '@enum/role-user.enum';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { GroupDetailType } from 'src/util/types/group-detail.type';
 import { MyLearningCourseDto } from 'src/util/types/dto/my-learning-course.dto';
@@ -51,6 +51,9 @@ export class User {
 
   @Prop({ type: String, enum: RoleUserEnum, default: RoleUserEnum.customer })
   readonly role: RoleUserEnum = RoleUserEnum.customer;
+
+  @Prop({ type: String, enum: TypeUserEnum, default: TypeUserEnum.student })
+  readonly typeUser: TypeUserEnum;
 
   @Prop({ type: String, default: '' })
   readonly fullName: string;
