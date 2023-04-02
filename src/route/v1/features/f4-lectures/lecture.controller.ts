@@ -4,7 +4,16 @@ import { ApiQueryParams } from '@decorator/api-query-params.decorator';
 import AqpDto from '@interceptor/aqp/aqp.dto';
 import WrapResponseInterceptor from '@interceptor/wrap-response.interceptor';
 import {
-  Body, Controller, Delete, Get, HttpCode, NotFoundException, Param, Post, Put, Query,
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  NotFoundException,
+  Param,
+  Post,
+  Put,
+  Query,
   UseInterceptors,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
@@ -13,12 +22,16 @@ import ParseObjectIdPipe from '@pipe/parse-object-id.pipe';
 import CreateLectureDto from './dto/create-lecture.dto';
 import UpdateLectureDto from './dto/update-lecture.dto';
 import LectureService from './lecture.service';
+import ChapterService from '@features/f3-chapters/chapter.service';
 
 @ApiTags('Lectures')
 @UseInterceptors(WrapResponseInterceptor)
 @Controller()
 export default class LectureController {
-  constructor(private readonly lectureService: LectureService) {}
+  constructor(
+    private readonly lectureService: LectureService,
+    private readonly chapterService: ChapterService,
+  ) {}
 
   /**
    * Find all
@@ -43,6 +56,10 @@ export default class LectureController {
   @HttpCode(201)
   async create(@Body() body: CreateLectureDto): Promise<any> {
     const result = await this.lectureService.create(body);
+
+    await this.chapterService.updateOneById(body.idChapter, {
+      $addToSet: { lectures: result._id },
+    });
 
     return result;
   }

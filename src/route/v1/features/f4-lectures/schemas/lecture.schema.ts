@@ -5,6 +5,9 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema({ timestamps: true, versionKey: false })
 export class Lecture {
+  @Prop({ type: String, ref: 'Chapter' })
+  readonly idChapter: string;
+
   @Prop({ type: String, enum: LectureTypeEnum, default: LectureTypeEnum.VIDEO })
   readonly type: LectureTypeEnum;
 

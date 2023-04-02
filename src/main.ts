@@ -32,7 +32,8 @@ async function bootstrap() {
     new ValidationPipe({
       whitelist: true,
       forbidNonWhitelisted: true,
-      exceptionFactory: (errors: ValidationError[]) => new ValidationExceptions(errors),
+      exceptionFactory: (errors: ValidationError[]) =>
+        new ValidationExceptions(errors),
     }),
   );
 
@@ -92,8 +93,8 @@ async function bootstrap() {
   }
 
   // Protected routes with roles guard
-  // const rolesGuard = app.get<RolesGuard>(RolesGuard);
-  // app.useGlobalGuards(rolesGuard);
+  const rolesGuard = app.get<RolesGuard>(RolesGuard);
+  app.useGlobalGuards(rolesGuard);
 
   // run app
   await app.listen(port, async () => {

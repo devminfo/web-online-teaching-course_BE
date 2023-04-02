@@ -1,15 +1,10 @@
 import { Document } from 'mongoose';
-import { DescItemDto } from 'src/util/types/dto/desc-item.dto';
-
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema({ timestamps: true, versionKey: false })
 export class Course {
-  @Prop({ type: [{ type: String, ref: 'User' }], default: [] })
-  readonly idCategories: string[];
-
-  @Prop({ type: [{ type: String, ref: 'User' }], default: [] })
-  readonly instructors: string[];
+  @Prop({ type: String, ref: 'User' })
+  readonly instructor: string;
 
   @Prop({ type: String, default: '' })
   readonly title: string;
@@ -17,17 +12,8 @@ export class Course {
   @Prop({ type: String, default: '' })
   readonly target: string;
 
-  @Prop({
-    type: [
-      {
-        position: Number,
-        text: String,
-        icon: String,
-      },
-    ],
-    default: [],
-  })
-  readonly targetDetails: DescItemDto[];
+  @Prop({ type: String })
+  readonly targetDetails: string;
 
   @Prop({ type: Number, default: 0 })
   readonly totalChapter: number;
@@ -38,17 +24,8 @@ export class Course {
   @Prop({ type: Number, default: 0 })
   readonly totalTime: number;
 
-  @Prop({
-    type: [
-      {
-        position: Number,
-        text: String,
-        icon: String,
-      },
-    ],
-    default: [],
-  })
-  readonly requirements: DescItemDto[];
+  @Prop({ type: String })
+  readonly requirements: string;
 
   @Prop({ type: String, default: '' })
   readonly desc: string;
@@ -71,8 +48,8 @@ export class Course {
   @Prop({ type: Number, default: 0 })
   readonly totalDislikes: number;
 
-  @Prop({ type: [String], default: [] })
-  readonly tags: string[];
+  @Prop({ type: String, default: '' })
+  readonly tags: string;
 
   @Prop({ type: Boolean, default: false })
   readonly isPrivate: boolean;

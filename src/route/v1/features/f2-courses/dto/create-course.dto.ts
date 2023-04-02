@@ -1,4 +1,3 @@
-import { Type } from 'class-transformer';
 import {
   IsArray,
   IsBoolean,
@@ -7,20 +6,12 @@ import {
   IsNumber,
   IsOptional,
   IsString,
-  ValidateNested,
 } from 'class-validator';
-import { DescItemDto } from 'src/util/types/dto/desc-item.dto';
 
 export default class CreateCourseDto {
   @IsNotEmpty()
-  @IsArray()
-  @IsMongoId({ each: true })
-  readonly idCategories: string[];
-
-  @IsNotEmpty()
-  @IsArray()
-  @IsMongoId({ each: true })
-  readonly instructors: string[];
+  @IsMongoId()
+  readonly instructor: string;
 
   @IsNotEmpty()
   @IsString()
@@ -31,10 +22,8 @@ export default class CreateCourseDto {
   readonly target: string;
 
   @IsOptional()
-  @IsArray()
-  @ValidateNested({ each: true })
-  @Type(() => DescItemDto)
-  readonly targetDetails: DescItemDto[];
+  @IsString()
+  readonly targetDetails: string;
 
   @IsOptional()
   @IsNumber()
@@ -49,10 +38,8 @@ export default class CreateCourseDto {
   readonly totalTime: number;
 
   @IsOptional()
-  @IsArray()
-  @ValidateNested({ each: true })
-  @Type(() => DescItemDto)
-  readonly requirements: DescItemDto[];
+  @IsString()
+  readonly requirements: string;
 
   @IsOptional()
   @IsString()
@@ -83,9 +70,8 @@ export default class CreateCourseDto {
   readonly totalDislikes: number;
 
   @IsOptional()
-  @IsArray({})
-  @IsString({ each: true })
-  readonly tags: string[];
+  @IsString()
+  readonly tags: string;
 
   @IsOptional()
   @IsBoolean()

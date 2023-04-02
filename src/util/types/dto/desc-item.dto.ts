@@ -8,8 +8,4 @@ export class DescItemDto {
   @IsOptional()
   @IsString()
   text: string;
-
-  @IsOptional()
-  @IsString()
-  icon: string;
 }
