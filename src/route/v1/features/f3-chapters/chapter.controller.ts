@@ -37,8 +37,13 @@ export default class ChapterController {
    */
   @Get('')
   @HttpCode(200)
-  async findAll(@Query() query: any): Promise<any> {
-    const result = await this.chapterService.findManyBy(query);
+  async findAll(@ApiQueryParams() query: AqpDto): Promise<any> {
+    const { filter, population, ...options } = query;
+
+    if (population) {
+      (<any>options).populate = population;
+    }
+    const result = await this.chapterService.findManyBy(query.filter, options);
     return result;
   }
 

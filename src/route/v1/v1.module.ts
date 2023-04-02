@@ -21,7 +21,6 @@ import BannerModule from '@features/f1-banners/banner.module';
 import CourseModule from '@features/f2-courses/course.module';
 import ChapterModule from '@features/f3-chapters/chapter.module';
 import LearningPathModule from '@features/f5-learning-paths/learning-path.module';
-import CategoryModule from '@features/f6-categories/category.module';
 import PostModule from '@features/f7-posts/post.module';
 import CommentModule from '@features/f8-comments/comment.module';
 import ConversationModule from '@features/f9-conversations/conversation.module';
@@ -97,10 +96,6 @@ const routes: Routes = [
         module: LearningPathModule,
       },
       {
-        path: 'categories',
-        module: CategoryModule,
-      },
-      {
         path: 'posts',
         module: PostModule,
       },
@@ -161,7 +156,7 @@ const imports = [
   GroupDetailModule,
   GroupApiModule,
   RolesGuard,
-
+  SettingModule,
   // Seed
   // SeedModule,
 
@@ -183,7 +178,6 @@ const imports = [
   ChapterModule,
   LectureModule,
   LearningPathModule,
-  CategoryModule,
   PostModule,
   CommentModule,
   ConversationModule,
