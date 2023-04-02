@@ -53,9 +53,7 @@ export default class GroupDetailController {
   @Get('')
   @HttpCode(200)
   async findAll(@ApiQueryParams() query: AqpDto): Promise<any> {
-    const {
-      limit, filter, population, ...options
-    } = query;
+    const { limit, filter, population, ...options } = query;
     (<any>options).populate = population;
 
     const result = await this.groupDetailService.findManyBy(filter, options);
@@ -114,19 +112,17 @@ export default class GroupDetailController {
   ): Promise<any> {
     const { childs, ...rest } = body;
 
-    const updateChildsPromise = this.groupDetailService.updateManyBy(
+    const updateChilds = await this.groupDetailService.updateManyBy(
       { _id: { $in: childs } },
       { isChild: true },
     );
-    const updateGroupDetailPromise = this.groupDetailService.updateOneById(id, {
-      ...rest,
-      $addToSet: { childs },
-    });
 
-    const [_, updateGroupDetail] = await Promise.all([
-      updateChildsPromise,
-      updateGroupDetailPromise,
-    ]);
+    const updateGroupDetail = await this.groupDetailService.updateOneById(id, {
+      ...rest,
+      $addToSet: {
+        childs: { $each: childs },
+      },
+    });
 
     return updateGroupDetail;
   }
@@ -337,7 +333,8 @@ export default class GroupDetailController {
       this.userService.findOneById(id),
     ]);
 
-    if (!user || !groupDetail) throw new NotFoundException('Resource not found.');
+    if (!user || !groupDetail)
+      throw new NotFoundException('Resource not found.');
     const { groups, groupDetails } = user;
 
     // check groups details
@@ -362,7 +359,8 @@ export default class GroupDetailController {
 
       if (groupExist) {
         const groupDetailInGroup = groupExist.groupDetails.find(
-          (item: any) => item.idGroupDetail.toString() === groupDetail._id.toString(),
+          (item: any) =>
+            item.idGroupDetail.toString() === groupDetail._id.toString(),
         );
 
         // update access methods

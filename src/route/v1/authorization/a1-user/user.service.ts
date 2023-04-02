@@ -8,7 +8,11 @@ import BaseService from '@base-inherit/base.service';
 import OtpService from '@common/c2-otp/otp.service';
 import { adminConstants } from '@constant/admin.constants';
 import CustomLoggerService from '@lazy-module/logger/logger.service';
-import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 
 import CreateUserDto from './dto/create-user.dto';
 import { UpdatePasswordByEmailDto } from './dto/update-password-by-email.dto';
@@ -37,9 +41,7 @@ export default class UserService extends BaseService<UserDocument> {
    * @returns
    */
   public async validateUser(data: ValidateUserDto) {
-    const {
-      phone, tokenLogin, email, username,
-    } = data;
+    const { phone, tokenLogin, email, username } = data;
     // Check phone exist
     if (phone) {
       const userExists = await this.userRepository.findByPhone(phone);
@@ -180,7 +182,8 @@ export default class UserService extends BaseService<UserDocument> {
     // validate user
     const userExist = await this.validateUser({ phone, tokenLogin, email });
 
-    if (userExist) throw new BadRequestException('phone/email/tokenLogin already exist.');
+    if (userExist)
+      throw new BadRequestException('phone/email/tokenLogin already exist.');
 
     const user = await this.userRepository.updateOneById(id, data, options);
 
@@ -388,6 +391,9 @@ export default class UserService extends BaseService<UserDocument> {
    * Auto reset authorization and seed an account
    */
   async seedAdminAndResetAuthorization(router: any) {
+    await this.groupApiService.deleteManyHard({});
+    await this.groupDetailService.deleteManyHard({});
+    await this.groupService.deleteManyHard({});
     await this._resetGroupDetails(router);
     const admin = await this._createAdmin();
     this.logger.log('CREATE ACCOUNT ADMIN SUCCESSFULLY!');

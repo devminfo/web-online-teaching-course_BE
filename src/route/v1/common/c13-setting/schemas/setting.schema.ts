@@ -12,12 +12,6 @@ export class Setting {
   readonly policy: string;
 
   @Prop({ type: String, default: '' })
-  readonly timeZoneServer: string;
-
-  @Prop({ type: String, default: '' })
-  readonly timeZoneApp: string;
-
-  @Prop({ type: String, default: '' })
   readonly accountName: string;
 
   @Prop({ type: String, default: '' })

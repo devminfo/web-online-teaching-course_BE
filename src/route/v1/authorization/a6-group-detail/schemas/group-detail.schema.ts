@@ -4,7 +4,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema({ timestamps: true, versionKey: false })
 export class GroupDetail {
-  @Prop({ type: String, required: true })
+  @Prop({ type: String, default: '' })
   collectionName: string;
 
   @Prop({ type: Boolean, default: false })
