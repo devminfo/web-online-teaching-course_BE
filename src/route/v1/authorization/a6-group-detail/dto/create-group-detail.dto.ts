@@ -1,9 +1,15 @@
 import {
-  IsArray, IsBoolean, IsMongoId, IsNotEmpty, IsNumber, IsOptional, IsString,
+  IsArray,
+  IsBoolean,
+  IsMongoId,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
 } from 'class-validator';
 
 export default class CreateGroupDetailDto {
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   collectionName: string;
 
