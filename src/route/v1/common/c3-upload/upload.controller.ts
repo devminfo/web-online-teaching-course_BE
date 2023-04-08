@@ -89,8 +89,7 @@ export default class UploadController {
     const result = [];
 
     // check enable upload s3
-    if (!this.storageService.isUploadToS3)
-      throw new NotImplementedException('Does not support uploading s3');
+    if (!this.storageService.isUploadToS3) throw new NotImplementedException('Does not support uploading s3');
 
     for (let i = 0; i < files.length; i += 1) {
       result.push(`upload/tmp/${(files[i] as any).key}`);
@@ -126,9 +125,7 @@ export default class UploadController {
     });
 
     // save list file
-    const filesWasUsedPromise = fileToConfirm.map((file) =>
-      this.uploadLocalService.confirmFileWasUsed(userId, file),
-    );
+    const filesWasUsedPromise = fileToConfirm.map((file) => this.uploadLocalService.confirmFileWasUsed(userId, file),);
 
     // run promise
     const result = await Promise.all(filesWasUsedPromise);
@@ -149,9 +146,7 @@ export default class UploadController {
     @Body('files') files: string[],
   ) {
     // save list file
-    const filesWasUsedPromise = files.map((file) =>
-      this.uploadS3Service.confirmFileWasUsed(userId, file),
-    );
+    const filesWasUsedPromise = files.map((file) => this.uploadS3Service.confirmFileWasUsed(userId, file),);
 
     // run promise
     const result = Promise.all(filesWasUsedPromise);

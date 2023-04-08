@@ -1,5 +1,10 @@
 import {
-  IsEnum, IsMongoId, IsNotEmpty, IsNumber, IsOptional, IsString,
+  IsEnum,
+  IsMongoId,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
 } from 'class-validator';
 import { ObjectId } from 'mongodb';
 
@@ -14,11 +19,7 @@ export default class CreateTransactionDto {
 
   @IsNotEmpty()
   @IsMongoId()
-  readonly idServiceOrder: ObjectId;
-
-  @IsNotEmpty()
-  @IsMongoId()
-  readonly idStore: ObjectId;
+  readonly idCourse: ObjectId;
 
   @IsOptional()
   @IsEnum(TransactionTypeEnum)
@@ -66,5 +67,5 @@ export default class CreateTransactionDto {
 
   @IsOptional()
   @IsString()
-  readonly unitMoney: string;
+  readonly email: string;
 }

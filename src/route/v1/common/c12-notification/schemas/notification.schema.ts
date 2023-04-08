@@ -18,7 +18,7 @@ export class Notification {
   @Prop({
     type: String,
     enum: NotificationEntityTypeEnum,
-    default: NotificationEntityTypeEnum.CARE_CUSTOMER,
+    default: NotificationEntityTypeEnum.TRANSACTION,
   })
   readonly entityType: NotificationEntityTypeEnum;
 

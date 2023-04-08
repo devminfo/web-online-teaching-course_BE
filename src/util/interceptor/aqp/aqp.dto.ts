@@ -1,5 +1,5 @@
 import {
-  IsArray, IsNumber, IsObject, Max,
+  IsArray, IsNumber, IsObject, Max
 } from 'class-validator';
 
 import { ApiPropertyOptional } from '@nestjs/swagger';
@@ -10,7 +10,7 @@ export default class AqpDto {
     default: {},
   })
   @IsObject()
-  readonly filter: object = {};
+  readonly filter: any = {};
 
   @ApiPropertyOptional({
     type: Boolean,
@@ -46,5 +46,5 @@ export default class AqpDto {
     default: [],
   })
   @IsArray()
-  readonly population: any[] = [];
+  population: any[] = [];
 }

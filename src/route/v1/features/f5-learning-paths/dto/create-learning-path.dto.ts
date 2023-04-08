@@ -1,10 +1,18 @@
-import { Type } from 'class-transformer';
 import {
-  IsArray, IsNotEmpty, IsString, ValidateNested
+  IsArray,
+  IsBoolean,
+  IsMongoId,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
 } from 'class-validator';
-import { LearningPathGroupDto } from 'src/util/types/dto/learning-path-group.dto';
 
 export default class CreateLearningPathDto {
+  @IsNotEmpty()
+  @IsMongoId()
+  readonly createdBy: string;
+
   @IsNotEmpty()
   @IsString()
   readonly title: string;
@@ -13,13 +21,23 @@ export default class CreateLearningPathDto {
   @IsString()
   readonly desc: string;
 
+  @IsNumber()
+  readonly position: number;
+
   @IsNotEmpty()
   @IsString()
   readonly thumbnail: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsArray()
-  @ValidateNested({ each: true })
-  @Type(() => LearningPathGroupDto)
-  readonly learningPathGroups: LearningPathGroupDto[];
+  @IsMongoId({ each: true })
+  readonly courses: string[];
+
+  @IsOptional()
+  @IsMongoId()
+  readonly idParent: string;
+
+  @IsOptional()
+  @IsBoolean()
+  readonly isParent: boolean;
 }

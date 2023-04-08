@@ -33,12 +33,18 @@ export default class MailerService {
     );
   }
 
+  /**
+   * Init send grid mail
+   */
   private initSendGridMail() {
     this.typeTransport = 'sendgrid';
     SendGridMail.setApiKey(ShareFunction.env().MAILER_SENDGRID_API_KEY);
     this.logger.log('MailerModule SENDGRID init');
   }
 
+  /**
+   * Init node mailer
+   */
   private initNodeMailer() {
     this.typeTransport = 'gmail';
     this.nodeMailerInstance = nodemailer.createTransport({
@@ -52,6 +58,12 @@ export default class MailerService {
     this.logger.log('MailerModule GMAIL init');
   }
 
+  /**
+   * Send email
+   *
+   * @param params
+   * @returns
+   */
   public sendEmail(params: any) {
     if (this.typeTransport === 'sendgrid') return SendGridMail?.send(params);
 
@@ -60,6 +72,14 @@ export default class MailerService {
     return null;
   }
 
+  /**
+   * Send OTP
+   *
+   * @param verificationCode
+   * @param to
+   * @param subject
+   * @param from
+   */
   public async sendOTP(
     verificationCode: string,
     to: string,
@@ -85,6 +105,47 @@ export default class MailerService {
     }
   }
 
+  /**
+   * Send verify buy course
+   *
+   * @param verificationCode
+   * @param to
+   * @param subject
+   * @param from
+   */
+  public async sendLinkVerify(
+    verificationLink: string,
+    to: string,
+    subject: string,
+    from?: string,
+  ) {
+    try {
+      const nameFromEnv = ShareFunction.env().MAILER_FROM_NAME;
+      const mailFromEnv = ShareFunction.env().MAILER_FROM_EMAIL;
+
+      const params = {
+        from: from ?? `"${nameFromEnv} ⭐" <${mailFromEnv}>`,
+        to, // list of receivers like "bar@example.com, baz@example.com"
+        subject, // Subject line
+        html: MailerTemplate.templateVerify.render({
+          VERIFICATION_LINK: verificationLink,
+        }),
+      };
+      await this.sendEmail(params);
+      this.logger.log('Send email success');
+    } catch (e) {
+      this.logger.log('MailerModule sendOTP', (e as any).toString());
+    }
+  }
+
+  /**
+   * Send verify
+   *
+   * @param verificationLink
+   * @param to
+   * @param subject
+   * @param from
+   */
   public async sendVerify(
     verificationLink: string,
     to: string,

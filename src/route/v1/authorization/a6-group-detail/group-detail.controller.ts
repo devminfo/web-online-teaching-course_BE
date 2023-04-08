@@ -53,7 +53,9 @@ export default class GroupDetailController {
   @Get('')
   @HttpCode(200)
   async findAll(@ApiQueryParams() query: AqpDto): Promise<any> {
-    const { limit, filter, population, ...options } = query;
+    const {
+      limit, filter, population, ...options
+    } = query;
     (<any>options).populate = population;
 
     const result = await this.groupDetailService.findManyBy(filter, options);
@@ -333,8 +335,7 @@ export default class GroupDetailController {
       this.userService.findOneById(id),
     ]);
 
-    if (!user || !groupDetail)
-      throw new NotFoundException('Resource not found.');
+    if (!user || !groupDetail) throw new NotFoundException('Resource not found.');
     const { groups, groupDetails } = user;
 
     // check groups details
@@ -359,8 +360,7 @@ export default class GroupDetailController {
 
       if (groupExist) {
         const groupDetailInGroup = groupExist.groupDetails.find(
-          (item: any) =>
-            item.idGroupDetail.toString() === groupDetail._id.toString(),
+          (item: any) => item.idGroupDetail.toString() === groupDetail._id.toString(),
         );
 
         // update access methods
