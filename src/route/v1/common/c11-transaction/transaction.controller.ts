@@ -4,12 +4,23 @@ import { ApiQueryParams } from '@decorator/api-query-params.decorator';
 import AqpDto from '@interceptor/aqp/aqp.dto';
 import WrapResponseInterceptor from '@interceptor/wrap-response.interceptor';
 import {
-  Body, Controller, Delete, Get, HttpCode, NotFoundException, Param, Post, Put, Query,
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  NotFoundException,
+  Param,
+  Post,
+  Put,
+  Query,
   UseInterceptors,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import ParseObjectIdPipe from '@pipe/parse-object-id.pipe';
 
+import { ObjectId } from 'mongodb';
+import { TransactionStatusEnum } from '@enum/3.transaction-status.enum';
 import CreateTransactionDto from './dto/create-transaction.dto';
 import UpdateTransactionDto from './dto/update-transaction.dto';
 import TransactionService from './transaction.service';
@@ -45,6 +56,31 @@ export default class TransactionController {
     const result = await this.transactionService.create(body);
 
     return result;
+  }
+
+  /**
+   * confirm transaction
+   *
+   * @param id
+   * @param body
+   * @returns
+   */
+  @Put(':id/confirm')
+  @HttpCode(200)
+  async confirmTransaction(
+    @Param('id', ParseObjectIdPipe) id: ObjectId,
+    @Body('status')
+      status: TransactionStatusEnum = TransactionStatusEnum.FAILURE,
+    @Body('title') title: string,
+    @Body('content') content: string,
+    @Body('type') type: string,
+  ): Promise<any> {
+    return this.transactionService.confirm(id, {
+      status,
+      title,
+      content,
+      type,
+    });
   }
 
   /**

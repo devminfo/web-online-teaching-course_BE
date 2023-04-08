@@ -4,7 +4,16 @@ import { ApiQueryParams } from '@decorator/api-query-params.decorator';
 import AqpDto from '@interceptor/aqp/aqp.dto';
 import WrapResponseInterceptor from '@interceptor/wrap-response.interceptor';
 import {
-  Body, Controller, Delete, Get, HttpCode, NotFoundException, Param, Post, Put, Query,
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  NotFoundException,
+  Param,
+  Post,
+  Put,
+  Query,
   UseInterceptors,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
@@ -28,8 +37,13 @@ export default class LearningPathController {
    */
   @Get('')
   @HttpCode(200)
-  async findAll(@Query() query: any): Promise<any> {
-    const result = await this.learningPathService.findManyBy(query);
+  async findAll(@ApiQueryParams() query: AqpDto): Promise<any> {
+    const { population, filter, ...options } = query;
+    if (population) {
+      (<any>options).populate = query.population;
+    }
+
+    const result = await this.learningPathService.findManyBy(filter, options);
     return result;
   }
 

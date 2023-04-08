@@ -11,11 +11,8 @@ export class Transaction {
   @Prop({ type: Types.ObjectId, ref: 'User' })
   readonly idUser: ObjectId;
 
-  @Prop({ type: Types.ObjectId, ref: 'ServiceOrder' })
-  readonly idServiceOrder: ObjectId;
-
-  @Prop({ type: Types.ObjectId, ref: 'Store' })
-  readonly idStore: ObjectId;
+  @Prop({ type: Types.ObjectId, ref: 'Course' })
+  readonly idCourse: ObjectId;
 
   @Prop({
     type: String,
@@ -63,7 +60,7 @@ export class Transaction {
   readonly totalMoney: number;
 
   @Prop({ type: String, default: '' })
-  readonly unitMoney: string;
+  readonly email: string;
 }
 
 export type TransactionDocument = Transaction & Document;

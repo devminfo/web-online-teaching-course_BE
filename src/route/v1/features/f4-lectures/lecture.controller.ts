@@ -19,10 +19,10 @@ import {
 import { ApiTags } from '@nestjs/swagger';
 import ParseObjectIdPipe from '@pipe/parse-object-id.pipe';
 
+import ChapterService from '@features/f3-chapters/chapter.service';
 import CreateLectureDto from './dto/create-lecture.dto';
 import UpdateLectureDto from './dto/update-lecture.dto';
 import LectureService from './lecture.service';
-import ChapterService from '@features/f3-chapters/chapter.service';
 
 @ApiTags('Lectures')
 @UseInterceptors(WrapResponseInterceptor)

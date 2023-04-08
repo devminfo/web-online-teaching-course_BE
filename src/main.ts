@@ -32,8 +32,7 @@ async function bootstrap() {
     new ValidationPipe({
       whitelist: true,
       forbidNonWhitelisted: true,
-      exceptionFactory: (errors: ValidationError[]) =>
-        new ValidationExceptions(errors),
+      exceptionFactory: (errors: ValidationError[]) => new ValidationExceptions(errors),
     }),
   );
 

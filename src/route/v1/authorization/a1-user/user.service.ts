@@ -41,7 +41,9 @@ export default class UserService extends BaseService<UserDocument> {
    * @returns
    */
   public async validateUser(data: ValidateUserDto) {
-    const { phone, tokenLogin, email, username } = data;
+    const {
+      phone, tokenLogin, email, username
+    } = data;
     // Check phone exist
     if (phone) {
       const userExists = await this.userRepository.findByPhone(phone);
@@ -70,6 +72,18 @@ export default class UserService extends BaseService<UserDocument> {
     }
 
     return null;
+  }
+
+  /**
+   * Get admin
+   *
+   * @returns
+   */
+  public async getAdmin() {
+    const filterAdmin = {
+      email: 'admin@gmail.com',
+    };
+    return this.userRepository.findOneBy(filterAdmin);
   }
 
   /**
@@ -182,8 +196,7 @@ export default class UserService extends BaseService<UserDocument> {
     // validate user
     const userExist = await this.validateUser({ phone, tokenLogin, email });
 
-    if (userExist)
-      throw new BadRequestException('phone/email/tokenLogin already exist.');
+    if (userExist) throw new BadRequestException('phone/email/tokenLogin already exist.');
 
     const user = await this.userRepository.updateOneById(id, data, options);
 
