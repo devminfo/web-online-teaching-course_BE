@@ -67,7 +67,8 @@ export default class MailerService {
   public sendEmail(params: any) {
     if (this.typeTransport === 'sendgrid') return SendGridMail?.send(params);
 
-    if (this.typeTransport === 'gmail') return this.nodeMailerInstance?.sendMail(params);
+    if (this.typeTransport === 'gmail')
+      return this.nodeMailerInstance?.sendMail(params);
 
     return null;
   }

@@ -1,6 +1,4 @@
-import {
-  IsBoolean, IsMongoId, IsNumber, IsOptional
-} from 'class-validator';
+import { IsMongoId, IsNumber, IsOptional } from 'class-validator';
 
 export class MyLearningCourseDto {
   @IsOptional()

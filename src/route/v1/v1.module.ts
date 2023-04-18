@@ -171,6 +171,7 @@ const imports = [
   VillageModule,
   HistoryModule,
   DashboardModule,
+  TransactionModule,
 
   // features
   BannerModule,

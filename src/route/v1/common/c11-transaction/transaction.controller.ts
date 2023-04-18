@@ -69,18 +69,9 @@ export default class TransactionController {
   @HttpCode(200)
   async confirmTransaction(
     @Param('id', ParseObjectIdPipe) id: ObjectId,
-    @Body('status')
-      status: TransactionStatusEnum = TransactionStatusEnum.FAILURE,
-    @Body('title') title: string,
-    @Body('content') content: string,
-    @Body('type') type: string,
+    @Body() body: UpdateTransactionDto,
   ): Promise<any> {
-    return this.transactionService.confirm(id, {
-      status,
-      title,
-      content,
-      type,
-    });
+    return this.transactionService.confirm(id, body);
   }
 
   /**
