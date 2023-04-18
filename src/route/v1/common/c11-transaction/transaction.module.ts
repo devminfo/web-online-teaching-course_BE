@@ -1,4 +1,5 @@
 import NotificationModule from '@common/c12-notification/notification.module';
+import CourseModule from '@features/f2-courses/course.module';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
@@ -16,6 +17,7 @@ import TransactionService from './transaction.service';
       },
     ]),
     NotificationModule,
+    CourseModule,
   ],
   controllers: [TransactionController],
   providers: [TransactionService, TransactionRepository],
