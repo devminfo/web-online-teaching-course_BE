@@ -20,7 +20,8 @@ import WebsocketCustomService from './websocket-custom.service';
 @UseFilters(WsExceptionsFilter)
 @WebSocketGateway(6036, { cors: true })
 export default class WebsocketCustomGateway
-implements OnGatewayConnection, OnGatewayDisconnect, OnGatewayInit {
+  implements OnGatewayConnection, OnGatewayDisconnect, OnGatewayInit
+{
   indexAtRoom: any = '';
 
   peers: any = {};
@@ -83,7 +84,7 @@ implements OnGatewayConnection, OnGatewayDisconnect, OnGatewayInit {
   }
 
   @SubscribeMessage('message')
-  onSendMessage(@MessageBody() data: string) {
+  onSendMessage(@MessageBody() data: any) {
     /* eslint no-console: 0 */
     console.log('message', data);
     this.server?.sockets.emit('message', data);

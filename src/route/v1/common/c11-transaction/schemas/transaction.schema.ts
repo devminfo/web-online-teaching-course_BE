@@ -61,6 +61,9 @@ export class Transaction {
 
   @Prop({ type: String, default: '' })
   readonly email: string;
+
+  @Prop({ type: String, default: '' })
+  readonly phone: string;
 }
 
 export type TransactionDocument = Transaction & Document;

@@ -115,7 +115,9 @@ export class User {
   readonly myCourses: string[];
 
   @Prop({
-    type: [{ course: { type: String, ref: 'Course' }, currentLesson: Number }],
+    type: [
+      { idCourse: { type: String, ref: 'Course' }, currentLesson: Number },
+    ],
     default: [],
   })
   readonly myLearningCourses: MyLearningCourseDto[];

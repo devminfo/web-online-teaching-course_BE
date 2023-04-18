@@ -12,6 +12,8 @@ import CreateTransactionDto from './dto/create-transaction.dto';
 
 import { TransactionDocument } from './schemas/transaction.schema';
 import TransactionRepository from './transaction.repository';
+import { ShareFunction } from '@helper/static-function';
+import UpdateTransactionDto from './dto/update-transaction.dto';
 
 @Injectable()
 export default class TransactionService extends BaseService<TransactionDocument> {
@@ -31,15 +33,7 @@ export default class TransactionService extends BaseService<TransactionDocument>
    * @param id
    * @returns
    */
-  async confirm(
-    id: ObjectId,
-    item: {
-      status: TransactionStatusEnum;
-      title: string;
-      content: string;
-      type: string;
-    },
-  ) {
+  async confirm(id: ObjectId, body: UpdateTransactionDto) {
     const [transaction, admin] = await Promise.all([
       this.transactionRepository.findOneBy(
         {
@@ -47,23 +41,37 @@ export default class TransactionService extends BaseService<TransactionDocument>
           status: TransactionStatusEnum.CHECKING,
         },
         {
-          populate: 'idUser',
+          populate: [
+            {
+              path: 'idUser',
+            },
+            {
+              path: 'idCourse',
+              populate: {
+                path: 'instructor',
+              },
+            },
+          ],
         },
       ),
       this.userService.getAdmin(),
     ]);
 
-    const linkVerify = `http://localhost:3000/verify/${transaction._id}/${item.type}`;
+    const CLIENT_URL = ShareFunction.env().CLIENT_URL;
+    const linkVerify = `${CLIENT_URL}/verify/${transaction._id}/${body.type}`;
 
     if (!transaction) throw new BadRequestException('Transaction not found.');
 
-    if (item.type === TransactionStatusEnum.SUCCESS) {
+    const to = transaction.email;
+    const from = transaction.dCourse.instructor?.email || 'noreply@gmail.com';
+
+    if (body.status === TransactionStatusEnum.SUCCESS) {
       // send transaction email success
       await this.mailerService.sendLinkVerify(
         linkVerify,
-        transaction.idUser?.email,
-        item.title,
-        admin?.email,
+        to,
+        body.title!,
+        from,
       );
     }
 
@@ -73,28 +81,16 @@ export default class TransactionService extends BaseService<TransactionDocument>
       usersReceived: [transaction.idUser],
       entityType: NotificationEntityTypeEnum.TRANSACTION,
       idEntity: transaction._id,
-      title: item.title,
-      content: item.content,
+      title: body.title,
+      content: body.content,
     };
 
     const [notification, transactionUpdated] = await Promise.all([
       this.notificationRepository.create(itemNotification),
-      this.transactionRepository.updateOneById(id, item.status),
+      this.transactionRepository.updateOneById(id, body),
     ]);
 
     return transactionUpdated;
-  }
-
-  /**
-   * Buy Course
-   *
-   * @param body
-   * @returns
-   */
-  async buyCourse(body: CreateTransactionDto): Promise<any> {
-    const result = await this.create(body);
-
-    return result;
   }
 
   /**

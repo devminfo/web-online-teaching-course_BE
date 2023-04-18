@@ -1,3 +1,4 @@
+import NotificationModule from '@common/c12-notification/notification.module';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
@@ -14,6 +15,7 @@ import TransactionService from './transaction.service';
         schema: TransactionSchema,
       },
     ]),
+    NotificationModule,
   ],
   controllers: [TransactionController],
   providers: [TransactionService, TransactionRepository],

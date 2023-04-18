@@ -68,4 +68,8 @@ export default class CreateTransactionDto {
   @IsOptional()
   @IsString()
   readonly email: string;
+
+  @IsOptional()
+  @IsString()
+  readonly phone: string;
 }
