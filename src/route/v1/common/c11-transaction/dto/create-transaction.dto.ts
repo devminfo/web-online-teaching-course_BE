@@ -17,7 +17,7 @@ export default class CreateTransactionDto {
   @IsMongoId()
   readonly idUser: ObjectId;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsMongoId()
   readonly idCourse: ObjectId;
 
