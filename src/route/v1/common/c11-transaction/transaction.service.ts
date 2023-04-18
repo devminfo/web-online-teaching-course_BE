@@ -15,7 +15,7 @@ import TransactionRepository from './transaction.repository';
 import { ShareFunction } from '@helper/static-function';
 import UpdateTransactionDto from './dto/update-transaction.dto';
 import CourseService from '@features/f2-courses/course.service';
-
+import { RoleUserEnum, TypeUserEnum } from '@enum/role-user.enum';
 @Injectable()
 export default class TransactionService extends BaseService<TransactionDocument> {
   constructor(
@@ -65,20 +65,14 @@ export default class TransactionService extends BaseService<TransactionDocument>
     const from = transaction.idCourse.instructor?.email || 'noreply@gmail.com';
 
     if (body.status === TransactionStatusEnum.SUCCESS) {
-      // send transaction email success
-      await this.mailerService.sendLinkVerify(
-        linkVerify,
-        to,
-        body.title!,
-        from,
-      );
-
-      // add user to course
-      await this.courseService.updateOneById(transaction.idCourse._id, {
-        $addToSet: {
-          usersJoined: transaction.idUser._id,
-        },
-      });
+      await Promise.all([
+        this.mailerService.sendLinkVerify(linkVerify, to, body.title!, from),
+        this.courseService.updateOneById(transaction.idCourse._id, {
+          $addToSet: {
+            usersJoined: transaction.idUser._id,
+          },
+        }),
+      ]);
     }
 
     // Create notification
@@ -100,14 +94,54 @@ export default class TransactionService extends BaseService<TransactionDocument>
   }
 
   /**
-   * upgrade to teacher
+   * Confirm transaction
    *
-   * @param body
+   * @param id
    * @returns
    */
-  async upgradeToTeacher(body: CreateTransactionDto): Promise<any> {
-    const result = await this.create(body);
+  async upgradeToTeacher(id: ObjectId, body: UpdateTransactionDto) {
+    const admin = await this.userService.getAdmin();
+    const transaction = await this.transactionRepository.findOneBy({
+      _id: id,
+      status: TransactionStatusEnum.CHECKING,
+    });
 
-    return result;
+    if (!transaction) throw new BadRequestException('Transaction not found.');
+
+    const CLIENT_URL = 'http://localhost:4200/';
+    const linkVerify = `${CLIENT_URL}/`;
+
+    const to = transaction.email;
+    const from = admin?.email || 'noreply@gmail.com';
+
+    if (body.status === TransactionStatusEnum.SUCCESS) {
+      await Promise.all([
+        this.mailerService.sendLinkVerify(linkVerify, to, body.title!, from),
+        this.userService.updateOneBy(
+          { _id: transaction.idUser },
+          {
+            role: RoleUserEnum.manager,
+            typeUser: TypeUserEnum.teacher,
+          },
+        ),
+      ]);
+    }
+
+    // Create notification
+    const itemNotification = {
+      createdBy: admin?._id,
+      usersReceived: [transaction.idUser],
+      entityType: NotificationEntityTypeEnum.TRANSACTION,
+      idEntity: transaction._id,
+      title: body.title,
+      content: body.content,
+    };
+
+    const [notification, transactionUpdated] = await Promise.all([
+      this.notificationRepository.create(itemNotification),
+      this.transactionRepository.updateOneById(id, body),
+    ]);
+
+    return transactionUpdated;
   }
 }
