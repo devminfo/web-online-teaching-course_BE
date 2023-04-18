@@ -14,6 +14,7 @@ import { TransactionDocument } from './schemas/transaction.schema';
 import TransactionRepository from './transaction.repository';
 import { ShareFunction } from '@helper/static-function';
 import UpdateTransactionDto from './dto/update-transaction.dto';
+import CourseService from '@features/f2-courses/course.service';
 
 @Injectable()
 export default class TransactionService extends BaseService<TransactionDocument> {
@@ -23,6 +24,7 @@ export default class TransactionService extends BaseService<TransactionDocument>
     readonly notificationRepository: NotificationRepository,
     readonly userService: UserService,
     readonly mailerService: MailerService,
+    readonly courseService: CourseService,
   ) {
     super(logger, transactionRepository);
   }
@@ -34,36 +36,33 @@ export default class TransactionService extends BaseService<TransactionDocument>
    * @returns
    */
   async confirm(id: ObjectId, body: UpdateTransactionDto) {
-    const [transaction, admin] = await Promise.all([
-      this.transactionRepository.findOneBy(
-        {
-          _id: id,
-          status: TransactionStatusEnum.CHECKING,
-        },
-        {
-          populate: [
-            {
-              path: 'idUser',
+    const transaction = await this.transactionRepository.findOneBy(
+      {
+        _id: id,
+        status: TransactionStatusEnum.CHECKING,
+      },
+      {
+        populate: [
+          {
+            path: 'idUser',
+          },
+          {
+            path: 'idCourse',
+            populate: {
+              path: 'instructor',
             },
-            {
-              path: 'idCourse',
-              populate: {
-                path: 'instructor',
-              },
-            },
-          ],
-        },
-      ),
-      this.userService.getAdmin(),
-    ]);
-
-    const CLIENT_URL = ShareFunction.env().CLIENT_URL;
-    const linkVerify = `${CLIENT_URL}/verify/${transaction._id}/${body.type}`;
+          },
+        ],
+      },
+    );
 
     if (!transaction) throw new BadRequestException('Transaction not found.');
 
+    const CLIENT_URL = ShareFunction.env().CLIENT_URL;
+    const linkVerify = `${CLIENT_URL}/courses/${transaction.idCourse._id}`;
+
     const to = transaction.email;
-    const from = transaction.dCourse.instructor?.email || 'noreply@gmail.com';
+    const from = transaction.idCourse.instructor?.email || 'noreply@gmail.com';
 
     if (body.status === TransactionStatusEnum.SUCCESS) {
       // send transaction email success
@@ -73,11 +72,18 @@ export default class TransactionService extends BaseService<TransactionDocument>
         body.title!,
         from,
       );
+
+      // add user to course
+      await this.courseService.updateOneById(transaction.idCourse._id, {
+        $addToSet: {
+          usersJoined: transaction.idUser._id,
+        },
+      });
     }
 
     // Create notification
     const itemNotification = {
-      createdBy: admin?._id,
+      createdBy: transaction.instructor?._id,
       usersReceived: [transaction.idUser],
       entityType: NotificationEntityTypeEnum.TRANSACTION,
       idEntity: transaction._id,
