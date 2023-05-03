@@ -37,6 +37,10 @@ export class ShareFunction {
     return this.env().CLIENT_URL;
   }
 
+  public static getServerUrl() {
+    return this.env().SERVER_HOST;
+  }
+
   static otpCharset = '0123456789';
 
   // eslint-disable-next-line
@@ -50,16 +54,16 @@ export class ShareFunction {
 
   public static checkIsConfigS3Storage(): boolean {
     return (
-      ShareFunction.checkVariableHasValue(ShareFunction.env().STORAGE_SERVER)
-      && ShareFunction.env().STORAGE_SERVER === 's3'
-      && ShareFunction.checkVariableHasValue(
+      ShareFunction.checkVariableHasValue(ShareFunction.env().STORAGE_SERVER) &&
+      ShareFunction.env().STORAGE_SERVER === 's3' &&
+      ShareFunction.checkVariableHasValue(
         ShareFunction.env().S3_ACCESS_KEY_ID,
-      )
-      && ShareFunction.checkVariableHasValue(
+      ) &&
+      ShareFunction.checkVariableHasValue(
         ShareFunction.env().S3_ACCESS_KEY_SECRET,
-      )
-      && ShareFunction.checkVariableHasValue(ShareFunction.env().S3_REGION)
-      && ShareFunction.checkVariableHasValue(
+      ) &&
+      ShareFunction.checkVariableHasValue(ShareFunction.env().S3_REGION) &&
+      ShareFunction.checkVariableHasValue(
         ShareFunction.env().S3_BUCKET_NAME_PATH,
       )
     );
@@ -105,9 +109,7 @@ export class ShareFunction {
     if (parts[0].length > 64) return false;
 
     const domainParts = parts[1].split('.');
-    if (
-      domainParts.some((part) => part.length > 63)
-    ) return false;
+    if (domainParts.some((part) => part.length > 63)) return false;
 
     return true;
   }
@@ -145,11 +147,11 @@ export class ShareFunction {
     const mailerFromEmail = ShareFunction.env().MAILER_FROM_EMAIL;
 
     return (
-      ShareFunction.checkVariableIsNotNullOrEmpty(mailerServer)
-      && mailerServer === 'sendgrid'
-      && ShareFunction.checkVariableIsNotNullOrEmpty(mailerSendgridApiKey)
-      && ShareFunction.checkVariableIsNotNullOrEmpty(mailerFromName)
-      && ShareFunction.checkVariableIsNotNullOrEmpty(mailerFromEmail)
+      ShareFunction.checkVariableIsNotNullOrEmpty(mailerServer) &&
+      mailerServer === 'sendgrid' &&
+      ShareFunction.checkVariableIsNotNullOrEmpty(mailerSendgridApiKey) &&
+      ShareFunction.checkVariableIsNotNullOrEmpty(mailerFromName) &&
+      ShareFunction.checkVariableIsNotNullOrEmpty(mailerFromEmail)
     );
   }
 
@@ -161,12 +163,12 @@ export class ShareFunction {
     const mailerFromEmail = ShareFunction.env().MAILER_FROM_EMAIL;
 
     return (
-      ShareFunction.checkVariableIsNotNullOrEmpty(mailerServer)
-      && mailerServer === 'gmail'
-      && ShareFunction.checkVariableIsNotNullOrEmpty(mailerGmailUsername)
-      && ShareFunction.checkVariableIsNotNullOrEmpty(mailerGmailPassword)
-      && ShareFunction.checkVariableIsNotNullOrEmpty(mailerFromName)
-      && ShareFunction.checkVariableIsNotNullOrEmpty(mailerFromEmail)
+      ShareFunction.checkVariableIsNotNullOrEmpty(mailerServer) &&
+      mailerServer === 'gmail' &&
+      ShareFunction.checkVariableIsNotNullOrEmpty(mailerGmailUsername) &&
+      ShareFunction.checkVariableIsNotNullOrEmpty(mailerGmailPassword) &&
+      ShareFunction.checkVariableIsNotNullOrEmpty(mailerFromName) &&
+      ShareFunction.checkVariableIsNotNullOrEmpty(mailerFromEmail)
     );
   }
 
@@ -178,12 +180,12 @@ export class ShareFunction {
     const s3BucketNamePath = ShareFunction.env().S3_BUCKET_NAME_PATH;
 
     return (
-      ShareFunction.checkVariableIsNotNullOrEmpty(storageServer)
-      && storageServer === 's3'
-      && ShareFunction.checkVariableIsNotNullOrEmpty(s3AccessKeyID)
-      && ShareFunction.checkVariableIsNotNullOrEmpty(s3AccessKeySecret)
-      && ShareFunction.checkVariableIsNotNullOrEmpty(s3Region)
-      && ShareFunction.checkVariableIsNotNullOrEmpty(s3BucketNamePath)
+      ShareFunction.checkVariableIsNotNullOrEmpty(storageServer) &&
+      storageServer === 's3' &&
+      ShareFunction.checkVariableIsNotNullOrEmpty(s3AccessKeyID) &&
+      ShareFunction.checkVariableIsNotNullOrEmpty(s3AccessKeySecret) &&
+      ShareFunction.checkVariableIsNotNullOrEmpty(s3Region) &&
+      ShareFunction.checkVariableIsNotNullOrEmpty(s3BucketNamePath)
     );
   }
 
@@ -198,24 +200,24 @@ export class ShareFunction {
   public static isEnableUserVerify(): boolean {
     const enableUserVerify = ShareFunction.env().ENABLE_USER_VERIFY;
     return (
-      ShareFunction.checkVariableIsNotNullOrEmpty(enableUserVerify)
-      && enableUserVerify === 'true'
+      ShareFunction.checkVariableIsNotNullOrEmpty(enableUserVerify) &&
+      enableUserVerify === 'true'
     );
   }
 
   public static isEnableWebsocket(): boolean {
     const enableWebsocket = ShareFunction.env().ENABLE_WEBSOCKET;
     return (
-      ShareFunction.checkVariableIsNotNullOrEmpty(enableWebsocket)
-      && enableWebsocket === 'true'
+      ShareFunction.checkVariableIsNotNullOrEmpty(enableWebsocket) &&
+      enableWebsocket === 'true'
     );
   }
 
   public static isEnableSwagger(): boolean {
     const enableSwagger = ShareFunction.env().IS_ENABLE_SWAGGER;
     return (
-      ShareFunction.checkVariableIsNotNullOrEmpty(enableSwagger)
-      && enableSwagger === 'true'
+      ShareFunction.checkVariableIsNotNullOrEmpty(enableSwagger) &&
+      enableSwagger === 'true'
     );
   }
 
@@ -238,11 +240,11 @@ export class ShareFunction {
 
   public static isNullOrEmpty(variable: any): boolean {
     return (
-      !variable
-      || variable === undefined
-      || variable === null
-      || variable === ''
-      || variable.length === 0
+      !variable ||
+      variable === undefined ||
+      variable === null ||
+      variable === '' ||
+      variable.length === 0
     );
   }
 
@@ -280,9 +282,9 @@ export class ShareFunction {
     const _routeMap = routeMap;
     let resourceName = 'Undefined';
     if (
-      !ShareFunction.isNullOrEmpty(endpoint)
-      && !ShareFunction.isNullOrEmpty(endpoint.tags)
-      && !ShareFunction.isNullOrEmpty(endpoint.tags[0])
+      !ShareFunction.isNullOrEmpty(endpoint) &&
+      !ShareFunction.isNullOrEmpty(endpoint.tags) &&
+      !ShareFunction.isNullOrEmpty(endpoint.tags[0])
     ) {
       [resourceName] = endpoint.tags;
     }
