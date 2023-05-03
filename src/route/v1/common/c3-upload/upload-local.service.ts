@@ -78,7 +78,7 @@ export default class UploadLocalService {
     for (let i = 0; i < result.length; i += 1) {
       result[i] = result[i].replace(
         'public/',
-        `${ShareFunction.getClientUrl()}/static/`,
+        `${ShareFunction.getServerUrl()}/static/`,
       );
     }
 
