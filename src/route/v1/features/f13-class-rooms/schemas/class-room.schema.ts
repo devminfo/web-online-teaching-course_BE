@@ -1,7 +1,4 @@
 import { Document } from 'mongoose';
-import { AdministratorDto } from 'src/util/types/dto/administrator.dto';
-
-import { RoleClassRoomEnum } from '@enum/12.role-class-room.type';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema({ timestamps: true, versionKey: false })
