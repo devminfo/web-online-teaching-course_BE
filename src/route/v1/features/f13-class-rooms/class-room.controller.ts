@@ -4,7 +4,16 @@ import { ApiQueryParams } from '@decorator/api-query-params.decorator';
 import AqpDto from '@interceptor/aqp/aqp.dto';
 import WrapResponseInterceptor from '@interceptor/wrap-response.interceptor';
 import {
-  Body, Controller, Delete, Get, HttpCode, NotFoundException, Param, Post, Put, Query,
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  NotFoundException,
+  Param,
+  Post,
+  Put,
+  Query,
   UseInterceptors,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
@@ -13,12 +22,16 @@ import ParseObjectIdPipe from '@pipe/parse-object-id.pipe';
 import ClassRoomService from './class-room.service';
 import CreateClassRoomDto from './dto/create-class-room.dto';
 import UpdateClassRoomDto from './dto/update-class-room.dto';
+import ConversationService from '@features/f9-conversations/conversation.service';
 
 @ApiTags('ClassRooms')
 @UseInterceptors(WrapResponseInterceptor)
 @Controller()
 export default class ClassRoomController {
-  constructor(private readonly classRoomService: ClassRoomService) {}
+  constructor(
+    private readonly classRoomService: ClassRoomService,
+    private readonly conversationService: ConversationService,
+  ) {}
 
   /**
    * Find all
@@ -42,9 +55,18 @@ export default class ClassRoomController {
   @Post('')
   @HttpCode(201)
   async create(@Body() body: CreateClassRoomDto): Promise<any> {
-    const result = await this.classRoomService.create(body);
+    const classRoom = await this.classRoomService.create(body);
 
-    return result;
+    await this.conversationService.create({
+      idClassRoom: classRoom._id,
+      users: [...classRoom.members, classRoom.teacher],
+      chatName: classRoom.name,
+      isGroup: true,
+      avatar: classRoom.thumbnail,
+      createdBy: classRoom.teacher,
+    });
+
+    return classRoom;
   }
 
   /**

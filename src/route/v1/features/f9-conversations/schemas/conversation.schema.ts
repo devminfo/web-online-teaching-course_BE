@@ -9,6 +9,12 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema({ timestamps: true, versionKey: false })
 export class Conversation {
+  @Prop({ type: String, ref: 'ClassRoom', required: true })
+  readonly idClassRoom: string[];
+
+  @Prop({ type: String, ref: 'User', required: true })
+  readonly createdBy: string[];
+
   @Prop({ type: [{ type: String, ref: 'User' }], default: [] })
   readonly users: string[];
 
@@ -32,13 +38,6 @@ export class Conversation {
     },
   })
   readonly latestMessage: LastMessageDto;
-
-  @Prop({
-    type: String,
-    enum: RoleConversationEnum,
-    default: RoleConversationEnum.USER,
-  })
-  readonly role: RoleConversationEnum;
 }
 
 export type ConversationDocument = Conversation & Document;
