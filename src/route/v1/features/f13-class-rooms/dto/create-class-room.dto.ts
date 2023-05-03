@@ -1,6 +1,12 @@
 import { Type } from 'class-transformer';
 import {
-  IsArray, IsMongoId, IsNotEmpty, IsOptional, IsString, ValidateNested,
+  IsArray,
+  IsMongoId,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+  ValidateNested,
 } from 'class-validator';
 import { AdministratorDto } from 'src/util/types/dto/administrator.dto';
 
@@ -11,9 +17,8 @@ export default class CreateClassRoomDto {
   members: string[];
 
   @IsOptional()
-  @IsArray()
-  @IsMongoId({ each: true })
-  teachers: string[];
+  @IsMongoId()
+  teacher: string;
 
   @IsNotEmpty()
   @IsString()
@@ -25,7 +30,23 @@ export default class CreateClassRoomDto {
   @Type(() => AdministratorDto)
   administrators: AdministratorDto[];
 
-  @IsNotEmpty()
-  @IsMongoId({ each: true })
-  courses: string[];
+  @IsOptional()
+  @IsString()
+  readonly desc: string;
+
+  @IsOptional()
+  @IsNumber()
+  readonly participationFee: number;
+
+  @IsOptional()
+  @IsString()
+  readonly thumbnail: string;
+
+  @IsOptional()
+  @IsNumber()
+  readonly publicDate: number;
+
+  @IsOptional()
+  @IsNumber()
+  readonly maxMembers: number;
 }
