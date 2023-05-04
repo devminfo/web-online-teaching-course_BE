@@ -23,6 +23,7 @@ import ClassRoomService from './class-room.service';
 import CreateClassRoomDto from './dto/create-class-room.dto';
 import UpdateClassRoomDto from './dto/update-class-room.dto';
 import ConversationService from '@features/f9-conversations/conversation.service';
+import UserService from '@authorization/a1-user/user.service';
 
 @ApiTags('ClassRooms')
 @UseInterceptors(WrapResponseInterceptor)
@@ -31,6 +32,7 @@ export default class ClassRoomController {
   constructor(
     private readonly classRoomService: ClassRoomService,
     private readonly conversationService: ConversationService,
+    private readonly userService: UserService,
   ) {}
 
   /**
@@ -57,15 +59,19 @@ export default class ClassRoomController {
   async create(@Body() body: CreateClassRoomDto): Promise<any> {
     const classRoom = await this.classRoomService.create(body);
 
-    await this.conversationService.create({
-      idClassRoom: classRoom._id,
-      users: [...classRoom.members, classRoom.teacher],
-      chatName: classRoom.name,
-      isGroup: true,
-      avatar: classRoom.thumbnail,
-      createdBy: classRoom.teacher,
-    });
-
+    await Promise.all([
+      this.conversationService.create({
+        idClassRoom: classRoom._id,
+        users: [...classRoom.members, classRoom.teacher],
+        chatName: classRoom.name,
+        isGroup: true,
+        avatar: classRoom.thumbnail,
+        createdBy: classRoom.teacher,
+      }),
+      this.userService.updateOneById(body.teacher, {
+        $addToSet: { myClassRooms: classRoom._id },
+      }),
+    ]);
     return classRoom;
   }
 

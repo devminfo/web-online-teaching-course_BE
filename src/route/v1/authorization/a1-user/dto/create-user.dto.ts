@@ -136,4 +136,14 @@ export default class CreateUserDto {
   @IsArray()
   @IsMongoId({ each: true })
   readonly favoriteCourses: string[];
+
+  @IsOptional()
+  @IsArray()
+  @IsMongoId({ each: true })
+  readonly myLearningClassRooms: string[];
+
+  @IsOptional()
+  @IsArray()
+  @IsMongoId({ each: true })
+  readonly myClassRooms: string[];
 }

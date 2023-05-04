@@ -1,3 +1,4 @@
+import UserModule from '@authorization/a1-user/user.module';
 import ConversationModule from '@features/f9-conversations/conversation.module';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -16,6 +17,7 @@ import { ClassRoom, ClassRoomSchema } from './schemas/class-room.schema';
       },
     ]),
     ConversationModule,
+    UserModule,
   ],
   controllers: [ClassRoomController],
   providers: [ClassRoomService, ClassRoomRepository],
