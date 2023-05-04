@@ -22,12 +22,16 @@ import ParseObjectIdPipe from '@pipe/parse-object-id.pipe';
 import CourseService from './course.service';
 import CreateCourseDto from './dto/create-course.dto';
 import UpdateCourseDto from './dto/update-course.dto';
+import UserService from '@authorization/a1-user/user.service';
 
 @ApiTags('Courses')
 @UseInterceptors(WrapResponseInterceptor)
 @Controller()
 export default class CourseController {
-  constructor(private readonly courseService: CourseService) {}
+  constructor(
+    private readonly courseService: CourseService,
+    private readonly userService: UserService,
+  ) {}
 
   /**
    * Find all
@@ -53,6 +57,10 @@ export default class CourseController {
   async create(@Body() body: CreateCourseDto): Promise<any> {
     const result = await this.courseService.create(body);
 
+    // add instructor to myCourses of users
+    await this.userService.updateOneById(body.instructor, {
+      $addToSet: { myCourses: result._id },
+    });
     return result;
   }
 

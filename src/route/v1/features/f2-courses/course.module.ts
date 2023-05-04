@@ -1,3 +1,4 @@
+import UserModule from '@authorization/a1-user/user.module';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
@@ -14,6 +15,7 @@ import { CourseSchema } from './schemas/course.schema';
         schema: CourseSchema,
       },
     ]),
+    UserModule,
   ],
   controllers: [CourseController],
   providers: [CourseService, CourseRepository],

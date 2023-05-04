@@ -128,6 +128,18 @@ export class User {
   })
   readonly favoriteCourses: string[];
 
+  @Prop({
+    type: [{ type: String, ref: 'ClassRoom' }],
+    default: [],
+  })
+  readonly myClassRooms: string[];
+
+  @Prop({
+    type: [{ type: String, ref: 'ClassRoom' }],
+    default: [],
+  })
+  readonly myLearningClassRooms: string[];
+
   comparePassword: (candidatePassword: string) => boolean;
 }
 
