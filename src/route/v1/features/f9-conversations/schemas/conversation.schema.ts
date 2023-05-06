@@ -9,7 +9,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema({ timestamps: true, versionKey: false })
 export class Conversation {
-  @Prop({ type: String, ref: 'ClassRoom', required: true })
+  @Prop({ type: String, ref: 'ClassRoom', required: true, unique: true })
   readonly idClassRoom: string[];
 
   @Prop({ type: String, ref: 'User', required: true })

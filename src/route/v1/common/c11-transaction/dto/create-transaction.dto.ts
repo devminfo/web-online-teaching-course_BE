@@ -22,6 +22,10 @@ export default class CreateTransactionDto {
   readonly idCourse: ObjectId;
 
   @IsOptional()
+  @IsMongoId()
+  readonly idClassRoom: ObjectId;
+
+  @IsOptional()
   @IsEnum(TransactionTypeEnum)
   readonly type: TransactionTypeEnum;
 
