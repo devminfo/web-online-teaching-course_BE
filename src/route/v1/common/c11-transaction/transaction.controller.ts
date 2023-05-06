@@ -74,7 +74,7 @@ export default class TransactionController {
     return this.transactionService.confirm(id, body);
   }
 
-  @Put(':id/upgrade-to-teacher')
+  @Post('upgrade-to-teacher')
   @HttpCode(200)
   async updateToTeacherTransaction(
     @Body() body: UpdateTransactionDto,
@@ -82,10 +82,16 @@ export default class TransactionController {
     return this.transactionService.upgradeToTeacher(body);
   }
 
-  @Put(':id/buy-course')
+  @Post('buy-course')
   @HttpCode(200)
   async buyCourse(@Body() body: UpdateTransactionDto): Promise<any> {
     return this.transactionService.buyCourse(body);
+  }
+
+  @Post('join-class')
+  @HttpCode(200)
+  async joinClass(@Body() body: UpdateTransactionDto): Promise<any> {
+    return this.transactionService.joinClass(body);
   }
 
   /**

@@ -17,6 +17,8 @@ import UpdateTransactionDto from './dto/update-transaction.dto';
 import CourseService from '@features/f2-courses/course.service';
 import { RoleUserEnum, TypeUserEnum } from '@enum/role-user.enum';
 import GroupService from '@authorization/a5-group/group.service';
+import ClassRoomService from '@features/f13-class-rooms/class-room.service';
+import ConversationService from '@features/f9-conversations/conversation.service';
 @Injectable()
 export default class TransactionService extends BaseService<TransactionDocument> {
   constructor(
@@ -27,6 +29,8 @@ export default class TransactionService extends BaseService<TransactionDocument>
     readonly mailerService: MailerService,
     readonly courseService: CourseService,
     readonly groupService: GroupService,
+    readonly classRoomService: ClassRoomService,
+    readonly conversationService: ConversationService,
   ) {
     super(logger, transactionRepository);
   }
@@ -111,6 +115,7 @@ export default class TransactionService extends BaseService<TransactionDocument>
     await this.userService.updateOneById(transaction.idUser, {
       typeUser: TypeUserEnum.teacher,
       groups: [groupRoleTeacher._id],
+      role: RoleUserEnum.manager,
     });
 
     return transaction;
@@ -131,9 +136,12 @@ export default class TransactionService extends BaseService<TransactionDocument>
         usersJoined: [body.idUser],
       }),
       this.userService.updateOneById(transaction.idUser, {
-        myLearningCourses: [
-          { idCourse: transaction.idCourse, currentLesson: 0 },
-        ],
+        $addToSet: {
+          myLearningCourses: {
+            idCourse: transaction.idCourse,
+            currentLesson: 0,
+          },
+        },
       }),
     ]);
 
@@ -143,15 +151,18 @@ export default class TransactionService extends BaseService<TransactionDocument>
   async joinClass(body: UpdateTransactionDto) {
     const transaction = await this.transactionRepository.create(body);
 
-    // add student to course
+    // add student to class rooms
     await Promise.all([
-      this.courseService.updateOneById(transaction.idCourse, {
-        usersJoined: [body.idUser],
-      }),
       this.userService.updateOneById(transaction.idUser, {
-        myLearningCourses: [
-          { idCourse: transaction.idCourse, currentLesson: 0 },
-        ],
+        $addToSet: { myLearningClassRooms: [transaction.idClassRoom] },
+      }),
+
+      this.classRoomService.updateOneById(transaction.idClassRoom, {
+        $addToSet: { members: transaction.idUser },
+      }),
+
+      this.conversationService.updateOneById(transaction.idClassRoom, {
+        $addToSet: { users: transaction.idUser },
       }),
     ]);
 

@@ -1,6 +1,8 @@
 import GroupModule from '@authorization/a5-group/group.module';
 import NotificationModule from '@common/c12-notification/notification.module';
+import ClassRoomModule from '@features/f13-class-rooms/class-room.module';
 import CourseModule from '@features/f2-courses/course.module';
+import ConversationModule from '@features/f9-conversations/conversation.module';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
@@ -20,6 +22,8 @@ import TransactionService from './transaction.service';
     NotificationModule,
     CourseModule,
     GroupModule,
+    ClassRoomModule,
+    ConversationModule,
   ],
   controllers: [TransactionController],
   providers: [TransactionService, TransactionRepository],

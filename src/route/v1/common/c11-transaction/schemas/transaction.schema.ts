@@ -14,6 +14,9 @@ export class Transaction {
   @Prop({ type: Types.ObjectId, ref: 'Course' })
   readonly idCourse: ObjectId;
 
+  @Prop({ type: Types.ObjectId, ref: 'ClassRoom' })
+  readonly idClassRoom: ObjectId;
+
   @Prop({
     type: String,
     enum: TransactionTypeEnum,
