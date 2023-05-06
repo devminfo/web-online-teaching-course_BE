@@ -1,3 +1,4 @@
+import GroupModule from '@authorization/a5-group/group.module';
 import NotificationModule from '@common/c12-notification/notification.module';
 import CourseModule from '@features/f2-courses/course.module';
 import { Module } from '@nestjs/common';
@@ -18,6 +19,7 @@ import TransactionService from './transaction.service';
     ]),
     NotificationModule,
     CourseModule,
+    GroupModule,
   ],
   controllers: [TransactionController],
   providers: [TransactionService, TransactionRepository],

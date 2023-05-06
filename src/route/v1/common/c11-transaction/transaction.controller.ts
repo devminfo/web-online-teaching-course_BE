@@ -74,20 +74,18 @@ export default class TransactionController {
     return this.transactionService.confirm(id, body);
   }
 
-  /**
-   * Upgrade to teacher
-   *
-   * @param id
-   * @param body
-   * @returns
-   */
   @Put(':id/upgrade-to-teacher')
   @HttpCode(200)
   async updateToTeacherTransaction(
-    @Param('id', ParseObjectIdPipe) id: ObjectId,
     @Body() body: UpdateTransactionDto,
   ): Promise<any> {
-    return this.transactionService.upgradeToTeacher(id, body);
+    return this.transactionService.upgradeToTeacher(body);
+  }
+
+  @Put(':id/buy-course')
+  @HttpCode(200)
+  async buyCourse(@Body() body: UpdateTransactionDto): Promise<any> {
+    return this.transactionService.buyCourse(body);
   }
 
   /**
