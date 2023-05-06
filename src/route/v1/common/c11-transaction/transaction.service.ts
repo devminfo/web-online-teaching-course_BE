@@ -16,6 +16,7 @@ import { ShareFunction } from '@helper/static-function';
 import UpdateTransactionDto from './dto/update-transaction.dto';
 import CourseService from '@features/f2-courses/course.service';
 import { RoleUserEnum, TypeUserEnum } from '@enum/role-user.enum';
+import GroupService from '@authorization/a5-group/group.service';
 @Injectable()
 export default class TransactionService extends BaseService<TransactionDocument> {
   constructor(
@@ -25,6 +26,7 @@ export default class TransactionService extends BaseService<TransactionDocument>
     readonly userService: UserService,
     readonly mailerService: MailerService,
     readonly courseService: CourseService,
+    readonly groupService: GroupService,
   ) {
     super(logger, transactionRepository);
   }
@@ -94,54 +96,65 @@ export default class TransactionService extends BaseService<TransactionDocument>
   }
 
   /**
-   * Confirm transaction
+   * Upgrade to teacher
    *
-   * @param id
+   * @param body
    * @returns
    */
-  async upgradeToTeacher(id: ObjectId, body: UpdateTransactionDto) {
-    const admin = await this.userService.getAdmin();
-    const transaction = await this.transactionRepository.findOneBy({
-      _id: id,
-      status: TransactionStatusEnum.CHECKING,
+  async upgradeToTeacher(body: UpdateTransactionDto) {
+    const transaction = await this.transactionRepository.create(body);
+
+    const groupRoleTeacher = await this.groupService.findOneBy({
+      name: TypeUserEnum.teacher,
+    });
+    // update user
+    await this.userService.updateOneById(transaction.idUser, {
+      typeUser: TypeUserEnum.teacher,
+      groups: [groupRoleTeacher._id],
     });
 
-    if (!transaction) throw new BadRequestException('Transaction not found.');
+    return transaction;
+  }
 
-    const CLIENT_URL = 'http://localhost:4200/';
-    const linkVerify = `${CLIENT_URL}/`;
+  /**
+   * Buy course
+   *
+   * @param body
+   * @returns
+   */
+  async buyCourse(body: UpdateTransactionDto) {
+    const transaction = await this.transactionRepository.create(body);
 
-    const to = transaction.email;
-    const from = admin?.email || 'noreply@gmail.com';
-
-    if (body.status === TransactionStatusEnum.SUCCESS) {
-      await Promise.all([
-        this.mailerService.sendLinkVerify(linkVerify, to, body.title!, from),
-        this.userService.updateOneBy(
-          { _id: transaction.idUser },
-          {
-            role: RoleUserEnum.manager,
-            typeUser: TypeUserEnum.teacher,
-          },
-        ),
-      ]);
-    }
-
-    // Create notification
-    const itemNotification = {
-      createdBy: admin?._id,
-      usersReceived: [transaction.idUser],
-      entityType: NotificationEntityTypeEnum.TRANSACTION,
-      idEntity: transaction._id,
-      title: body.title,
-      content: body.content,
-    };
-
-    const [notification, transactionUpdated] = await Promise.all([
-      this.notificationRepository.create(itemNotification),
-      this.transactionRepository.updateOneById(id, body),
+    // add student to course
+    await Promise.all([
+      this.courseService.updateOneById(transaction.idCourse, {
+        usersJoined: [body.idUser],
+      }),
+      this.userService.updateOneById(transaction.idUser, {
+        myLearningCourses: [
+          { idCourse: transaction.idCourse, currentLesson: 0 },
+        ],
+      }),
     ]);
 
-    return transactionUpdated;
+    return transaction;
+  }
+
+  async joinClass(body: UpdateTransactionDto) {
+    const transaction = await this.transactionRepository.create(body);
+
+    // add student to course
+    await Promise.all([
+      this.courseService.updateOneById(transaction.idCourse, {
+        usersJoined: [body.idUser],
+      }),
+      this.userService.updateOneById(transaction.idUser, {
+        myLearningCourses: [
+          { idCourse: transaction.idCourse, currentLesson: 0 },
+        ],
+      }),
+    ]);
+
+    return transaction;
   }
 }
