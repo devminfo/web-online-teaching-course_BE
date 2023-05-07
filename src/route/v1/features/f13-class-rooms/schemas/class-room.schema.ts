@@ -6,7 +6,7 @@ export class ClassRoom {
   @Prop({ type: [{ type: String, ref: 'User' }], default: [] })
   readonly members: string[];
 
-  @Prop({ type: String, ref: 'Teacher', required: true })
+  @Prop({ type: String, ref: 'User', required: true })
   readonly teacher: string;
 
   @Prop({ type: String, default: '' })
