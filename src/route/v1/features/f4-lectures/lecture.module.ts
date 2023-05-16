@@ -1,3 +1,4 @@
+import CourseModule from '@features/f2-courses/course.module';
 import ChapterModule from '@features/f3-chapters/chapter.module';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -16,6 +17,7 @@ import { Lecture, LectureSchema } from './schemas/lecture.schema';
       },
     ]),
     ChapterModule,
+    CourseModule,
   ],
   controllers: [LectureController],
   providers: [LectureService, LectureRepository],
