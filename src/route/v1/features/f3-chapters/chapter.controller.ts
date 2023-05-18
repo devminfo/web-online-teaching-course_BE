@@ -22,12 +22,16 @@ import ParseObjectIdPipe from '@pipe/parse-object-id.pipe';
 import CreateChapterDto from './dto/create-chapter.dto';
 import UpdateChapterDto from './dto/update-chapter.dto';
 import ChapterService from './chapter.service';
+import CourseService from '@features/f2-courses/course.service';
 
 @ApiTags('Chapters')
 @UseInterceptors(WrapResponseInterceptor)
 @Controller()
 export default class ChapterController {
-  constructor(private readonly chapterService: ChapterService) {}
+  constructor(
+    private readonly chapterService: ChapterService,
+    private readonly courseService: CourseService,
+  ) {}
 
   /**
    * Find all
@@ -57,6 +61,10 @@ export default class ChapterController {
   @HttpCode(201)
   async create(@Body() body: CreateChapterDto): Promise<any> {
     const result = await this.chapterService.create(body);
+
+    await this.courseService.updateOneById(result.idCourse, {
+      $inc: { totalChapter: 1 },
+    });
 
     return result;
   }

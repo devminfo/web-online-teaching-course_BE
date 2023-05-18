@@ -23,6 +23,7 @@ import ChapterService from '@features/f3-chapters/chapter.service';
 import CreateLectureDto from './dto/create-lecture.dto';
 import UpdateLectureDto from './dto/update-lecture.dto';
 import LectureService from './lecture.service';
+import CourseService from '@features/f2-courses/course.service';
 
 @ApiTags('Lectures')
 @UseInterceptors(WrapResponseInterceptor)
@@ -31,6 +32,7 @@ export default class LectureController {
   constructor(
     private readonly lectureService: LectureService,
     private readonly chapterService: ChapterService,
+    private readonly courseService: CourseService,
   ) {}
 
   /**
@@ -57,8 +59,15 @@ export default class LectureController {
   async create(@Body() body: CreateLectureDto): Promise<any> {
     const result = await this.lectureService.create(body);
 
-    await this.chapterService.updateOneById(body.idChapter, {
-      $addToSet: { lectures: result._id },
+    const chapterUpdated = await this.chapterService.updateOneById(
+      body.idChapter,
+      {
+        $addToSet: { lectures: result._id },
+      },
+    );
+
+    await this.courseService.updateOneById(chapterUpdated.idCourse, {
+      $inc: { totalLectures: 1 },
     });
 
     return result;
