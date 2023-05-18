@@ -83,10 +83,10 @@ export default class WebsocketCustomGateway
     this.server?.sockets.emit('typing', data);
   }
 
-  @SubscribeMessage('message')
+  @SubscribeMessage('send_message')
   onSendMessage(@MessageBody() data: any) {
     /* eslint no-console: 0 */
     console.log('message', data);
-    this.server?.sockets.emit('message', data);
+    this.server?.sockets.emit('received_message', data);
   }
 }
