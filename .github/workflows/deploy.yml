@@ -3,7 +3,7 @@ name: Deploy to DockerHub and VPS
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
