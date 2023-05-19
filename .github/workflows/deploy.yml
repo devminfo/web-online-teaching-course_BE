@@ -1,6 +1,6 @@
 name: Deploy to DockerHub and VPS
 # on: [push]
-
+# on: [push]
 jobs:
   deploy:
     runs-on: ubuntu-latest
