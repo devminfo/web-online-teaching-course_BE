@@ -1,6 +1,6 @@
 name: Deploy to DockerHub and VPS
 # on: [push]
-# on: [push]
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -14,6 +14,8 @@ jobs:
         with:
           context: .
           push: true
+          username: minhchiu
+          password: dckr_pat_oRwjJlbP8NiE2olD-k-vln9aUj4
           tags: minhchiu/webontecoursebe:latest
 
       - name: Connect to VPS and update Docker image
