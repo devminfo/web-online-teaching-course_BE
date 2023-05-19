@@ -1,9 +1,5 @@
 name: Deploy to DockerHub and VPS
-
-on:
-  push:
-    branches:
-      - master
+on: [push]
 
 jobs:
   deploy:

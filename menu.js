@@ -119,6 +119,16 @@ let menu = [
     position: 1,
     horizontal: true,
   },
+  {
+    id: 6,
+    title: 'Máy tính',
+    icon: 'fas fa-laptop',
+    level: 2,
+    parent_id: 2,
+    link: '/products/pc',
+    position: 1,
+    horizontal: true,
+  },
 ];
 
 let MenuLevel = {
