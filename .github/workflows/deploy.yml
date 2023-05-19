@@ -1,0 +1,34 @@
+name: Deploy to DockerHub and VPS
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: minhch/webontecoursebe:latest
+
+      - name: Connect to VPS and update Docker image
+        uses: appleboy/ssh-action@master
+        with:
+          host: 103.170.246.85
+          username: root
+          key: b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcnNhAAAAAwEAAQAAAYEAq8vdNrllgP7wOYXeASv5DrTS3kVSKyZ6cYtzKE2fNrRc+xqNn7RS90yejd1ufba17bLL36UbtwfZQSCogA0ovt5uWhL0prXU94OJW5RaVeezv38Y7hnKv7qNUKpLud4AzGJdl3bpo92Oyejo8kqXts8Hq2o4QeEMAVEn8vVGwxlfzvTba4hPC7aVtY4BXJrx2gmlGxni9L+iL4ny3Fx0uihsyeFm65yNk6P1bsebtZcG/Y7s2xbeKg43OikcW5GgkN6Rwg7ovhM4emaoAxgi+KG1/4fynCgDJe7CNimWojY9eHJ7WZiBij1hTRQGhZh5NQeM3SrN9XK9z8TDiuN1UNY6QxHhjCJ1xugm2lYKhaBziGc7IuRUFdkA4Uup+JzopSKoXYrN/OnDfPMuLMpT7w843y+oB0hR53AZ4PUaF5YjcFgZlIvTRfFGvBfAvrAHOviX9ZZa/zycozX+YZhKuE1Zsn2X4UH6FE+MrnqsWds7QvOUgzo/cfODwCR2600dAAAFmD+f/zI/n/8yAAAAB3NzaC1yc2EAAAGBAKvL3Ta5ZYD+8DmF3gEr+Q600t5FUismenGLcyhNnza0XPsajZ+0UvdMno3dbn22te2yy9+lG7cH2UEgqIANKL7ebloS9Ka11PeDiVuUWlXns79/GO4Zyr+6jVCqS7neAMxiXZd26aPdjsno6PJKl7bPB6tqOEHhDAFRJ/L1RsMZX87022uITwu2lbWOAVya8doJpRsZ4vS/oi+J8txcdLoobMnhZuucjZOj9W7Hm7WXBv2O7NsW3ioONzopHFuRoJDekcIO6L4TOHpmqAMYIvihtf+H8pwoAyXuwjYplqI2PXhye1mYgYo9YU0UBoWYeTUHjN0qzfVyvc/Ew4rjdVDWOkMR4YwidcboJtpWCoWgc4hnOyLkVBXZAOFLqfic6KUiqF2Kzfzpw3zzLizKU+8PON8vqAdIUedwGeD1GheWI3BYGZSL00XxRrwXwL6wBzr4l/WWWv88nKM1/mGYSrhNWbJ9l+FB+hRPjK56rFnbO0LzlIM6P3Hzg8AkdutNHQAAAAMBAAEAAAGAf03OWyL/KJvB/55HaK7hHBi6uaK8xOT6jvE7IH6EoND+pcSDdfj2EfNg+tc/bUDbh4yartt2sibKwwwkUN9vdiD1vSGW0YKkkdWTD53bYxUTia/xFV9fcrwWw9Ot0cnE5a9ukzK254riqJRDKmhEDF9V25wWnBrb/o3ZAJzpFuHSsVWY0xJrIM7oGWVldO4Mkfnbsz13hM4MrRWYNdr9VIVoOCEjVyznbKRu1uxrYiDMOVCUC7XiY1+tZRfZv7ElBzQMNS30jsa20R2+FRrJsCxfNCTazePDfVeSUG8ThEG+S9nGskPnOKJe16zUVKp2F7vXcfb6Jd2Ci8rlqOe6bTEzdpgbbsyxpJoPnY+8fFluts93H24JzQJojGIsSqskp8RnjqFqmgewpCgXCJi3NXvwdp/qu4eOyPoVvuL8W9O9nuhfC5D2IoyWLR+5o3j1RbPY9PiJBqOzpZ9QBTdK+xIoxR6GjZQstScyJjLJiU8eECYfB1PB+7GM1NzuOf6xAAAAwQCNqAz7RVLwR0T3v0p9ANAZUkZAJA3xSsilWDfUGp6yUyP8w+DaGCOSL56GAByb2lwz3Q9wEkVUhC3I99+cP7721+3LZEBohwQYVXfmDfXRd33lMMfNYTrL3iVe5SQKbM9hGJX+J+gyENcqwDSMF10HemVuPfrTXW2gWK7HjxRW1iWyx6biG1MxJsX0Dr7CRMhPedcxyFxjlJY7saRbs2CBk68Am/8/HSQOsBU1wrR4pNE4j+/rmojlGWfdmKePOYsAAADBAOA8IUbXM9aU8nWIM+BWLbi2zHaDBzg1SvJKv0VoDqRvYapW+kUptbzntNVM9x8p5RDMDkb+2gLeofH14NaUpziOb9DWf8CQ8qxm0yv4HsX3mjHefVQ7bC6wUsan5pENmbBI8hr3FlgeTCKDMvJ0eEHJU8HpiMWDpWvAge0jtoaq9yXyUt7BlqTfjsG8x072Jmw/0JhctbbijSufucS2ZrdeDA21+JwYBNnvRNsL5VASF9SeTVXcCmjb5kYqc5ErWwAAAMEAxCINajCtDnv85Sc+y5s67AHbTLw40sKoghrkzyNjv6xRyqYmSPxFwhvWtmyv9XuduVF9tmt7sSxCnWe6LcutaEf0vrYsebwPfAcM639Uq4in/xoS+k0CKNbhhF6ZWv7q/tbj2if2q+N39y8Kw6rFUIWlwn+dhTAXs1N/nVIvAYlD2a9FLoamCd8L04bcJx1gh6hRaDlXBG5qwr3Q3w1z0N/uyJDSjLwsoklNDDt6SUVbWpMwi3VPX9HXFzPVpOrnAAAAG3Jvb3RAMTY2ODEzMjMyNi5vbmV0LmNvbS52bgECAwQFBgc=
+          port: 22
+          script: |
+            docker stop ywebontecoursebe || true
+            docker rm webontecoursebe || true
+            docker pull minhch/webontecoursebe:latest
+            docker run -d --name webontecoursebe minhch/webontecoursebe:latest
